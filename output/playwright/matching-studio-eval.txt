@@ -1,0 +1,6 @@
+### Result
+"PL\nProoflane\nLOCALHOST PRODUCT SHELL\nOverview\nDashboard\nMatching Studio\nLaunchpad\nCollaboration Hub\nDEV SESSION\nAira Mehta (FREELANCER)\nRavi Kulkarni (FREELANCER)\nSana Arora (FREELANCER)\nProoflane Recruiter (RECRUITER)\nProoflane Admin (PLATFORM_ADMIN)\nLogin\nLogout\nUse a seeded persona to unlock protected localhost workflows.\nMATCHING STUDIO\nRun recruiter-side match previews on localhost\n\nThis form posts a job-like brief to the NestJS API. If the FastAPI service is running, the API will delegate reranking to it.\n\nNorthstar D2C\nProoflane Labs\nJob title\nDescription\nLocation\nBudget min\nBudget max\nRequired skills\nProof signals\nRequire verified badge\nRun preview\nAPI model: ai_rerank_v1\nPREVIEW SHORTLIST\n2 candidates ranked for Build the first marketplace MVP\nRANK 1\nRavi Kulkarni\n\nFull-Stack Product Engineer\n\nSCORE\n0.89\n\nMatched 5 required skills, trust 0.95, budget score 1.00, proof score 0.33.\n\ndocker\nnestjs\nnext.js\npostgresql\nredis\nRANK 2\nAira Mehta\n\nUGC Video Strategist\n\nSCORE\n0.28\n\nMatched 0 required skills, trust 0.91, budget score 0.20, proof score 0.00."
+### Ran Playwright code
+```js
+await page.evaluate('() => (document.body.innerText)');
+```

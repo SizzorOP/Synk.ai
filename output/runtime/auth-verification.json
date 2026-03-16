@@ -1,0 +1,18 @@
+{
+  "personas_status": 200,
+  "recruiter_login_status": 201,
+  "freelancer_login_status": 201,
+  "admin_login_status": 201,
+  "recruiter_me_status": 200,
+  "unauth_job_status": 401,
+  "freelancer_job_status": 403,
+  "recruiter_job_status": 201,
+  "recruiter_portfolio_status": 403,
+  "freelancer_portfolio_status": 201,
+  "admin_vector_sync_status": 201,
+  "recruiter_job_slug": "auth-gated-recruiter-brief-1773682861915",
+  "freelancer_portfolio_slug": "ravi-kulkarni-1773682861918",
+  "freelancer_portfolio_creator": "Ravi Kulkarni",
+  "freelancer_portfolio_verified": false,
+  "launchpad_status": 200
+}

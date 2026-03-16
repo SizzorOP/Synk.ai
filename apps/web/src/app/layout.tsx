@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import { Manrope, Space_Grotesk } from "next/font/google";
+
+import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
+
+export const metadata: Metadata = {
+  title: "Prooflane",
+  description:
+    "Portfolio-first freelance marketplace with semantic AI matching and proof-led discovery.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${manrope.variable} ${spaceGrotesk.variable} font-[family-name:var(--font-manrope)]`}
+      >
+        {children}
+      </body>
+    </html>
+  );
+}

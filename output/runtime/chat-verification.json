@@ -1,0 +1,12 @@
+{
+  "recruiter_login_status": 201,
+  "admin_login_status": 201,
+  "recruiter_threads_status": 200,
+  "created_thread_status": 201,
+  "created_thread_id": "7cb60f21-6416-4489-adce-9267fc793202",
+  "initial_messages_status": 200,
+  "socket_event": "message:created",
+  "socket_thread_id": "7cb60f21-6416-4489-adce-9267fc793202",
+  "socket_message_body": "Realtime verification ping",
+  "collaboration_page_status": 200
+}

@@ -1,0 +1,8 @@
+{
+  "home_has_title": true,
+  "dashboard_has_title": true,
+  "studio_has_title": true,
+  "home_console": "### Result\n- [Console](.playwright-cli\\console-2026-03-16T16-59-41-891Z.log)",
+  "dashboard_console": "### Result\n- [Console](.playwright-cli\\console-2026-03-16T16-59-50-104Z.log)",
+  "studio_console": "### Result\n- [Console](.playwright-cli\\console-2026-03-16T17-00-00-141Z.log)"
+}

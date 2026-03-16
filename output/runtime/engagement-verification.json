@@ -1,0 +1,32 @@
+{
+  "freelancer": {
+    "id": "11111111-1111-1111-1111-111111111111",
+    "email": "aira@example.com",
+    "displayName": "Aira Mehta",
+    "roles": [
+      "FREELANCER"
+    ],
+    "description": "Freelancer persona for portfolio creation and talent-side flows."
+  },
+  "recruiter": {
+    "id": "44444444-4444-4444-4444-444444444444",
+    "email": "ops@prooflane.dev",
+    "displayName": "Prooflane Recruiter",
+    "roles": [
+      "RECRUITER"
+    ],
+    "description": "Recruiter persona for job creation and talent discovery."
+  },
+  "proposalId": "e3243a1a-1351-4dc3-a8a9-bfe542a31e18",
+  "jobProposalCount": 3,
+  "shortlistedStatus": "SHORTLISTED",
+  "contractId": "3c93d8f3-7d76-446a-898c-702e67e45261",
+  "fundedMilestoneStatus": "FUNDED",
+  "submittedMilestoneStatus": "SUBMITTED",
+  "approvedMilestoneStatus": "RELEASED",
+  "contractEscrowStatus": "RELEASED",
+  "contractTotalFunded": 1000,
+  "contractTotalReleased": 1000,
+  "transactionCount": 2,
+  "workflowThreadId": "efae97e0-233a-4d5f-b225-b093ba55f2ff"
+}

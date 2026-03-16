@@ -1,0 +1,2 @@
+### Result
+- [Console](.playwright-cli\console-2026-03-16T18-10-35-383Z.log)

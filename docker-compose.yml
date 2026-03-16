@@ -1,0 +1,74 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: marketplace
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/postgres_schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+      - ./database/postgres_seed.sql:/docker-entrypoint-initdb.d/002-seed.sql:ro
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.6
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/marketplace
+      REDIS_URL: redis://redis:6379
+      QDRANT_URL: http://qdrant:6333
+      AI_SERVICE_URL: http://ai:8001
+    depends_on:
+      - postgres
+      - redis
+      - qdrant
+      - ai
+    ports:
+      - "4000:4000"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:4000/api/v1
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+  ai:
+    build:
+      context: .
+      dockerfile: services/ai/Dockerfile
+    environment:
+      PORT: 8001
+      QDRANT_URL: http://qdrant:6333
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/marketplace
+      EMBEDDING_DIM: 3072
+    depends_on:
+      - postgres
+      - qdrant
+    ports:
+      - "8001:8001"
+
+volumes:
+  postgres_data:
+  qdrant_data:

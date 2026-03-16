@@ -1,0 +1,6 @@
+### Result
+"PL\nProoflane\nLOCALHOST PRODUCT SHELL\nOverview\nDashboard\nMatching Studio\nLaunchpad\nCollaboration Hub\nDEV SESSION\nAira Mehta (FREELANCER)\nRavi Kulkarni (FREELANCER)\nSana Arora (FREELANCER)\nProoflane Recruiter (RECRUITER)\nProoflane Admin (PLATFORM_ADMIN)\nLogin\nLogout\nUse a seeded persona to unlock protected localhost workflows.\nSMART COLLABORATION HUB\nReal-time rooms for hiring, delivery, and support\n\nThis localhost surface consumes the authenticated chat APIs and the Socket.io collaboration namespace from the NestJS backend.\n\nCOLLABORATION HUB\nLogin to open your contract rooms and direct threads\n\nUse the header dev-session switcher first. The collaboration hub is fully authenticated and only shows threads that belong to the active localhost persona."
+### Ran Playwright code
+```js
+await page.evaluate('() => (document.body.innerText)');
+```

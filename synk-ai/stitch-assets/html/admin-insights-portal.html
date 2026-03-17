@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synk.ai Admin Insights Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "accent-purple": "#a855f7",
+                        "accent-cyan": "#06b6d4",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(60, 131, 246, 0.3);
+        }
+        .tech-border {
+            border: 1px solid rgba(60, 131, 246, 0.1);
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-slate-100 dark:bg-slate-900/50 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="size-10 rounded-lg bg-gradient-to-br from-primary to-accent-purple flex items-center justify-center text-white neon-glow-primary">
+<span class="material-symbols-outlined">api</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none">Synk.ai</h1>
+<p class="text-xs font-medium text-primary uppercase tracking-widest mt-1">Admin Portal</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-medium">Disputes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="p-4 rounded-xl bg-slate-200 dark:bg-slate-800/50 tech-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-300 dark:bg-slate-700 overflow-hidden">
+<img alt="Admin Avatar" data-alt="Cyberpunk style professional male administrator avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTUvYFSP0WQYiM23W_LJFOR3pfL9IaVfxuMxNJ857ARXqG03kX9weiWqdmrtwVOIa89ODnqD3mRAwc3KV1rDyzTRA5MP__n8Uqovt--F46x01a_ZMeFeAgFeZ_iPFbfxYT4oNvzGmuthuDWeKF4tEPS7K1MGsjPs1-g0Ix4CK71WUyIbocoUAXlAc9u2JlGEXLmpLbmEIm6f_e9t3OYrXRZ40OenwM2nxDtBU4PK0M_A_plRKrj2-S8IMWmaS3PaGvgK9OM1nfXg"/>
+</div>
+<div>
+<p class="text-sm font-bold">Alex Thorne</p>
+<p class="text-xs text-slate-500">Super Admin</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-72">
+<header class="h-20 border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex flex-col">
+<h2 class="text-xl font-bold">Platform Insights</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">High-level overview of Synk.ai performance</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary rounded-lg text-white font-medium neon-glow-primary">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Report
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Key Metrics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-bl-full -mr-8 -mt-8 group-hover:bg-primary/20 transition-colors"></div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total GMV</p>
+<h3 class="text-3xl font-black mt-2">$4.2M</h3>
+<div class="flex items-center gap-1 mt-4 text-emerald-500 font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+5.4%</span>
+<span class="text-slate-400 font-normal ml-1">vs last month</span>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-accent-purple/10 rounded-bl-full -mr-8 -mt-8 group-hover:bg-accent-purple/20 transition-colors"></div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Active Matches</p>
+<h3 class="text-3xl font-black mt-2">1,284</h3>
+<div class="flex items-center gap-1 mt-4 text-emerald-500 font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+8.1%</span>
+<span class="text-slate-400 font-normal ml-1">vs last month</span>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-accent-cyan/10 rounded-bl-full -mr-8 -mt-8 group-hover:bg-accent-cyan/20 transition-colors"></div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">User Growth</p>
+<h3 class="text-3xl font-black mt-2">+12%</h3>
+<div class="flex items-center gap-1 mt-4 text-emerald-500 font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+2.3%</span>
+<span class="text-slate-400 font-normal ml-1">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold">User Growth Trend</h4>
+<select class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm px-3 py-1 outline-none ring-0">
+<option>Last 30 Days</option>
+<option>Last 6 Months</option>
+</select>
+</div>
+<div class="h-64 relative">
+<!-- SVG Chart Simulation -->
+<svg class="w-full h-full" viewbox="0 0 400 150">
+<defs>
+<lineargradient id="gradient-blue" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3c83f6" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#3c83f6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,110 80,80 T160,60 T240,90 T320,40 T400,20 V150 H0 Z" fill="url(#gradient-blue)"></path>
+<path d="M0,120 Q50,110 80,80 T160,60 T240,90 T320,40 T400,20" fill="none" stroke="#3c83f6" stroke-width="3"></path>
+<circle class="neon-glow-primary" cx="320" cy="40" fill="#3c83f6" r="4"></circle>
+</svg>
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 text-[10px] text-slate-500 uppercase font-bold tracking-tighter">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold">Match Conversion Rates</h4>
+<div class="flex gap-2">
+<div class="flex items-center gap-1 text-xs">
+<span class="size-2 rounded-full bg-accent-purple"></span>
+<span>Premium</span>
+</div>
+<div class="flex items-center gap-1 text-xs">
+<span class="size-2 rounded-full bg-accent-cyan"></span>
+<span>Standard</span>
+</div>
+</div>
+</div>
+<div class="h-64 relative">
+<!-- SVG Chart Simulation 2 -->
+<svg class="w-full h-full" viewbox="0 0 400 150">
+<path d="M0,100 C50,90 100,110 150,70 S250,30 300,50 S400,10 400,10" fill="none" stroke="#a855f7" stroke-dasharray="4" stroke-width="3"></path>
+<path d="M0,130 C50,120 100,130 150,110 S250,90 300,100 S400,70 400,70" fill="none" stroke="#06b6d4" stroke-width="3"></path>
+</svg>
+<div class="absolute bottom-0 left-0 w-full flex justify-between px-2 text-[10px] text-slate-500 uppercase font-bold tracking-tighter">
+<span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tables / Lists Section -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Flagged Profiles -->
+<div class="xl:col-span-1 p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-500">warning</span>
+                                Flagged Profiles
+                            </h4>
+<span class="bg-rose-500/20 text-rose-500 text-[10px] font-bold px-2 py-0.5 rounded-full">4 ALERT</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 tech-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Vector_X</p>
+<p class="text-xs text-slate-500">Suspected Botting</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-rose-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 tech-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Kora.Sync</p>
+<p class="text-xs text-slate-500">Payment Fraud</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-rose-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 tech-border">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">person</span>
+</div>
+<div>
+<p class="text-sm font-bold">Zero-Day</p>
+<p class="text-xs text-slate-500">TOS Violation</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-rose-500">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<button class="w-full mt-6 py-2 text-sm font-medium text-slate-500 dark:hover:text-white transition-colors">View All Flags</button>
+</div>
+<!-- Recent High-Value Hires -->
+<div class="xl:col-span-2 p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold">Recent High-Value Hires</h4>
+<button class="text-xs text-primary font-bold">View History</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-slate-500 text-xs font-bold uppercase tracking-wider border-b border-slate-200 dark:border-slate-800">
+<th class="pb-4">Candidate / Role</th>
+<th class="pb-4">Company</th>
+<th class="pb-4 text-right">Value (ACV)</th>
+<th class="pb-4 text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">code</span>
+</div>
+<div>
+<p class="text-sm font-bold">Sarah Chen</p>
+<p class="text-xs text-slate-500">Sr. AI Engineer</p>
+</div>
+</div>
+</td>
+<td class="py-4 text-sm font-medium">NeuroLink Corp</td>
+<td class="py-4 text-right text-sm font-bold">$185k</td>
+<td class="py-4 text-right">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-500">ONBOARDED</span>
+</td>
+</tr>
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-accent-purple/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-purple text-sm">security</span>
+</div>
+<div>
+<p class="text-sm font-bold">Marcus Vane</p>
+<p class="text-xs text-slate-500">Security Architect</p>
+</div>
+</div>
+</td>
+<td class="py-4 text-sm font-medium">Cryptek Systems</td>
+<td class="py-4 text-right text-sm font-bold">$210k</td>
+<td class="py-4 text-right">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-primary/10 text-primary">PROCESSING</span>
+</td>
+</tr>
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-accent-cyan/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-accent-cyan text-sm">database</span>
+</div>
+<div>
+<p class="text-sm font-bold">Elena R.</p>
+<p class="text-xs text-slate-500">Data Lead</p>
+</div>
+</div>
+</td>
+<td class="py-4 text-sm font-medium">OmniGrid AI</td>
+<td class="py-4 text-right text-sm font-bold">$165k</td>
+<td class="py-4 text-right">
+<span class="px-2 py-1 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-500">ONBOARDED</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

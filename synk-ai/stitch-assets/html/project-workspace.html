@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synk.ai | Founder Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0e14", // Deeper noir background
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .noir-gradient {
+            background: radial-gradient(circle at top left, rgba(60, 131, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(60, 131, 246, 0.05), transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 noir-gradient min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col glass-panel">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2">
+<span class="material-symbols-outlined text-white">bolt</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 font-bold leading-none">Synk.ai</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Founder Workspace</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/20 text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-sm font-medium">Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Talent Pool</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm font-medium">Finances</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary hover:bg-primary/90 text-white py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                Post Project
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 glass-panel z-10">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-slate-100" placeholder="Search active projects, milestones, or talent..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100 leading-none">Alex Sterling</p>
+<p class="text-xs text-slate-500 mt-1">Pro Founder</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/20 border border-primary/40 bg-cover bg-center" data-alt="Portrait of a male professional founder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWZeby0Zroz-HdI9m9w7UxKGqeyHfDzPVpfd_Ddcmzx-u0l1aaA93-cL_NGmj0VmHltkHXfvNWsmcNZEwPRIWcdCfMhxty1uexwHxEHWqoB48fuqq02KFHC_73pnTFPIBcxFTeZPOuOPRz8hoTZGJJ1C1y-KMxSpTNsrIU2WrJIrmpaW4cAEkOwK1178tBG5o1RmB4YAbEe5enHfFqMYlkS31Dud4vWb45giBjH9sQrYsu7cNEGb9oa4yEF8rIhF3kDZcf80RF8g')"></div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Filter Bar -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Project Workspace</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">You have 12 active freelance projects across 3 teams.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                        Status: All
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-lg">sort</span>
+                        Latest
+                    </button>
+</div>
+</div>
+<!-- Project Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Project Card 1: In Progress -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-5 hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-bold uppercase tracking-wider">In Progress</span>
+<button class="text-slate-500 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Neural Engine Refactor</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2 leading-relaxed">Optimization of the core inference engine for low-latency mobile deployment.</p>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-slate-200 dark:border-slate-800">
+<div class="w-8 h-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Female developer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAxz2ytn3jyjR-JQixlXD0UuWN6ZtoTAFGcRTS-mgmQq2oPPUWDg0VFUZwvzrcl6piKbyP3tMXjGoQ-u2dRTjjhWMurpp7-f6l_ivlbxiQeqtxe9HcFMe8EApOXEp8JtnntN4FnlXnmpF9kLvC6Mk1csINHHcxLXBJ4qgrb84AENF_fLQw_f389xMIqWqiUJGFZrSe-uxzP1UA6a9GGed4OCJo0gUQvt8OPm2NTVtNo4xipkSyO0eaRGY14q7AGvtrKOllIvVic3w')"></div>
+<div class="flex-1">
+<p class="text-xs font-semibold text-slate-900 dark:text-slate-100">Sarah Chen</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Backend Architect</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary">$4,200</p>
+<p class="text-[10px] text-slate-500">Fixed Price</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[11px] font-medium text-slate-500 uppercase">
+<span>Milestones</span>
+<span>65% Complete</span>
+</div>
+<div class="flex gap-1 h-1.5 w-full">
+<div class="bg-primary rounded-full flex-1"></div>
+<div class="bg-primary rounded-full flex-1"></div>
+<div class="bg-slate-200 dark:bg-slate-800 rounded-full flex-1"></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-[10px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Setup
+                            </div>
+<div class="text-[10px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Core Logic
+                            </div>
+<div class="text-[10px] text-slate-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">radio_button_unchecked</span>
+                                Testing
+                            </div>
+</div>
+</div>
+</div>
+<!-- Project Card 2: Under Review -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-5 hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-500 text-[10px] font-bold uppercase tracking-wider">Under Review</span>
+<button class="text-slate-500 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Visual Identity 2.0</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2 leading-relaxed">Design and brand guidelines for the new Synk.ai enterprise suite.</p>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-slate-200 dark:border-slate-800">
+<div class="w-8 h-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Male designer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdiQtsfuHR92tdwf-xKQrQzYXR9dkN-vt6kdZDYC3U40F6ju8sOWIv2rmS0a_EiWs8LoBlvEqBBd6Rip1yXcvYUJYhuJLdpk5lVDLUB7DAu-NmMfGU43VR21jee7BJH1RCBQqrU5i40zFBbu7p2hW6ttmrfrNoCSXkL4yk7YWFo3MtqKivdSRBx3K0Tby95RgdekA-VJ1PyXynOD-Ehd_T6SkusCQ9SwkuO3lywD3AMZMMw4mwbXUwgk6JWGTjr21Wt2j4QXTl6w')"></div>
+<div class="flex-1">
+<p class="text-xs font-semibold text-slate-900 dark:text-slate-100">Marcus Thorne</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Brand Designer</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary">$120/hr</p>
+<p class="text-[10px] text-slate-500">Hourly</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[11px] font-medium text-slate-500 uppercase">
+<span>Milestones</span>
+<span>90% Complete</span>
+</div>
+<div class="flex gap-1 h-1.5 w-full">
+<div class="bg-primary rounded-full flex-1"></div>
+<div class="bg-primary rounded-full flex-1"></div>
+<div class="bg-primary/50 rounded-full flex-1"></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-[10px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Strategy
+                            </div>
+<div class="text-[10px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Assets
+                            </div>
+<div class="text-[10px] text-amber-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">pending</span>
+                                Feedback
+                            </div>
+</div>
+</div>
+</div>
+<!-- Project Card 3: Completed -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-5 hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-[10px] font-bold uppercase tracking-wider">Completed</span>
+<button class="text-slate-500 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">API Documentation</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2 leading-relaxed">Comprehensive technical writing for the public-facing GraphQL API endpoints.</p>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-slate-200 dark:border-slate-800">
+<div class="w-8 h-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Technical writer profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeNwNe0bKIrFenkRU0n_-F9qULeXZA91u_-AAJlqDnFLq27OJM0G41fJntBQxtL-J1bHzTGTcgnuEHFrx_-Cf_3_1RJ_Iqvm5SnE9DSYhqsQ58-mX8_QRVpjCMBQWsb1TDhDlLjgtnLtPA0gKjYnxiWxAP3LH9ldoRkG2jCf5ZFqw00Dho2R4A51bWMcBx_RlBVTBBvyZ_DliLRQEJXrcG9wvuGMyhR832SY-PJQSxgwoSh8P5iGZt9h0aCm0i0SyW-4a3MvoAOg')"></div>
+<div class="flex-1">
+<p class="text-xs font-semibold text-slate-900 dark:text-slate-100">Elena Kovic</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Technical Writer</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary">$1,850</p>
+<p class="text-[10px] text-slate-500">Paid</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[11px] font-medium text-slate-500 uppercase">
+<span>Milestones</span>
+<span>100% Complete</span>
+</div>
+<div class="flex gap-1 h-1.5 w-full">
+<div class="bg-emerald-500 rounded-full flex-1"></div>
+<div class="bg-emerald-500 rounded-full flex-1"></div>
+<div class="bg-emerald-500 rounded-full flex-1"></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Draft
+                            </div>
+<div class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Edits
+                            </div>
+<div class="text-[10px] text-emerald-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Final
+                            </div>
+</div>
+</div>
+</div>
+<!-- Card 4: In Progress -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-5 hover:border-primary/50 transition-all group">
+<div class="flex justify-between items-start">
+<span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-bold uppercase tracking-wider">In Progress</span>
+<button class="text-slate-500 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Market Analysis Q3</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-2 line-clamp-2 leading-relaxed">In-depth research into European AI expansion opportunities.</p>
+</div>
+<div class="flex items-center gap-3 py-3 border-y border-slate-200 dark:border-slate-800">
+<div class="w-8 h-8 rounded-full bg-slate-700 bg-cover bg-center" data-alt="Market analyst profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmo-ma_QDvGXHFtqQRX-Ux1t47PntSCJFxge5UVMn5Nu3gq9bMUpFQtjg2lIZgiOYqiZ0MNFtaCNjQLmA2lalc0VUyHrSfvHxND-diETAEOnBiwtxpfvoP4X_XK5bSy74wBw3NU8mMjyECEgq0k727ox6DP7t1KmwGJMX8yQVGz7fNcW3RkCAY01PuVpDI0uVRWOHOKGdYKYjACmSGqijOJ5AiF9faP3nTL0YspaSSW5J1pFdd3HpHWJR40DM4juONDH4TI0RFZg')"></div>
+<div class="flex-1">
+<p class="text-xs font-semibold text-slate-900 dark:text-slate-100">David Low</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Business Analyst</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary">$3,000</p>
+<p class="text-[10px] text-slate-500">Fixed</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between text-[11px] font-medium text-slate-500 uppercase">
+<span>Milestones</span>
+<span>33% Complete</span>
+</div>
+<div class="flex gap-1 h-1.5 w-full">
+<div class="bg-primary rounded-full flex-1"></div>
+<div class="bg-slate-200 dark:bg-slate-800 rounded-full flex-1"></div>
+<div class="bg-slate-200 dark:bg-slate-800 rounded-full flex-1"></div>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="text-[10px] text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                                Research
+                            </div>
+<div class="text-[10px] text-slate-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">radio_button_unchecked</span>
+                                Synthesis
+                            </div>
+<div class="text-[10px] text-slate-500 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">radio_button_unchecked</span>
+                                Deck
+                            </div>
+</div>
+</div>
+</div>
+<!-- Card 5: Empty Slot for New Project -->
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-6 flex flex-col items-center justify-center gap-4 hover:border-primary/50 hover:bg-primary/5 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary">add</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Start New Project</p>
+<p class="text-[11px] text-slate-500 mt-1">Hire from your talent pool or post a new brief.</p>
+</div>
+</div>
+</div>
+<!-- Talent Pool Summary (Mini Section) -->
+<div class="mt-12 glass-panel rounded-xl p-8 border border-primary/20">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold">Top Matched Talent</h3>
+<a class="text-xs font-bold text-primary hover:underline" href="#">View All Pool</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white/5 p-3 rounded-lg border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-cover bg-center" data-alt="Female developer profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAnKnSUyZ0R1Yd9JdX__k7RLC4TE6Do-sZca4tjI-CceruoQCOwtpSKGhAro3_PSYEJsVLSEFfghRYHschLFw8Jycr_qdlA3kRQj_z0grNNpQ8icemwg56vrWQ8D78Uhllq6mTcSbum3_yj2VVBzzvSU3eOuoihzhYRgxl9sDtCdbnPmbaAThXy9-9N3mq4GdPj3nfGqzNZZsq3oQ87dTPzIsIusDuqNBFjo341AVoJtwErRXjMNMiRYZIpMsVZ1gH2gZKG9vxfNA')"></div>
+<div>
+<p class="text-xs font-bold">Aria V.</p>
+<p class="text-[10px] text-slate-400">ML Engineer</p>
+</div>
+</div>
+<div class="bg-white/5 p-3 rounded-lg border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-cover bg-center" data-alt="Male designer profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwtLktjlkb6bZgZmctBaxEx9RMCAVmiruB7xvL4XX7pXHyNY1mMH5hcRc4_q9vxT4DXqqOKsSlG8S58ichb_BPr03QCeOp5Qwnu4lcmcN6VOqfUyHxINOyZwdFcAQ4bH5XJI_JGufRUjKmkpBiapMYqFsNCiqP5wQ7R9mXuIuUQ_lOxAP56r0TW0xD-uEIO3YoHIv3gsh-hLi1A56EnskfU12NTL516R9sYaX-rpTlvgtCBkxPhBdzyvCM1r_O7Oo7E9vvn_Vi5w')"></div>
+<div>
+<p class="text-xs font-bold">Kenji S.</p>
+<p class="text-[10px] text-slate-400">UI Expert</p>
+</div>
+</div>
+<div class="bg-white/5 p-3 rounded-lg border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-cover bg-center" data-alt="Female designer profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtcx-cI4lU_sWqT52dPD5p1orzRD1rkqmsc9MzMyVWiC5lSRDEtg1hECpDfqE2OP0fouzcju-aBFQYGHjOuMlukLpttVnKqAEO9Z6nnlLoNAwoCuI3WxyvPh6wgS4Ddfuby-AAGTr7iEmu5QCuaOz2KM6jVGjpHnSoKCBbG8jegipVUKwvt99oPOwYeLetMJylG9ehOmZw8Ic9qnQiYli1yrT-kubY2kA28N6vAgFPo5SuU6NFKKodFC90S03A-6dx0IJuLo0lAA')"></div>
+<div>
+<p class="text-xs font-bold">Mila R.</p>
+<p class="text-[10px] text-slate-400">Illustrator</p>
+</div>
+</div>
+<div class="bg-white/5 p-3 rounded-lg border border-white/5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-cover bg-center" data-alt="Male developer profile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2jQmDotblJQEYqxfOLDMzYuDZACHWe3f3y3u0RDbg4IAF0llpLh_My_pZU2qBWoZWea5zSLRaB4v0RMK0O5I4bwV8tZXVHsHHCpDuCktPK073iz1Bc__O6VaxrqJ7h2pGWiS70Pqpnhh2ycTJ12Mgznpynpltah949Qq8FDpayeb3J9UFjIGk_2_QnXip3vjEJEWiKD6TCe7RnyRQwS9tO5Zq_-_vcyA415p_AQSEqQhUHnYfzAuy5XAQMyeoyBCrVqCqAU6JHQ')"></div>
+<div>
+<p class="text-xs font-bold">Toby G.</p>
+<p class="text-[10px] text-slate-400">DevOps</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

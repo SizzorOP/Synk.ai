@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a855f7", // Neon Purple accent
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0a0c",
+                        "card-dark": "rgba(30, 30, 35, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .frosted {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 4;
+            }
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .post-options-enter {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from { transform: translate(-50%, 20px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 frosted bg-background-light/70 dark:bg-background-dark/70 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">all_inclusive</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight hidden sm:block">Synk.ai</h1>
+</div>
+<div class="flex-1 max-w-xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-none rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Search projects, builders, or roles..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 px-4 py-1.5 rounded-full text-sm font-bold transition-all" onclick="togglePostOptions()">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Post</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary/30 p-0.5">
+<img class="w-full h-full rounded-full object-cover" data-alt="User profile avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGGnPaI1JiLpiLHrsQbEW20TqkfXani2SHeSccU3YU7qmsbmVma23QLMf-qbAjZcwjGoc7Jt5H3q_nuCvLJENlm9Eroi1gp-7nxLoq1w9y_dNh5pqc8fp8Det5s2C8Jkb_fu3Ozm5__qM9YeLQwuQslj5YFKqjaNpzq39-4_nbWu5HNvAubnYrAOjDk2cDOxO5irwXDk9fR0UEPh0jQVgtyg97_3Nzzo2BRNDlhyccewL6XEMRUilPlE9bFexNAd1UMeK4pUvxLg"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 pt-8">
+<!-- Project Spotlights (Featured) -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                Project Spotlights
+            </h2>
+<div class="flex gap-2">
+<button class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Large Featured Card 1 -->
+<div class="relative group h-80 rounded-2xl overflow-hidden shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic neon abstract digital art background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoOpXZhou674i-On0DVsAvh1vez8jK47NREeNif4_ORDgTttekrGKt-pWQSifrs_O2ZEtg7iqZz6EFJ-0VKNNeoPFq8ilaL__ovLOYPrUfCn8Kq65-L7p4sfvdmm6TMvnecVAaS6No7MXgi7cyXOsts9BgPa_jtXCYbBbyHOzPK3TxpAkWELnHFZJS5IeI9LwHfa5Ro46Pb_wXeaaBwqbLHNXAUTCdAEpURDNJ4CFEbhBgEhBzYpTHVD9SySDWLINybeEjWVHJbA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 inline-block">TRENDING</span>
+<h3 class="text-2xl font-bold mb-2">NeuralSynth Engine</h3>
+<p class="text-slate-300 text-sm mb-4 line-clamp-2">A high-performance neural rendering framework for real-time VFX. Built with Rust and WGSL.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full" data-alt="Developer profile photo headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTI_WQjLdkZ_DXMuVc5bO78j43FLq9DJxHcVKiJzRLAzh4lm-Ij76NGwZu8046c49zoSgUiTu9nS2BS74DcIfUID5uyBePjVDCq6V2LNX4_3A3VccCf0KP_R7gRaL0RPVRdm8YI0HJF8Fce5cgK9czdhBznCMCgw4FJaby7jP0Dq4K4LAuMjI3Ml0o15wePQAX-PoAkgM3w92DYhSKT9p1N_nwo2mTBrQokeCZFdRdxZcfayeqitm5Cy3-jqLO03tYS8OhX45iNw"/>
+<span class="text-sm font-medium">@alex_dev</span>
+</div>
+<button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 frosted px-4 py-2 rounded-xl transition-all">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span>Sync</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Large Featured Card 2 -->
+<div class="relative group h-80 rounded-2xl overflow-hidden shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="React code on a dark monitor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfn0AAXM3l3bJKHEcjP4DErL2WYz0DElv2pto_yXs_Lq-34Ml8HDHz4BBry7aBOjXNgliS9I3ev9tKgmyX81zwpjIZKAyO7CJlxeoJTbMwoddF25_mrASUxD1nM1-XnWWYDRm3i5B_8LpqzlwrUkWL2wr5mksr7mxvAKzYf9YP7PyPTEqEst-3qkojGLS4xuLXjzVo6dMuRXRBaScICPq0hj7WsTIbiEGlcqp1-ICT6uI1myvWx8_G8ZKLs14xiheyq2wwuf-ciw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<span class="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full mb-3 inline-block">LATEST</span>
+<h3 class="text-2xl font-bold mb-2">DecentraStack UI</h3>
+<p class="text-slate-300 text-sm mb-4 line-clamp-2">The ultimate UI toolkit for Web3 dApps. Featuring 50+ pre-built frosted glass components.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full" data-alt="Female designer headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOyOIoeQT_AljFgGQ0Yhf8TvT22vbGlqCw5E_y9-B4lGxJXmoDc6DfdXRnLeojcv_whujBoGm4m_2SzbcIcz_E2GfshJ58uKCmdvVZI9E1pu7qFVLveBiFLsPLt3ddCWQfeXhdrzArdXEWI0a1drJZSsR8IMeMd-kUuCvEhmz3mqVTVte61DzFydq6w_7zDRuHyiVYXYd8xrwgCATs_AauuBT9VxhbBsAYgdOhphKkEOwCZcnOOJcym1YPpYNqci9r7AXOsxZMZg"/>
+<span class="text-sm font-medium">@sarah_codes</span>
+</div>
+<button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 frosted px-4 py-2 rounded-xl transition-all">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span>Sync</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Masonry Feed -->
+<section>
+<div class="flex items-center gap-6 border-b border-slate-200 dark:border-slate-800 mb-8 overflow-x-auto pb-px">
+<button class="pb-4 border-b-2 border-primary text-primary font-bold whitespace-nowrap">Feed</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-colors whitespace-nowrap">Contributions</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-colors whitespace-nowrap">Role Openings</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 hover:text-slate-300 transition-colors whitespace-nowrap">Showcase</button>
+</div>
+<div class="masonry-grid">
+<!-- Contribution Card -->
+<div class="masonry-item">
+<div class="frosted dark:bg-card-dark rounded-2xl overflow-hidden transition-all hover:scale-[1.02]">
+<div class="relative group">
+<img class="w-full object-cover" data-alt="Detailed code view on screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANdAJPyMGwIbQT_bumtNJHNsIrnYqaJAswpzdg12KQ67unGZJTSV_62y73JtDYrlJfq3iGnDGHvl7JioUxSLpFQ3GOiJzYhmV1yQpGLRGzPqeHUToJCN0iclPaQjcYjoaaQfq3SfL7-KoMBXVVYTHh7aDlVvgCxHRgcjFB7eJJ-xrdgeTa3ProQNsCrY0qnUYV0cM6mcd6V5TjgK7io_uHV4_yw8jYX2rNMvC9vy_GVRLBsBef9xuS-7q3mPKd1Xs8yUjJdrSKJQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-primary text-white p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">PR #402: Optimized Shader Pipelines</h4>
+<p class="text-slate-400 text-sm line-clamp-2 mb-4">Reduced memory overhead by 40% using new texture compression algorithms.</p>
+<div class="flex items-center justify-between border-t border-white/5 pt-4">
+<div class="flex gap-3">
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-xs">1.2k</span>
+</button>
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="text-xs">Refer</span>
+</button>
+</div>
+<img class="w-6 h-6 rounded-full" data-alt="Developer profile small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyth0PWRY1OyhhQR6rarr5UlLkWha087baPkyMHGBhEjbfcENIGvi7_xiumu6SM5DqjSOI5f6BJYqUiGL4UrPiBg_xXEJkph9EIi3cx0ASk7WDlwYLJggUdNtdVYARDF92ZyNm4sYr-JFUek07mjyhDzheTDl1uWqqdX7WdwbH-KSGdXC_W-0m284U9sQ-21MHKKXmrVO-gr_Qsz9LE0TUBglKw2WPCMCoOGBqhSeFEe8TsQn3pR3R3o7wnOntX8oZlLpKzkPtgg"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Role Opening Card -->
+<div class="masonry-item">
+<div class="frosted border-2 border-primary/30 dark:bg-primary/5 rounded-2xl p-6 transition-all hover:border-primary">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full tracking-wider">HIRING</span>
+<span class="material-symbols-outlined text-primary">work</span>
+</div>
+<h4 class="text-lg font-bold mb-2">Senior Rust Engineer</h4>
+<p class="text-slate-400 text-sm mb-6 italic">"Help us build the next generation of decentralized storage."</p>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-2 text-xs text-slate-300">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+<span>$160k - $220k • 0.5% Equity</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-300">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span>Remote (Global)</span>
+</div>
+</div>
+<button class="w-full bg-primary py-2.5 rounded-xl font-bold text-white shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all">
+                        Apply via Synk
+                    </button>
+</div>
+</div>
+<!-- Contribution Card -->
+<div class="masonry-item">
+<div class="frosted dark:bg-card-dark rounded-2xl overflow-hidden transition-all hover:scale-[1.02]">
+<div class="p-4">
+<div class="flex items-center gap-2 mb-3">
+<img class="w-6 h-6 rounded-full" data-alt="Male professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCafFEGeL5ixzOLUloOKiCjqn3p19OUMz1W4JSjCkQz0bUe-pCM2iBTuMGEVEWvq4uyCm4WW4vX6Tcc4ifoSSL1Yn3oYk1iNXOalPrLkc5yQ2_79kf47wgGIiniU4mJqA9HuXPExwgYU0kutCaxUvYh0V4VsKXqwZnwfYijDvydIWa66xtuvNXmvyPvAxCehdAkvJrG0YKag4rB5JFLHCTUVA3aTbYyfcX-UTSQZSAKoQ-1mLhvz6R4jq7fkKiuQjv0MAsOOhgLSQ"/>
+<span class="text-xs font-medium">@m_rossi</span>
+<span class="text-[10px] text-slate-500 ml-auto">2h ago</span>
+</div>
+<p class="text-sm leading-relaxed mb-4">Just open-sourced my collection of custom Tailwind hooks. Great for high-performance React apps! 🚀</p>
+<div class="bg-slate-900/50 rounded-xl p-3 border border-white/5 mb-4">
+<code class="text-[11px] text-primary">npm install @rossi/hooks-next</code>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-xs">Sync</span>
+</button>
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs">24</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Another Spotlight Grid Item -->
+<div class="masonry-item">
+<div class="frosted dark:bg-card-dark rounded-2xl overflow-hidden transition-all hover:scale-[1.02]">
+<img class="w-full h-48 object-cover" data-alt="Abstract geometric minimal 3D render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuJHnno6rF95qILHQpVRwCOuz3Fau_Dx9yH9h_9RBGs8829apQejGUr2JhID0fZhssDt6Sw-Fuyfpu_AX9MIf2V0bRtq5Prfb-TECRCtK7uMqDyQ3KTagxiQXDhIiNnXwo_aU85Hc1ZpaSQQSJbvHrtihCYrJ2dCUWvZJnPDLrcYZmDGSuzqC8b1oB9rdhqRQ5x6_NDJLnG0LgD-IuY8c86orxwBE1fkGCaW-tgiDiXJJHZIcbjyiQJ4Vh7YoyLBpjPGID4xktKw"/>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">Prism Shader Pack</h4>
+<p class="text-slate-400 text-sm line-clamp-3">A collection of 20+ raytraced shaders for Three.js. Includes refraction, dispersion, and caustic effects.</p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="px-2 py-0.5 bg-slate-800 text-slate-400 text-[10px] rounded">Three.js</span>
+<span class="px-2 py-0.5 bg-slate-800 text-slate-400 text-[10px] rounded">GLSL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Another Role Opening -->
+<div class="masonry-item">
+<div class="frosted border border-slate-700 dark:bg-card-dark rounded-2xl p-6 transition-all hover:border-primary/50">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<div>
+<h4 class="text-sm font-bold">Flux AI Labs</h4>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Series A Startup</p>
+</div>
+</div>
+<h4 class="text-lg font-bold mb-4">Product Designer</h4>
+<p class="text-slate-300 text-sm mb-4 line-clamp-3">Join our founding team to shape the interface of AI agents. We value craft over speed.</p>
+<div class="flex items-center justify-between">
+<span class="text-xs text-slate-400">posted 1 day ago</span>
+<button class="text-primary text-xs font-bold hover:underline">View details</button>
+</div>
+</div>
+</div>
+<!-- Contribution Card -->
+<div class="masonry-item">
+<div class="frosted dark:bg-card-dark rounded-2xl overflow-hidden transition-all hover:scale-[1.02]">
+<img class="w-full h-64 object-cover" data-alt="Business growth chart screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuTcxb78uykjOM1JG4ZEsl1diJnYu8O7t5UUonyHvnihlGzLDayuwT5IONsQ8foGV898Mm8ize9b833TlwUMRce7pvKvLN-_cHFUXRHCtVOVKFnhbHx-BAiE_Lely-SAxdahy6sfx4Q04OxOwkV3R5btFWYC8lEfaKXXthugswkmRzpxhx_uQ90_4V4Gwe4vJw_0JG-_nlWlGlCqDn_EdD2sC2oAtmmTdJIH8YAeHC892H52nDE5u9whZmu6JrkJ3CwO8lH0-NA"/>
+<div class="p-4">
+<h4 class="font-bold text-base">Vesting Analytics Dashboard</h4>
+<p class="text-slate-400 text-sm mb-4">Internal tool for managing tokenomics and cliff periods.</p>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-xs">452</span>
+</button>
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="text-xs">Refer</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Bottom Navigation -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+<!-- Action Selection Overlay (Hidden by default) -->
+<div class="hidden absolute bottom-20 left-1/2 -translate-x-1/2 w-64 frosted bg-background-dark/90 p-2 rounded-2xl border border-primary/30 shadow-[0_0_30px_rgba(168,85,247,0.2)] post-options-enter" id="postOptions">
+<div class="grid grid-cols-1 gap-1">
+<button class="flex items-center gap-3 p-3 hover:bg-primary/10 rounded-xl transition-colors text-left group" onclick="openPostModal('Project')">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<div class="text-sm font-bold">Post Project</div>
+<div class="text-[10px] text-slate-400 leading-tight">Showcase your latest build</div>
+</div>
+</button>
+<button class="flex items-center gap-3 p-3 hover:bg-primary/10 rounded-xl transition-colors text-left group" onclick="openPostModal('Opportunity')">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">work_history</span>
+</div>
+<div>
+<div class="text-sm font-bold">Post Opportunity</div>
+<div class="text-[10px] text-slate-400 leading-tight">Find builders for your team</div>
+</div>
+</button>
+</div>
+</div>
+<div class="frosted bg-background-dark/80 px-6 py-3 rounded-2xl flex items-center gap-8 shadow-2xl border border-white/10">
+<button class="flex flex-col items-center gap-1 text-primary group">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Explore</span>
+</button>
+<button class="bg-primary w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-[0_0_20px_rgba(168,85,247,0.5)] -mt-10 mb-2 hover:scale-110 transition-transform active:scale-95" onclick="togglePostOptions()">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Synks</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</div>
+</div>
+<!-- Posting Modal Overlay -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4" id="postModal">
+<div class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm" onclick="closePostModal()"></div>
+<div class="relative w-full max-w-xl frosted bg-card-dark rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+<div class="p-6 border-b border-white/10 flex items-center justify-between">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" id="modalIcon">architecture</span>
+<span id="modalTitle">Post Project</span>
+</h3>
+<button class="p-2 hover:bg-white/10 rounded-full transition-colors" onclick="closePostModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Title</label>
+<input class="w-full bg-slate-900/50 border border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:border-transparent outline-none transition-all" placeholder="Enter a catchy title..." type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Description</label>
+<textarea class="w-full bg-slate-900/50 border border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell the community more about this..." rows="4"></textarea>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Media Upload</label>
+<div class="border-2 border-dashed border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center gap-3 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-slate-500">cloud_upload</span>
+<div class="text-center">
+<p class="text-sm font-medium">Drop files here or click to upload</p>
+<p class="text-xs text-slate-500 mt-1">Images, Videos, or Code Snippets (Max 50MB)</p>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Tags</label>
+<div class="relative">
+<input class="w-full bg-slate-900/50 border border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/50 focus:border-transparent outline-none transition-all" placeholder="Add tags (e.g. React, Rust, AI)..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500">sell</span>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-white/10 bg-white/5 flex gap-3">
+<button class="flex-1 py-3 rounded-xl font-bold bg-white/5 hover:bg-white/10 border border-white/10 transition-colors" onclick="closePostModal()">Cancel</button>
+<button class="flex-1 py-3 rounded-xl font-bold bg-primary text-white shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all">Publish</button>
+</div>
+</div>
+</div>
+<script>
+    function togglePostOptions() {
+        const options = document.getElementById('postOptions');
+        options.classList.toggle('hidden');
+    }
+
+    function openPostModal(type) {
+        document.getElementById('postOptions').classList.add('hidden');
+        document.getElementById('modalTitle').innerText = 'Post ' + type;
+        document.getElementById('modalIcon').innerText = type === 'Project' ? 'architecture' : 'work_history';
+        document.getElementById('postModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePostModal() {
+        document.getElementById('postModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close options when clicking outside
+    document.addEventListener('click', function(event) {
+        const options = document.getElementById('postOptions');
+        const fab = event.target.closest('button');
+        if (!options.classList.contains('hidden') && !options.contains(event.target) && (!fab || !fab.onclick?.toString().includes('togglePostOptions'))) {
+            options.classList.add('hidden');
+        }
+    });
+</script>
+</body></html>

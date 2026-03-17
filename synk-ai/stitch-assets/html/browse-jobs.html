@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synk.ai - Browse AI Missions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "accent-purple": "#a855f7",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0f18",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                        "glass-bg": "rgba(16, 23, 34, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-accent {
+            box-shadow: 0 0 15px rgba(60, 131, 246, 0.3);
+        }
+        .tech-gradient {
+            background: linear-gradient(135deg, #3c83f6 0%, #a855f7 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 glassmorphism border-b border-white/10 px-6 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 tech-gradient rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">dataset</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold tracking-tight text-white leading-none">Synk.ai</h1>
+<span class="text-[10px] text-primary font-bold uppercase tracking-widest mt-1">Intelligence Network</span>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-primary" href="#">Browse Jobs</a>
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Talent Pool</a>
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors" href="#">Benchmarks</a>
+</nav>
+</div>
+<div class="flex items-center gap-5">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-primary">PRO</span>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-accent-purple rounded-full"></span>
+</button>
+<div class="h-10 w-10 rounded-full border border-white/10 p-0.5">
+<img alt="User Profile" class="rounded-full w-full h-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUoceVOWHrjZA1vGV2cTJ2-1-u4kv8GN9jJb_M_IB2QlDXLeACkAVuS0VSzjVOYR8muj5cn88leIz8Yn2Wj8jzE_L3Ixa6f5N7AafyaIJMBNsyltbEyO6SLv4bCWcOSH4BHjsBoICRH78qmmnvxQT_qBx9MkCrdR1cC5S2CifqzVlvSVtbC875XHcXwcYNfQT6YGDVo3kqsanQXI0ZnackEwSR12C-k_1jHXDPbengmWkN4VV1ENPdmECCK1tSsOSZ6yVFhS4WA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-10">
+<!-- Search & Filter Section -->
+<div class="mb-12">
+<div class="flex flex-col md:flex-row gap-4 items-end justify-between mb-8">
+<div class="flex-1 w-full max-w-2xl">
+<h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-slate-500 bg-clip-text text-transparent">Find your next AI mission</h2>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-4 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-14 pl-12 pr-12 glassmorphism rounded-2xl focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none text-white placeholder:text-slate-500 transition-all" placeholder="Search by role, LLM stack, or company..." type="text"/>
+<button class="absolute right-4 p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="text-sm text-slate-400 font-medium">312 premium jobs available</span>
+<div class="flex gap-2">
+<button class="px-4 py-2 glassmorphism rounded-lg text-xs font-semibold text-white border-primary/30 flex items-center gap-2">
+                            Latest <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Filters -->
+<div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+<button class="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold whitespace-nowrap">All Missions</button>
+<button class="px-5 py-2 rounded-full glassmorphism text-slate-300 text-xs font-semibold whitespace-nowrap hover:border-primary/50">LLM Training</button>
+<button class="px-5 py-2 rounded-full glassmorphism text-slate-300 text-xs font-semibold whitespace-nowrap hover:border-primary/50">Computer Vision</button>
+<button class="px-5 py-2 rounded-full glassmorphism text-slate-300 text-xs font-semibold whitespace-nowrap hover:border-primary/50">Vector DBs</button>
+<button class="px-5 py-2 rounded-full glassmorphism text-slate-300 text-xs font-semibold whitespace-nowrap hover:border-primary/50">Agentic RAG</button>
+<button class="px-5 py-2 rounded-full glassmorphism text-slate-300 text-xs font-semibold whitespace-nowrap hover:border-primary/50">AI Ethics</button>
+</div>
+</div>
+<!-- Job Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Job Card 1 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5">
+<img alt="Anthropic" class="w-full h-full object-contain" data-alt="Anthropic corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3yiaYH0ZkdXo_K4Vr2QBMyHu4zK5ld4OMZlRSoQ-i4C1skwcJOGlXkHeLf9zawmpxtlzjab01XC7Cd7oCNWqCEo-qoTrjWnV38DMBc_nua75-w3x1QmOAvmlryHKEXn9G1fMOA6adX2LN0IDqPfCVGKsqPrhH7j1q-nnn6O7eXZ5ugGt_BZn6WIWJBbzlzZ6Ft08AG_GWW9PrSzMbYiyXb68ClCphXUqxjkSM3CwW4ichWRpLJiE1_CM4a2q0-dMeydLJ5P_k2w"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Senior LLM Engineer</h3>
+<p class="text-xs text-slate-400">Anthropic • San Francisco / Remote</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary glow-accent" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="12.56" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">96%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">PyTorch</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Transformer Architecture</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">CUDA</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">$180k - $240k</span>
+</div>
+<button class="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                        Apply Now
+                    </button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5">
+<img alt="OpenAI" class="w-full h-full object-contain" data-alt="OpenAI corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfYW-FkOlijQehF4CRxm59UnyeXhWPYpGeQepYM1h4pu4O3a_kw315NPk2GzwfsyFxJgji0_nX8brhUJyhD1_-r5omdxZ_rPq948_vnVaa_NjILLwfGoTJQdbCrClNRIaedBIwHo3qU91Q8Qpj8r9mJzYYDLPQVTTKC7Dd0B6jdft4UMIMcYrBrlNCgb5v29q8Lweu8SK2EATs34ka7ACN6VFGdk1fFZX2LNcnz5lBShYUxkXULrLcnVa3w9YifltKB9wuEeSSvQ"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Product Designer, AI Tools</h3>
+<p class="text-xs text-slate-400">OpenAI • London / Hybrid</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-accent-purple shadow-accent-purple/40" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="25.12" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">88%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Figma</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">UI/UX</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">GenAI UX</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">$140k - $190k</span>
+</div>
+<button class="px-6 py-2 rounded-xl glassmorphism text-white text-xs font-bold hover:bg-white/10 transition-colors border-white/20">
+                        View Mission
+                    </button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden border-primary/20">
+<div class="absolute top-0 right-0 bg-primary/20 text-primary text-[8px] font-black px-3 py-1 rounded-bl-lg uppercase tracking-widest">Sponsored</div>
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5 bg-white">
+<img alt="Midjourney" class="w-full h-full object-contain" data-alt="Midjourney corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhLzvuLWS1SY4pg-EbYnXyHPUtDyiUN48K76dL-7vGFfz1luJmOq7U370x26gLR2kaYYnTvPDlhN768LaqqGUZ6wh6h_hVtejyvoSIEXt3qqqe_P9NDXD0AorJ088VSdV1k-tolWuLjeHV2QbP9p8JgCXIOSu8TZbKNCxTdYi3URR6JanlxZduzP8GdGaR0Xon4Cf3-wULMp6veMVAlZjsD6zh0YkdBbDkoiN3-LWkZ902bHleigyzBj6TQYVb3_zJrHEcvvxFIQ"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Creative Director, AI Art</h3>
+<p class="text-xs text-slate-400">Midjourney • Remote</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary glow-accent" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="6.28" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">99%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Stable Diffusion</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Art Direction</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Prompt Engineering</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">$200k+</span>
+</div>
+<button class="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                        Apply Now
+                    </button>
+</div>
+</div>
+<!-- Job Card 4 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5">
+<img alt="Pinecone" class="w-full h-full object-contain" data-alt="Pinecone corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmkfrnEx6XeHt7NtQRmbtqijQGlVSQBD-qqsfgEK3Ltm_mEttMkylxzENRCT9zWHOhYGYYv0omU9ch7WuOTAzSkTv43Sb6zDm_lIs6zKcooYNB76tgM2uf5mbOghAIyEaliC_sgPBbxcK21WgttExb8-QCRlGmDcspNAQTT8mRvW1Ags-GtYMXMRGj83Sd9J-r795rXbrcq9bhP6tpN-Z9lcdoFRUnr66tCh70jiXnPNSve_4X1M91NclICe76pHxkfHiU-UfIvw"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Distributed Systems Eng</h3>
+<p class="text-xs text-slate-400">Pinecone • New York / Remote</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">75%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Go</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Kubernetes</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Rust</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">$160k - $210k</span>
+</div>
+<button class="px-6 py-2 rounded-xl glassmorphism text-white text-xs font-bold hover:bg-white/10 transition-colors border-white/20">
+                        View Mission
+                    </button>
+</div>
+</div>
+<!-- Job Card 5 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5 bg-slate-900">
+<img alt="Mistral AI" class="w-full h-full object-contain" data-alt="Mistral AI corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC16CQB_N-PJb5bC8jSdFg7q0l2qPmdV_HbkO-iUskoj_laJKq3z-kBQUjveZSvpv9hKCaHvVoRNQAyblU6vBExD-KNAPV1j9Lx4xassSugQwECNLlcx9Qgw9pfnN-rUsGvvbCtery1VAec9SYC-pK4bIT0hYsygw0vOEBLOBSabTVaZhT4-wdW5ca5PZV9ZvdBNvQ8TIde8MsdaU7Hc4H7unhrLh6HnH1p8WQ9ZQVcbHbxxK5lWWetc30oHuqoxoP_QmPmyQRF6w"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Machine Learning Researcher</h3>
+<p class="text-xs text-slate-400">Mistral AI • Paris / Remote</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary glow-accent" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="18.84" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">85%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Python</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Deep Learning</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">NLP</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">€120k - €180k</span>
+</div>
+<button class="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+                        Apply Now
+                    </button>
+</div>
+</div>
+<!-- Job Card 6 -->
+<div class="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl glassmorphism flex items-center justify-center p-2 border-white/5 bg-slate-800">
+<img alt="LangChain" class="w-full h-full object-contain" data-alt="LangChain corporate logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg6DcAsaijlXGn9XVFbia_S5vRDFdSIuPZ0UhlsHOH3UUcVec2oehDvtlCQvVelPHhc7V7T0WsV1nii1YevpUuBFJhtP6aEADIa95NnQY-CiJ0Aqy5cUeLd12LtWuZ_Dn11RQtjRYOBSjec16lYgkonK6eOr0hzU9ChndLA5XHU6F5C33lA5FbR6dK5Le3scBZn3FVtXxFAhg0ZPkjw4g9NsiFXaOg7wTARVfVZF1f7oqaSIC2wP2c6PQZ9dnxrKcItJTyXoaCfg"/>
+</div>
+<div>
+<h3 class="font-bold text-white group-hover:text-primary transition-colors">Developer Advocate, AI SDKs</h3>
+<p class="text-xs text-slate-400">LangChain • Remote</p>
+</div>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-12 h-12 transform -rotate-90">
+<circle class="text-white/5" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-accent-purple shadow-accent-purple/40" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="10.05" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-white">92%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">TypeScript</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">AI Agents</span>
+<span class="px-2 py-1 rounded bg-white/5 text-[10px] font-medium text-slate-300 uppercase tracking-wider">Documentation</span>
+</div>
+<div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
+<span class="text-sm font-bold text-white">$130k - $170k</span>
+</div>
+<button class="px-6 py-2 rounded-xl glassmorphism text-white text-xs font-bold hover:bg-white/10 transition-colors border-white/20">
+                        View Mission
+                    </button>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex flex-col items-center gap-6">
+<button class="px-10 py-4 rounded-2xl glassmorphism border-primary/30 text-white font-bold hover:bg-primary/5 transition-all flex items-center gap-3 group">
+                Load more missions
+                <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform">keyboard_arrow_down</span>
+</button>
+<p class="text-slate-500 text-sm">Showing 6 of 312 available roles</p>
+</div>
+</main>
+<!-- Tech-Noir Footer Elements -->
+<div class="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+</body></html>

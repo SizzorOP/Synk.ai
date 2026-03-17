@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synk.ai | Tech-Noir Freelancer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#a855f7",
+                "background-light": "#f5f7f8",
+                "background-dark": "#0a0a0c",
+                "accent-neon": "#d8b4fe",
+                "glass-edge": "rgba(168, 85, 247, 0.2)",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(168, 85, 247, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+        }
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.2) 0%, rgba(10, 10, 12, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-10 py-3 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h2 class="text-white text-xl font-black leading-tight tracking-tighter uppercase">Synk.ai</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-100 text-sm font-semibold leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Opportunities</a>
+<a class="text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Earnings</a>
+<a class="text-slate-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Portfolio</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden lg:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-primary/5 border border-primary/10">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined !text-lg">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-slate-100 placeholder:text-slate-500 text-sm" placeholder="Search projects..."/>
+</div>
+</label>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg size-10 bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined !text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined !text-xl">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-primary/10">
+<div class="flex flex-col items-end mr-2">
+<span class="text-xs font-bold text-primary">0xTech_Runner</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest">Level 4 Operator</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/30" data-alt="Futuristic neon-lit avatar profile photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBttI9oNv7zUeehsxFSNnyODidnWS0rHRkIXBiygv1eCVoW0nFFCX8MOEaHt1reErvKHSpzaesr11sPW-I00zxobXD1X8Lmed_oUhiKg86GhcAgv-k6Z8wfuiYHQ_NrXBofDABYCtdRajpc3c8SMztoMgOcoV8E1ckbedWmFWOX5XVlSpdl8RkCY7vEpaW8l_LQqFyQI6VV5UYX53fxUGxLFncSSMmfBdaUtpgKqUBa4IdbSjNRbeE2n-r7jmbVsuKomm5TFwJZcQ");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-[1440px] mx-auto w-full px-6 py-8 flex flex-col gap-8">
+<!-- Hero Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight">
+                    Welcome Back, <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-neon">Tech-Runner</span>
+</h1>
+<p class="text-slate-400 text-lg">Your neural matching performance is peaking. <span class="text-primary font-bold">+12% visibility</span> this cycle.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary hover:bg-primary/80 text-white font-bold py-3 px-6 rounded-lg transition-all flex items-center gap-2 neon-glow">
+<span class="material-symbols-outlined">bolt</span>
+                    Sync Now
+                </button>
+</div>
+</div>
+<!-- Quick Stats Grid (Glassmorphism) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-1 border-l-4 border-l-primary">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Match Rate</span>
+<div class="flex items-baseline gap-2">
+<span class="text-white text-3xl font-black">94.8%</span>
+<span class="text-green-400 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_up</span> 5.2%</span>
+</div>
+<div class="w-full bg-primary/10 h-1.5 rounded-full mt-2">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-1">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Active Bids</span>
+<div class="flex items-baseline gap-2">
+<span class="text-white text-3xl font-black">12</span>
+<span class="text-slate-500 text-sm">/ 20 slots</span>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 uppercase">Next refresh in 4h 12m</p>
+</div>
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-1">
+<span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Neural Views</span>
+<div class="flex items-baseline gap-2">
+<span class="text-white text-3xl font-black">1,248</span>
+<span class="text-green-400 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_up</span> 18%</span>
+</div>
+<p class="text-[10px] text-slate-500 mt-2 uppercase">Global reach increasing</p>
+</div>
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-1 bg-primary/10 border border-primary/30">
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Est. Earnings</span>
+<div class="flex items-baseline gap-2">
+<span class="text-white text-3xl font-black">$4,820</span>
+</div>
+<span class="text-[10px] text-primary/70 mt-2 uppercase font-bold tracking-tighter">Withdrawal Available</span>
+</div>
+</div>
+<!-- Main Dashboard Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Opportunities & Performance -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Earnings Visualization (Neon Purple Chart Placeholder) -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-6 overflow-hidden relative">
+<div class="flex justify-between items-center">
+<h3 class="text-white text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                            Earnings Velocity
+                        </h3>
+<div class="flex bg-background-dark rounded-lg p-1 border border-primary/20">
+<button class="px-3 py-1 text-xs font-bold text-white bg-primary rounded">WEEK</button>
+<button class="px-3 py-1 text-xs font-bold text-slate-500">MONTH</button>
+</div>
+</div>
+<!-- Chart Simulation -->
+<div class="h-64 w-full relative mt-4">
+<svg class="w-full h-full" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="purpleGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#a855f7" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,150 Q100,140 200,100 T400,120 T600,60 T800,80 L800,200 L0,200 Z" fill="url(#purpleGrad)"></path>
+<path d="M0,150 Q100,140 200,100 T400,120 T600,60 T800,80" fill="none" stroke="#a855f7" stroke-linecap="round" stroke-width="4"></path>
+<circle class="neon-glow" cx="200" cy="100" fill="#a855f7" r="6"></circle>
+<circle class="neon-glow" cx="600" cy="60" fill="#a855f7" r="6"></circle>
+</svg>
+<div class="absolute top-10 left-[25%] bg-background-dark border border-primary/40 px-3 py-1.5 rounded-lg shadow-xl">
+<span class="text-[10px] text-slate-400 block uppercase font-bold">Peak</span>
+<span class="text-white text-sm font-black">$1,240.00</span>
+</div>
+</div>
+</div>
+<!-- Proof of Work Upload Section -->
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-6 border border-dashed border-primary/30">
+<div class="flex justify-between items-center">
+<h3 class="text-white text-lg font-bold flex items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined text-primary">videocam</span>
+                            Manage Proof-of-Work
+                        </h3>
+<button class="text-primary text-xs font-bold uppercase hover:underline">View All Reels</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="group relative aspect-video bg-background-dark rounded-lg overflow-hidden border border-primary/10 cursor-pointer">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl">play_circle</span>
+</div>
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Retro tech workspace aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh7TdgXR0ivkDEDIHx0LuLPHXAKIwbDJ9Xp3A7pjq82KUFnRfoZbpe4p-m7tYMOTjKhb3p4pgEHcmH9p-QQ7tJi1xoU9V62IteTGLjOL0JRg3JL4EZCxZwAcDJGwdo2YkCnp6LrhIpnwkvuPqKYINH24bTsRscFmxC4mo8elTF1xPRQmBW2RDB0zUR11-R6fdM69B2uJHHM-yQ_Job44UX6UBzK9HdY81qH_6XNLAKPMHA_Bq8NoZofmHc3A0uwXddG-NYZ-MwWQ"/>
+<div class="absolute bottom-2 left-2 right-2">
+<span class="text-[10px] bg-background-dark/80 px-2 py-0.5 rounded text-primary font-bold">REEL_01.MP4</span>
+</div>
+</div>
+<div class="group relative aspect-video bg-background-dark rounded-lg overflow-hidden border border-primary/10 cursor-pointer">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-4xl">play_circle</span>
+</div>
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Cybernetic robot hand interacting with glass screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-gFBG_X66j73Iy8CDS8OeDseyyCHjIdCqrV9iaXpZ2AqXmVxhVwc3pNDMT_w25UrrhJ1djr3jGhahr3zPGuZlTVltoTe8xSVAtSQNMu2y84XZYazwYbYdLeH4ulMiuX3-KjZeoQlL7Ah5DUjuieOQR1Y8mhIF3lAY5Cj5RoyBKLYWFwP193rfpQ_aX_fIMA_ViL8mxN-5oENKN5QfhViYiRDjU-w1HJ1hwTrUe3dPqypck-pCxhlAO27l0hXOc5iXHxJyapMxiQ"/>
+<div class="absolute bottom-2 left-2 right-2">
+<span class="text-[10px] bg-background-dark/80 px-2 py-0.5 rounded text-primary font-bold">DEMO_AI.MP4</span>
+</div>
+</div>
+<div class="aspect-video bg-primary/5 border-2 border-dashed border-primary/20 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-primary/10 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Upload Media</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Opportunity Alerts -->
+<div class="flex flex-col gap-6">
+<div class="glass-panel rounded-xl p-6 flex flex-col gap-6 h-full border-t-4 border-t-accent-neon">
+<div class="flex items-center justify-between">
+<h3 class="text-white text-lg font-bold flex items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined text-accent-neon">radar</span>
+                            Opportunity Radar
+                        </h3>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-black">4 NEW</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Opportunity 1 -->
+<div class="p-4 rounded-lg bg-background-dark/40 border border-primary/10 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-tighter">AI Training Protocol</span>
+<span class="text-slate-500 text-[10px]">2m ago</span>
+</div>
+<h4 class="text-white font-bold text-sm mb-1 group-hover:text-primary transition-colors">Neural Mesh Architect</h4>
+<p class="text-slate-500 text-xs mb-3">Optimize decentralized GPU clusters for LLM inference.</p>
+<div class="flex justify-between items-center">
+<span class="text-accent-neon font-black text-xs">$85/hr</span>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded">98% Match</span>
+</div>
+</div>
+<!-- Opportunity 2 -->
+<div class="p-4 rounded-lg bg-background-dark/40 border border-primary/10 hover:border-primary/40 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-tighter">Smart Contract Audit</span>
+<span class="text-slate-500 text-[10px]">14m ago</span>
+</div>
+<h4 class="text-white font-bold text-sm mb-1 group-hover:text-primary transition-colors">Solidity Hardener v2</h4>
+<p class="text-slate-500 text-xs mb-3">Post-quantum security audit for L2 bridge architecture.</p>
+<div class="flex justify-between items-center">
+<span class="text-accent-neon font-black text-xs">$120/hr</span>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded">92% Match</span>
+</div>
+</div>
+<!-- Opportunity 3 -->
+<div class="p-4 rounded-lg bg-background-dark/40 border border-primary/10 hover:border-primary/40 transition-all group cursor-pointer opacity-80">
+<div class="flex justify-between items-start mb-2">
+<span class="text-primary text-[10px] font-black uppercase tracking-tighter">UI Design Interface</span>
+<span class="text-slate-500 text-[10px]">1h ago</span>
+</div>
+<h4 class="text-white font-bold text-sm mb-1 group-hover:text-primary transition-colors">Meta-Human HUD Kit</h4>
+<p class="text-slate-500 text-xs mb-3">Spatial computing interfaces for AR glasses deployment.</p>
+<div class="flex justify-between items-center">
+<span class="text-accent-neon font-black text-xs">$6,500 Fix</span>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded">88% Match</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-auto py-3 bg-primary/5 border border-primary/20 text-primary text-xs font-bold uppercase rounded-lg hover:bg-primary/10 transition-colors tracking-widest">
+                        Access Global Hub
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / Status Bar -->
+<footer class="mt-auto px-10 py-4 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center bg-background-dark/50">
+<div class="flex items-center gap-6 mb-4 md:mb-0">
+<div class="flex items-center gap-2">
+<span class="size-2 bg-green-500 rounded-full animate-pulse"></span>
+<span class="text-[10px] text-slate-500 uppercase font-bold">Neural Link: Stable</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Region: NEO-TOKYO_01</span>
+</div>
+</div>
+<div class="flex gap-8 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Privacy Protocol</a>
+<a class="hover:text-primary transition-colors" href="#">Service Terms</a>
+<a class="hover:text-primary transition-colors" href="#">© 2024 SYNK.AI</a>
+</div>
+</footer>
+</div>
+</body></html>

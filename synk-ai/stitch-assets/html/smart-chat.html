@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Synk.ai | Smart Chat Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                        "tech-surface": "#1a2231",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-bubble-left {
+            background: rgba(40, 46, 57, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-bubble-right {
+            background: rgba(60, 131, 246, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(60, 131, 246, 0.2);
+        }
+        .tech-glow {
+            box-shadow: 0 0 15px rgba(60, 131, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation (Narrow) -->
+<aside class="w-20 lg:w-64 border-r border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark flex flex-col items-center py-6 gap-8">
+<div class="flex items-center gap-3 px-4 lg:w-full">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white tech-glow">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h1 class="hidden lg:block text-xl font-bold tracking-tight">Synk.ai</h1>
+</div>
+<nav class="flex flex-col gap-2 w-full px-3">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="hidden lg:block font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="hidden lg:block font-medium">Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="hidden lg:block font-medium">Network</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="hidden lg:block font-medium">Talent AI</span>
+</a>
+</nav>
+<div class="mt-auto w-full px-3 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="hidden lg:block font-medium">Settings</span>
+</a>
+<div class="px-3 py-3 flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden border-2 border-primary/30" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDos_SZOCLJyVuUrmY1TlWuvcSyAOGlU7WyJNI99d0V3U1F6VfOziJ3gpFxMavhRgBGecTc6BNZprNiYBO8cmP8UxvD2ktN4hkKrm6D9lrnvKltE2rK3C7fXpX9td9NOf9bfT0vOlAoUdGcKH1K8vgtnn5Snkt8eo66Y5LOueSKfRFDEQJ2IUZc0qkPcaIGyYGkY0Xi1tRji9VzTwiKllNo_0H17ppV-lsa0ZmQyRnutM6RxFfzlNzzddWSTICAV7CNlc7PGAbKZw");'></div>
+<div class="hidden lg:block">
+<p class="text-sm font-semibold">Founder Portal</p>
+<p class="text-xs text-slate-500">Premium Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Conversation List (Split View Left) -->
+<main class="flex flex-1">
+<section class="w-80 border-r border-slate-200 dark:border-slate-800 flex flex-col bg-slate-50 dark:bg-slate-900/30">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-sm">search</span>
+<input class="w-full bg-slate-100 dark:bg-tech-surface border-none rounded-lg pl-10 text-sm focus:ring-1 focus:ring-primary" placeholder="Search conversations..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="p-2 space-y-1">
+<div class="flex items-center gap-4 p-3 rounded-xl bg-primary/10 border-l-4 border-primary">
+<div class="relative">
+<div class="size-12 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Freelancer profile portrait Alex" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaFAzZgAcCl7caDXm2UzNzpAW3eY4_rIcfarLCda0WD9zklY8LeYYeZSQojGpE5f1PnI5HR_sKHy1mB9A8geMil1fmWHChmF1ZlKQgMsHcmLQAFIqwuEhpW63zPNzKmxP1b30NF5UX916ZhLwPj4R9udKyPIxMPRJtk-gHcl_2-udSe_iymcCUb13zohZPMkrnDrTGG-aZYf2j78JGdpN-ObP0HaL02yOOwFn2KcnKAyM6KI18LsFQZwLUlD1LTHt9OCHYX-zurw");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-white dark:border-background-dark rounded-full"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center">
+<h4 class="font-bold truncate text-sm">Alex (Freelancer)</h4>
+<span class="text-[10px] text-slate-400">2m</span>
+</div>
+<p class="text-xs text-slate-500 truncate">Ready to sync assets...</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<div class="size-12 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Designer profile portrait Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCe66-aoSIXlAPEAzs8LiulvCl-3zESHPacFy0GKFH0VlTaWb28TX4wc7ZnNgVHcfvLCJiPhL6PR-trzFzI3Ut4MkrRhQUiqWFGmlvi76d8-XeqPi2T-PpVt-UsnMgAmZ7uDgqBo1n-VtGzFS_VpFc2b2oRmc_9KPgdUeJUGuMCgmcmxKlVptOKNNeSUEnkfGxknrA_SbK_Qz2nc0--Nnjj-3NVh5BWuT6p7nrppRI_rBxPg1GLrHv521uZsR3t6MozXlhqwRd0g");'></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center">
+<h4 class="font-semibold truncate text-sm">Sarah Jenkins</h4>
+<span class="text-[10px] text-slate-400">1h</span>
+</div>
+<p class="text-xs text-slate-500 truncate">The wireframes are complete.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<div class="size-12 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Developer profile portrait Marco" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_BY7aixRhJEhZfEMakK1oH_q0D_gYoE_4p6MG6k7WBFyC3XDIo-dxDzMtkIXvlfTsakjgmZSiLJSpsv5hrPJsNWfGp8gtMJzqQxDLTS2h6EunFC-HOcKt89dHNLK0DilO5mSXINtMzX4nYpsrwbiAztUtYSyhJ-IzPRm0oMHRlyTq9DJtvsYLBIlKhTf575G_Hk4eQdvkkvv19lcDhGCLppVwbvrfchCieOMdWivTBtjyIYDWBh6KcYr-H5LcNzSWVvY-gY35yg");'></div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-center">
+<h4 class="font-semibold truncate text-sm">Marco Russo</h4>
+<span class="text-[10px] text-slate-400">3h</span>
+</div>
+<p class="text-xs text-slate-500 truncate">PR approved for the module.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Chat Window (Split View Right) -->
+<section class="flex-1 flex flex-col bg-background-light dark:bg-background-dark relative">
+<!-- Chat Header -->
+<header class="h-20 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Freelancer profile portrait Alex" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKd1n048ccLEy_b8jQpqa-a-z66WDlYCGT6XpTUF9kWAWRIvU2OKsp7JZ4Dp4LIUmHTYI-blGjMN5cHcgExLubgEj4eLv9a05pF7HAcvuvDSzoJ65uVkzbTjYF3-WguQRMzNOpDWyzluq6RNwHhSR5lBhrI5aivGFSc0maVU5kuHURbbbClmLoPJ29ZLyiEVKUSRbX9VBGgbUmyNgVCmcimcaUdm8DIgktF60rER6R5TV6Jri1gRTUse6Bigp7o0TPXr6dprSNMA");'></div>
+<div>
+<h3 class="font-bold text-base">Alex</h3>
+<div class="flex items-center gap-1">
+<span class="size-2 bg-green-500 rounded-full"></span>
+<span class="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Active Now</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 bg-primary/5 dark:bg-primary/10 border border-primary/20 px-3 py-1.5 rounded-lg text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+                            AI Insights: Ready to Close
+                        </div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all tech-glow">
+<span class="material-symbols-outlined text-sm">handshake</span>
+                            Quick Hire
+                        </button>
+<button class="bg-slate-200 dark:bg-tech-surface hover:bg-slate-300 dark:hover:bg-slate-700 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">description</span>
+                            Create Contract
+                        </button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Chat Content -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8 scroll-smooth">
+<div class="flex justify-center">
+<span class="px-4 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[10px] text-slate-500 uppercase tracking-widest font-bold border border-slate-200 dark:border-slate-700">Today, Oct 24</span>
+</div>
+<!-- Message Left -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<div class="size-8 shrink-0 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Freelancer profile Alex small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtAxa7PBcoeDGqmn_YbYDLryNxqdVDMB34FGRJtEJL-i8xHR0T9c7bFPoOGNcK9T2XUTv-EX27cOM83P2rBx0Lroa2c6j2RhzkMUTifueHvYz-64Cv4IZSq4ngfIqsy_-M-rDgvOUt4cbCxpbqccWJoI1YxrTaZaltFlvBFDroont4wjilCFL8wruyZKgj-p9E0O6ANTyv_4JpA0BuL1U-z0nwn2XosAklZ97izYQGSTIUwVWAoU3B3j_3mhqxQxz-ebe49SpBNw");'></div>
+<div class="flex flex-col gap-1.5">
+<div class="glass-bubble-left p-4 rounded-2xl rounded-bl-none text-slate-800 dark:text-slate-100 shadow-sm leading-relaxed">
+                                I've finished the initial review of the project specs for the neural-interface module. The API documentation is comprehensive. Ready to sync the first batch of assets.
+                            </div>
+<span class="text-[10px] text-slate-400 ml-1">10:42 AM</span>
+</div>
+</div>
+<!-- Message Right -->
+<div class="flex items-end gap-3 max-w-[80%] ml-auto flex-row-reverse">
+<div class="size-8 shrink-0 rounded-full bg-primary" data-alt="Founder avatar profile small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3-GU6Gf3BpywTqAEV_dMDaAjf2RjQ2xlnWtnypVIA3JwW1zpOCg_UZcbajPJHlWLa9Z36IIxQGpXfJz_pmZVHFJeIxhtXk022Z6qJedN5uyK_ZG-K_nENSuNdwvbl8JUVaJgGPqbWuznHJFSuyvPoUc-ipQ9KrqC9TTvLS2I_OPy1jv5n-9fb5B-T2qjU8MeXbden9b5PY4lFu7BA87RGTbigUpIDEOsP55pHdqb3KoEOek2XtYM9P-ERpbxkNpMo7g5BmlVcrQ");'></div>
+<div class="flex flex-col gap-1.5 items-end">
+<div class="glass-bubble-right p-4 rounded-2xl rounded-br-none text-white shadow-sm leading-relaxed">
+                                Excellent progress, Alex. Can the AI-generated assets be integrated into the module by EOD for the staging deployment?
+                            </div>
+<div class="flex items-center gap-1 mr-1">
+<span class="text-[10px] text-slate-400">10:45 AM</span>
+<span class="material-symbols-outlined text-primary text-xs">done_all</span>
+</div>
+</div>
+</div>
+<!-- AI Suggested Action -->
+<div class="mx-auto max-w-lg">
+<div class="bg-primary/5 dark:bg-tech-surface/50 border border-primary/20 p-5 rounded-2xl backdrop-blur-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-20">
+<span class="material-symbols-outlined text-4xl text-primary">auto_awesome</span>
+</div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+<span class="text-xs font-bold uppercase tracking-wider">Synk AI Assistant</span>
+</div>
+<p class="text-sm dark:text-slate-300">Based on your conversation, Alex is ready to start. I recommend initiating a <strong>Neural Module Milestone</strong> contract for $2,400.</p>
+<div class="flex gap-2">
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-lg hover:brightness-110 transition-all">Generate Draft</button>
+<button class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-all">View Analytics</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Message Left -->
+<div class="flex items-end gap-3 max-w-[80%]">
+<div class="size-8 shrink-0 rounded-full bg-slate-200 dark:bg-slate-800" data-alt="Freelancer profile Alex small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUYNhXGclvBcg1vn0M5gkaL8GbBbbzjpoXze4uqtVxPFXQNg9t9i7tCfPeUGw_6TXW8v6mhNVCdra-nH5F_a1TDMmXpGkvwxAWzzlVYsl0LmPw83b9mCIxy03mRNygQp3SjUNClkooN8Q9jPJLcjoGOi_Go-FErsrexPz84g-8B83efSWD9yM2a_xh_TeBOq9aOZCjzKGw_wozwbfcsGezTX0n_kjsGOop1LxVH9494xliOEfm3W1oCUzO3Peu8tynkioeB_iOKA");'></div>
+<div class="flex flex-col gap-1.5">
+<div class="glass-bubble-left p-4 rounded-2xl rounded-bl-none text-slate-800 dark:text-slate-100 shadow-sm leading-relaxed">
+                                Absolutely. I'll prioritize the export. I'll also send over the updated component map for your review in 15 minutes.
+                            </div>
+<span class="text-[10px] text-slate-400 ml-1">10:52 AM</span>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<footer class="p-6 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-4xl mx-auto">
+<div class="bg-slate-100 dark:bg-tech-surface border border-slate-200 dark:border-slate-800 rounded-2xl p-2 flex flex-col gap-2">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm resize-none py-2 px-3 placeholder:text-slate-500" placeholder="Message Alex..." rows="1"></textarea>
+<div class="flex items-center justify-between px-2 pb-1">
+<div class="flex items-center gap-2">
+<button class="p-1.5 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">attach_file</span>
+</button>
+<button class="p-1.5 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">image</span>
+</button>
+<button class="p-1.5 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="flex items-center gap-1.5 px-2 py-1 text-primary hover:bg-primary/10 rounded-lg text-xs font-bold transition-colors">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+                                        Smart Reply
+                                    </button>
+</div>
+<button class="bg-primary text-white size-10 rounded-xl flex items-center justify-center tech-glow hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<p class="text-center text-[10px] text-slate-500 mt-3 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[12px]">security</span>
+                            End-to-end encrypted with Synk.ai Quantum Guard
+                        </p>
+</div>
+</footer>
+</section>
+</main>
+</div>
+</body></html>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function CommunityPage() {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
@@ -74,22 +75,22 @@ export default function CommunityPage() {
 
         {/* Navigation Links */}
         <div className="flex-1 py-6 px-3 flex flex-col gap-2">
-          <button className="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/10 text-primary transition-colors group">
+          <Link href="/community" className="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/10 text-primary transition-colors group">
             <span className="material-symbols-outlined shrink-0 text-xl">home</span>
             <span className="font-bold text-sm hidden md:block">Home</span>
-          </button>
-          <button className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
+          </Link>
+          <Link href="/browse-jobs" className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
             <span className="material-symbols-outlined shrink-0 text-xl">explore</span>
             <span className="font-medium text-sm hidden md:block">Explore</span>
-          </button>
-          <button className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
+          </Link>
+          <Link href="/chat" className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
             <span className="material-symbols-outlined shrink-0 text-xl text-slate-400 group-hover:text-white">chat</span>
             <span className="font-medium text-sm hidden md:block">Synks</span>
-          </button>
-          <button className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
+          </Link>
+          <Link href="/portfolio" className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group">
             <span className="material-symbols-outlined shrink-0 text-xl text-slate-400 group-hover:text-white">person</span>
             <span className="font-medium text-sm hidden md:block">Profile</span>
-          </button>
+          </Link>
           
           <div className="mt-8 border-t border-white/5 pt-6 hidden md:block px-2">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Shortcuts</p>

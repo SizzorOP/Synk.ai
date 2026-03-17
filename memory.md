@@ -809,6 +809,37 @@ Status:
 
 - Open, but currently scoped to development tooling rather than production runtime packages.
 
+### 2026-03-18 - Community UI updates, Sidebar Navigation, and Routing (Synk.ai)
+
+Files added or updated:
+
+- `apps/web/src/app/community/page.tsx`
+- `apps/web/src/app/login/page.tsx`
+- `apps/web/src/app/signup-freelancer/page.tsx`
+- `apps/web/src/app/signup-hiring/page.tsx`
+
+What was done:
+
+- Moved navigation to the left: engineered a fixed, responsive left sidebar (collapses to an icon-only dock on mobile). Included logo, primary navigation links, a shortcut section, profile avatar, and "Create Post" button.
+- React conversion: Replaced raw `<script>` tags and `onclick` handlers with modern React states (`useState`, `useEffect`) for modals and action menus.
+- Re-Flowed Grid: Mapped the masonry feed to an interactive, responsive CSS grid for "Project Spotlights," "Contributions," and "Role Openings" cards.
+- Added Animations: Integrated slide and scale animations directly into the component styles for a native app feel when opening posts.
+- Routing refactor: Updated login and signup flows to redirect all authenticated users to `/community` by default.
+
+How it was implemented:
+
+- Sidebar layout is structured using a `w-64` fixed flex column on desktop and dynamic width adjustments on mobile.
+- Masonry feed now relies on Tailwind grid utilities `columns-1 sm:columns-2 lg:columns-3 xl:columns-4` combined with `break-inside-avoid`.
+- Component state handles custom overlays (create post options modal, etc) replacing `document.getElementById` logic from previous mockups.
+
+Verification performed:
+
+- Localhost browser validation on `/community`. Flow logic correctly toggles modals and renders masonry layout responsively.
+
+Verification result:
+
+- Successful UI conversion to React with improved "Tech-Noir" aesthetics.
+
 ## Open Risks / Gaps
 
 - PostgreSQL-backed reads are scaffolded, but live database verification is still pending because the Docker daemon was unavailable.
@@ -825,14 +856,12 @@ Status:
 - Node dependency vulnerabilities remain unreviewed.
 - If the localhost web server starts returning HTTP `500` again after a seemingly successful build, the first recovery step should be a clean rebuild of `apps/web/.next`.
 
-## Next Tasks
+## Next Tasks (Synk.ai Priorities)
 
-1. Verify PostgreSQL-backed reads and writes plus Qdrant sync against live Docker services once Docker Desktop is running.
-2. Replace localhost JWT dev auth with Auth0 or Firebase integration and production token verification.
-3. Replace the local escrow mock with Stripe or Razorpay funding, release, and webhook reconciliation flows.
-4. Remove fallback dependency from the dashboard and deal desk once live PostgreSQL verification is available.
-5. Extend the collaboration hub with file sharing, task assignment, and read receipts.
-6. Install Flutter in the environment, then start the Flutter mobile application.
-7. Review and remediate the reported Node vulnerabilities in the Nest CLI toolchain.
-8. Replace heuristic matching with live embedding generation plus semantic retrieval/reranking.
-9. Add anti-bot detection and SeleniumBase-based enrichment workflows.
+1. **Supabase Authentication**: Initialize actual Supabase Auth logic in `login/page.tsx` and `signup/page.tsx` to replace mock routing and establish real sessions. 
+2. **Community Feed Integration**: Migrate the static masonry feed in the new `/community` page to fetch real post data (projects and jobs) from the Supabase database.
+3. **Frontend Interactions**: Build out full functionality for clicking 'Sync' (like) and 'Share' locally, capturing interactions into proper database mutations.
+4. **Backend Sync**: Ensure the new React frontend routes are passing the correct tokens and data payloads to the NestJS API counterparts.
+5. **Database Verification**: Verify PostgreSQL reads/writes and Qdrant sync are behaving correctly once the local Docker backend environment is running stably.
+6. **Mobile App**: Install the Flutter SDK and begin scaffolding the mobile target once the web MVP is structurally complete.
+7. **Production Auth/Escrow**: Later, replace simple token verifications with robust Stripe/Razorpay integrations and finalize RBAC workflows.

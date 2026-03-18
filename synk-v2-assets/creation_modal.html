@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FA520F",
+                        "mistral-beige": "#FFFAEB",
+                        "background-light": "#FFFAEB",
+                        "background-dark": "#1a1614",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .grid-overlay {
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .glass-modal {
+            background: rgba(255, 250, 235, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid #000;
+        }
+        .mistral-gradient {
+            background: linear-gradient(90deg, #F04E30 0%, #FFB800 100%);
+        }
+        .sharp-border {
+            border: 2px solid #000;
+        }
+        .dashed-brutal {
+            border: 2px dashed #000;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 overflow-x-hidden min-h-screen">
+<div class="fixed inset-0 grid-overlay pointer-events-none"></div>
+<div class="relative flex min-h-screen flex-col items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="glass-modal w-full max-w-[480px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col">
+<!-- Header -->
+<div class="flex items-center justify-between p-4 border-b-2 border-black">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold">terminal</span>
+<h2 class="text-xl font-black uppercase tracking-tighter italic">synk.ai / initialize</h2>
+</div>
+<button class="flex h-10 w-10 items-center justify-center border-2 border-black hover:bg-black hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Tabs -->
+<div class="flex border-b-2 border-black bg-white/50">
+<button class="flex-1 py-4 text-sm font-black uppercase tracking-widest border-r-2 border-black bg-white text-black underline decoration-primary decoration-4 underline-offset-8">
+                    Post Project
+                </button>
+<button class="flex-1 py-4 text-sm font-black uppercase tracking-widest text-slate-500 hover:bg-mistral-beige transition-colors">
+                    Create Job
+                </button>
+</div>
+<!-- Content Area (Post Project Active) -->
+<div class="p-6 space-y-6">
+<!-- Project Title Input -->
+<div class="space-y-2">
+<label class="block text-xs font-black uppercase tracking-widest text-black">Project Identifier / Title</label>
+<input class="w-full h-14 bg-white sharp-border px-4 font-mono text-sm focus:ring-0 focus:border-primary placeholder:opacity-30" placeholder="PROJ_ALPHA_SYNTH" type="text"/>
+</div>
+<!-- Media Upload Box -->
+<div class="space-y-2">
+<label class="block text-xs font-black uppercase tracking-widest text-black">Asset Ingestion</label>
+<div class="dashed-brutal bg-white/30 p-8 flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-white/60 transition-colors">
+<div class="h-16 w-16 bg-black flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">upload_file</span>
+</div>
+<div class="text-center">
+<p class="font-bold text-sm uppercase">Drop Technical Specs</p>
+<p class="text-[10px] font-medium opacity-60 mt-1 uppercase">Max 500MB .ZIP / .CAD / .PDF</p>
+</div>
+<button class="bg-black text-white px-6 py-2 text-xs font-bold uppercase tracking-tighter">Browse Files</button>
+</div>
+</div>
+<!-- GitHub URL Input -->
+<div class="space-y-2">
+<label class="block text-xs font-black uppercase tracking-widest text-black">Source Control Repository</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400">link</span>
+<input class="w-full h-14 bg-white sharp-border pl-12 pr-4 font-mono text-sm focus:ring-0 focus:border-primary" placeholder="https://github.com/org/repo" type="url"/>
+</div>
+</div>
+<!-- Create Job Content (Hidden visually but prepared for structure) -->
+<!-- 
+                <div class="space-y-2">
+                    <label class="block text-xs font-black uppercase tracking-widest text-black">Role Specification</label>
+                    <input type="text" placeholder="Lead Systems Architect" class="w-full h-14 bg-white sharp-border px-4 font-mono text-sm focus:ring-0">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-widest text-black">Budget [USD]</label>
+                        <input type="text" placeholder="5k - 15k" class="w-full h-14 bg-white sharp-border px-4 font-mono text-sm focus:ring-0">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-xs font-black uppercase tracking-widest text-black">Priority</label>
+                        <select class="w-full h-14 bg-white sharp-border px-4 font-mono text-sm focus:ring-0 appearance-none">
+                            <option>CRITICAL</option>
+                            <option>STANDARD</option>
+                            <option>LOW_PRIORITY</option>
+                        </select>
+                    </div>
+                </div>
+                -->
+<!-- Primary CTA -->
+<div class="pt-4">
+<button class="mistral-gradient w-full h-16 sharp-border shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-black font-black">bolt</span>
+<span class="text-black font-black uppercase tracking-tighter text-lg">Initialize Asset</span>
+</button>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="px-6 pb-6 flex items-center justify-between text-[10px] font-mono opacity-40 uppercase">
+<span>Node: US-EAST-1</span>
+<span>v3.0.4-brutal</span>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Brutalism Style) -->
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-black px-4 py-2 flex items-center justify-around z-50">
+<a class="flex flex-col items-center justify-center p-2 text-primary" href="#">
+<span class="material-symbols-outlined text-3xl">grid_view</span>
+</a>
+<a class="flex flex-col items-center justify-center p-2 text-black" href="#">
+<span class="material-symbols-outlined text-3xl">add_box</span>
+</a>
+<a class="flex flex-col items-center justify-center p-2 text-black" href="#">
+<span class="material-symbols-outlined text-3xl">query_stats</span>
+</a>
+<a class="flex flex-col items-center justify-center p-2 text-black" href="#">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</a>
+</div>
+</body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>synk.ai | Frontier Talent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#3e0400",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fbfdff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#fffbff",
+                        "surface-tint": "#b62409",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary-fixed-variant": "#8e1400",
+                        "on-secondary-container": "#6b4b00",
+                        "primary": "#b22206",
+                        "tertiary": "#006481",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "surface-container-highest": "#e5e2e1",
+                        "secondary": "#7c5800",
+                        "on-surface-variant": "#5b403b",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-fixed-dim": "#6ad3fe",
+                        "tertiary-fixed": "#bee9ff",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#004d64",
+                        "on-surface": "#1b1b1c",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#feb700",
+                        "inverse-primary": "#ffb4a5",
+                        "tertiary-container": "#007ea2",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdad3",
+                        "on-tertiary-fixed": "#001f2a",
+                        "background": "#fcf9f8",
+                        "inverse-surface": "#303030",
+                        "surface-container-high": "#eae7e7",
+                        "on-secondary-fixed": "#271900",
+                        "secondary-fixed-dim": "#ffba20",
+                        "outline-variant": "#e3beb7",
+                        "surface-dim": "#dcd9d9",
+                        "inverse-on-surface": "#f3f0ef",
+                        "primary-fixed-dim": "#ffb4a5",
+                        "outline": "#8f7069",
+                        "on-background": "#1b1b1c",
+                        "primary-container": "#d63c20",
+                        "surface-bright": "#fcf9f8",
+                        "secondary-fixed": "#ffdea8",
+                        "on-secondary": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf9f8;
+            color: #1b1b1c;
+        }
+        .mistral-gradient {
+            background: linear-gradient(135deg, #b22206 0%, #7c5800 100%);
+        }
+        .mountain-gradient {
+            background: linear-gradient(to bottom, rgba(178, 34, 6, 0.1) 0%, rgba(252, 249, 248, 1) 100%), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+        .technical-grid {
+            background-image: 
+                linear-gradient(to right, rgba(178, 34, 6, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(178, 34, 6, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center w-full px-6 py-4 bg-[#fcf9f8]/90 backdrop-blur-sm fixed top-0 z-50 border-b border-outline-variant/30">
+<div class="text-xl font-black tracking-tighter text-[#b22206]">synk.ai</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-stone-600 hover:text-[#b22206] transition-colors duration-150" href="#">Product</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-stone-600 hover:text-[#b22206] transition-colors duration-150" href="#">Solutions</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-stone-600 hover:text-[#b22206] transition-colors duration-150" href="#">Pricing</a>
+<a class="font-['Inter'] font-bold tracking-tight uppercase text-xs text-stone-600 hover:text-[#b22206] transition-colors duration-150" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-all">
+            Get Started
+        </button>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center px-6 md:px-20 overflow-hidden mountain-gradient" data-alt="Warm mountain range at dawn with misty atmosphere">
+<div class="max-w-4xl relative z-10">
+<div class="mb-4">
+<span class="bg-primary text-on-primary text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1">v3.0 Release</span>
+</div>
+<h1 class="text-5xl md:text-8xl font-black text-on-surface leading-[0.9] tracking-tighter mb-8">
+                    Frontier Talent.<br/>In your hands.
+                </h1>
+<div class="flex flex-col md:flex-row gap-4">
+<button class="mistral-gradient text-on-primary px-10 py-5 text-sm font-black uppercase tracking-widest flex items-center justify-center gap-2 group">
+                        Get Started 
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="bg-surface-container-lowest text-on-surface border border-outline-variant px-10 py-5 text-sm font-black uppercase tracking-widest">
+                        View Ecosystem
+                    </button>
+</div>
+</div>
+<!-- Architectural Ornament -->
+<div class="absolute right-0 bottom-0 w-1/3 h-1/2 bg-surface-container/20 border-l border-t border-primary/30 hidden md:block technical-grid"></div>
+</section>
+<!-- Role Selection Section -->
+<section class="py-24 px-6 md:px-20 bg-surface technical-grid">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-outline-variant relative z-10">
+<!-- Card A: Creator -->
+<div class="p-12 md:p-20 bg-surface-container-lowest border-r border-outline-variant flex flex-col justify-between hover:bg-surface-container transition-colors duration-300">
+<div>
+<span class="text-primary font-black text-4xl mb-6 block">01</span>
+<h2 class="text-4xl font-black tracking-tighter mb-4 text-on-surface uppercase">I want to build</h2>
+<p class="text-on-surface-variant font-medium text-lg leading-relaxed mb-12 max-w-sm">
+                            Connect your GitHub repositories, showcase your technical velocity, and get matched with frontier labs.
+                        </p>
+</div>
+<div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3 text-sm font-bold uppercase tracking-tight text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+                                GitHub Integration
+                            </li>
+<li class="flex items-center gap-3 text-sm font-bold uppercase tracking-tight text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="deployed_code">deployed_code</span>
+                                Proof of Work
+                            </li>
+</ul>
+<button class="w-full bg-on-surface text-surface py-5 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-primary transition-colors">
+                            Enter as Creator
+                        </button>
+</div>
+</div>
+<!-- Card B: Partner -->
+<div class="p-12 md:p-20 bg-surface-container-low flex flex-col justify-between hover:bg-surface-container transition-colors duration-300">
+<div>
+<span class="text-secondary font-black text-4xl mb-6 block">02</span>
+<h2 class="text-4xl font-black tracking-tighter mb-4 text-on-surface uppercase">I want to hire</h2>
+<p class="text-on-surface-variant font-medium text-lg leading-relaxed mb-12 max-w-sm">
+                            Rapid matching for high-stakes projects. Access a curated pool of developers vetted by neural performance.
+                        </p>
+</div>
+<div>
+<ul class="space-y-4 mb-12">
+<li class="flex items-center gap-3 text-sm font-bold uppercase tracking-tight text-on-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="bolt">bolt</span>
+                                Rapid Matching
+                            </li>
+<li class="flex items-center gap-3 text-sm font-bold uppercase tracking-tight text-on-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+                                Neural Vetting
+                            </li>
+</ul>
+<button class="w-full mistral-gradient text-on-primary py-5 font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:opacity-90 transition-all">
+                            Enter as Partner
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Auth Section -->
+<section class="pb-32 px-6 md:px-20 text-center bg-surface technical-grid">
+<div class="max-w-2xl mx-auto py-16 border-x border-b border-outline-variant bg-surface-container-lowest relative z-10 shadow-sm">
+<h3 class="font-['Inter'] font-black text-xs uppercase tracking-[0.3em] mb-10 text-on-surface-variant">Instant Authentication</h3>
+<div class="flex flex-col md:flex-row justify-center gap-6 px-12">
+<button class="flex-1 border-2 border-on-surface py-4 px-6 flex items-center justify-center gap-4 font-bold uppercase text-xs tracking-widest hover:bg-surface-container transition-all">
+<img alt="" class="w-5 h-5" data-alt="Google colorful logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxNSNFL6Q8LrNuMz7Zd2Bu3grlmkt8Y_qHW6AiT_TJ3ZyH6xBNA44ZxM1ApxPl-3isEQ60eoJsQTiJlUYaezLUz-Ow97CaHAjM15BeVi_Lv20akcLXkeLBXukCxzYa-CX4AK2V9n-fNPcYLv-pe9L3ScWKy7d4waRli2QjJmdGRJM-mlpS_BwXxO7lAO1uNH_VyXjZHqSRkNfvMEbbNNF6n1cKBX7XqWZqzM2n4LLtcBcYeDfYnqxPSRNN4xUXoORiAyy2KBYt0C4"/>
+                        Continue with Google
+                    </button>
+<button class="flex-1 bg-on-surface text-surface py-4 px-6 flex items-center justify-center gap-4 font-bold uppercase text-xs tracking-widest hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="code" style="font-variation-settings: 'FILL' 1;">code</span>
+                        Continue with GitHub
+                    </button>
+</div>
+<p class="mt-10 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
+                    No credit card required. Enterprise SSO available.
+                </p>
+</div>
+</section>
+<!-- Asymmetric Data Section -->
+<section class="py-24 px-6 md:px-20 grid grid-cols-12 gap-8 items-end bg-surface technical-grid">
+<div class="col-span-12 md:col-span-5 relative z-10">
+<div class="border-t-4 border-primary pt-8">
+<div class="text-[8rem] font-black leading-none tracking-tighter text-on-surface">98<span class="text-primary">%</span></div>
+<p class="text-xl font-bold uppercase tracking-tight text-on-surface mt-4">Precision Vetting Rate</p>
+<p class="text-stone-500 mt-4 leading-relaxed">Our neural engine analyzes semantic code patterns to ensure every match is technically sound before you even meet.</p>
+</div>
+</div>
+<div class="col-span-12 md:col-span-7 flex flex-col gap-4 relative z-10">
+<div class="h-64 bg-surface-container-highest/80 backdrop-blur-sm border border-outline-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent"></div>
+<div class="p-8 relative">
+<div class="flex justify-between items-start mb-8">
+<span class="label-sm font-black uppercase tracking-widest bg-on-surface text-surface px-2 py-1">System Health</span>
+<span class="material-symbols-outlined text-primary" data-icon="monitoring">monitoring</span>
+</div>
+<div class="flex gap-1 items-end h-24">
+<div class="w-full bg-primary/20 h-1/2"></div>
+<div class="w-full bg-primary/40 h-3/4"></div>
+<div class="w-full bg-primary h-full"></div>
+<div class="w-full bg-primary/60 h-2/3"></div>
+<div class="w-full bg-primary/80 h-5/6"></div>
+<div class="w-full bg-primary/30 h-1/4"></div>
+<div class="w-full bg-primary/50 h-3/5"></div>
+<div class="w-full bg-primary h-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high py-20 px-6 md:px-20 border-t border-outline-variant technical-grid">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+<div class="col-span-1 md:col-span-2">
+<div class="text-2xl font-black tracking-tighter text-[#b22206] mb-8">synk.ai</div>
+<p class="text-on-surface-variant max-w-sm font-medium">The architectural foundation for high-performance engineering teams. Built for the frontier.</p>
+</div>
+<div>
+<h4 class="font-black uppercase text-xs tracking-widest mb-6">Network</h4>
+<ul class="space-y-4 text-sm font-bold text-stone-600">
+<li><a class="hover:text-primary transition-colors" href="#">Talent Pool</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partner Directory</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Access</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-black uppercase text-xs tracking-widest mb-6">Legal</h4>
+<ul class="space-y-4 text-sm font-bold text-stone-600">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Ethics</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-outline-variant flex justify-between items-center relative z-10">
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest">© 2024 SYNK.AI LTD. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-stone-400 hover:text-primary cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined text-stone-400 hover:text-primary cursor-pointer" data-icon="terminal">terminal</span>
+</div>
+</div>
+</footer>
+</body></html>

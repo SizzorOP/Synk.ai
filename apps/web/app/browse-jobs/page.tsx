@@ -1,5 +1,10 @@
+"use client";
 import Link from 'next/link';
+import { useState } from 'react';
+import { QuickApplyModal } from '../../components/quick-apply-modal';
+
 export default function Page() {
+  const [selectedJob, setSelectedJob] = useState<{ id: string; title: string; questions?: any[] } | null>(null);
   return (
     <div className="bg-background-dark font-display text-slate-100 selection:bg-primary/30 selection:text-primary min-h-screen">
 
@@ -102,7 +107,7 @@ export default function Page() {
 <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
 <span className="text-sm font-bold text-white">$180k - $240k</span>
 </div>
-<button className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+<button onClick={() => setSelectedJob({ id: 'job-1', title: 'Senior LLM Engineer', questions: [{ question: 'What is your PyTorch experience?', required: true }] })} className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
                         Apply Now
                     </button>
 </div>
@@ -173,7 +178,7 @@ export default function Page() {
 <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
 <span className="text-sm font-bold text-white">$200k+</span>
 </div>
-<button className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+<button onClick={() => setSelectedJob({ id: 'job-3', title: 'Creative Director, AI Art', questions: [] })} className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
                         Apply Now
                     </button>
 </div>
@@ -243,7 +248,7 @@ export default function Page() {
 <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Budget Range</span>
 <span className="text-sm font-bold text-white">€120k - €180k</span>
 </div>
-<button className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
+<button onClick={() => setSelectedJob({ id: 'job-5', title: 'Machine Learning Researcher', questions: [{ question: 'Link your previous ML papers or blog posts.', required: false }] })} className="px-6 py-2 rounded-xl tech-gradient text-white text-xs font-bold hover:opacity-90 transition-opacity">
                         Apply Now
                     </button>
 </div>
@@ -295,6 +300,19 @@ export default function Page() {
 </main>
 {/* Tech-Noir Footer Elements */}
 <div className="fixed bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+
+{selectedJob && (
+  <QuickApplyModal
+    jobId={selectedJob.id}
+    jobTitle={selectedJob.title}
+    customQuestions={selectedJob.questions}
+    onClose={() => setSelectedJob(null)}
+    onApplySuccess={() => {
+      setSelectedJob(null);
+      alert('Successfully applied to ' + selectedJob.title);
+    }}
+  />
+)}
 
     </div>
   );

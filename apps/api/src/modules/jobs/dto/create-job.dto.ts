@@ -33,4 +33,8 @@ export class CreateJobDto {
   @IsBoolean()
   @IsOptional()
   requiresVerifiedBadge?: boolean;
+
+  @IsArray()
+  @IsOptional()
+  customQuestions?: { question: string; required: boolean }[];
 }

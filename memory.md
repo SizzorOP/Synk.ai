@@ -865,3 +865,38 @@ Verification result:
 5. **Database Verification**: Verify PostgreSQL reads/writes and Qdrant sync are behaving correctly once the local Docker backend environment is running stably.
 6. **Mobile App**: Install the Flutter SDK and begin scaffolding the mobile target once the web MVP is structurally complete.
 7. **Production Auth/Escrow**: Later, replace simple token verifications with robust Stripe/Razorpay integrations and finalize RBAC workflows.
+
+## Update: Synk.ai V2 Redesign and Integrations
+### 2026-03-18 - Architectural Brutalism & Core Flows
+
+Files added or updated:
+- `apps/web/tailwind.config.ts`, `apps/web/app/globals.css`
+- `apps/web/app/page.tsx`
+- `apps/web/app/onboarding/creator/page.tsx`, `apps/web/app/onboarding/partner/page.tsx`
+- `apps/web/app/community/page.tsx`, `apps/web/app/community/layout.tsx`, `apps/web/app/community/jobs/page.tsx`
+- `apps/web/app/components/CreationModal.tsx`
+- `apps/web/app/api/auth/[...nextauth]/route.ts`
+- `apps/web/lib/connectors.ts`
+
+What was done:
+- **Design System Implementation:** Applied the "Architectural Brutalism" design language. Configured `tailwind.config.ts` and `globals.css` with Early Dawn (`#FFFAEB`), Mine Shaft (`#1F1F1F`), 0px border-radiuses, and robust box shadows mimicking brutalist architecture.
+- **Landing Page & Gateway (`/`)**: Created a high-impact split-card hero section directing users to "Join as Creator" or "Join as Partner". Includes Mistral gradients and bold typography.
+- **User Onboarding Flows**: Established multi-step forms for both Creators and Partners to capture core 'DNA' metrics (Bio, GitHub Sync, Tech Roles). Used `localStorage` to mock final state storage and conditionally render navigation menus upon redirection.
+- **Discovery Home & Feed**: Built out the dual sub-views for Projects (`/community`) and Jobs (`/community/jobs`). Integrated 'Proof-of-Work' cards featuring '98% AI Match Score' and 'Apply Protocol' CTAs.
+- **Creation Modals**: Assembled floating glassmorphism overlays for posting projects or jobs with embedded rich media fields.
+- **Backend Connector Scaffolds (`lib/connectors.ts`)**: Wired placeholder utility wrappers for Phase 4 services including vector semantic search (Qdrant), AWS S3/Cloudinary media upload, web-scraping (SeleniumBase) for GitHub enrichment, Escrow transactions (Stripe/Razorpay), and WebSockets mock handlers.
+- **NextAuth Baseline**: Initialized GitHub and Google callback endpoints inside an API handler.
+
+How it was implemented:
+- Most HTML structure was generated using specific contextual prompts via the Stitch MCP server, then migrated to React functional components in a Next.js `app` directory context.
+- Navigation was restructured in `community/layout.tsx` to handle varying roles (e.g., 'Creator' sees jobs, while 'Partner' sees AI Talent profiles).
+
+Verification completed:
+- `npm run build --workspace @marketplace/web` finished cleanly.
+- Walkthrough documentation generated.
+
+Next Tasks:
+1. Initialize fully functional Supabase configuration since the MCP account has just been connected. Wire login buttons via NextAuth/Supabase.
+2. Replace local mock state in `onboarding` with real database insertions for user metadata.
+3. Migrate semantic matching wrapper inside `connectors.ts` to actually ping an active Qdrant instance.
+4. Establish Socket.io deal room implementation bridging from "Apply Protocol" click.

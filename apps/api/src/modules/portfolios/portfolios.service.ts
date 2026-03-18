@@ -27,4 +27,34 @@ export class PortfoliosService {
 
     return portfolio;
   }
+
+  async analyze(slug: string) {
+    const portfolio = await this.findBySlug(slug);
+    
+    const serviceUrl = process.env.AI_SERVICE_URL;
+    if (!serviceUrl) {
+      return { score: 0, feedback: "AI service unavailable", improvements: [] };
+    }
+
+    try {
+      const response = await fetch(`${serviceUrl}/analyze/project`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          project_title: portfolio.title,
+          project_description: portfolio.proof.join(" ") || "No description provided",
+          project_url: `https://marketplace.com/portfolios/${slug}`
+        }),
+      });
+
+      if (!response.ok) {
+         return { score: 0, feedback: "AI analysis failed", improvements: [] };
+      }
+      return await response.json();
+    } catch {
+      return { score: 0, feedback: "AI analysis failed", improvements: [] };
+    }
+  }
 }

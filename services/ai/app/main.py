@@ -9,7 +9,14 @@ from services.ai.app.schemas import (
     MatchRequest,
     MatchResponse,
     PortfoliosIndexRequest,
+    MatchPercentageRequest,
+    MatchPercentageResponse,
+    ProjectAnalyzeRequest,
+    ProjectAnalyzeResponse,
+    GithubAnalyzeRequest,
+    GithubAnalyzeResponse
 )
+from services.ai.app.analyzer import compute_match_percentage, analyze_project, analyze_github
 
 app = FastAPI(
     title="Marketplace AI Service",
@@ -29,6 +36,17 @@ def health() -> dict[str, str]:
 def rerank(request: MatchRequest) -> MatchResponse:
     return rerank_candidates(request)
 
+@app.post("/match/percentage", response_model=MatchPercentageResponse)
+def match_percentage(request: MatchPercentageRequest) -> MatchPercentageResponse:
+    return compute_match_percentage(request)
+
+@app.post("/analyze/project", response_model=ProjectAnalyzeResponse)
+def analyze_project_api(request: ProjectAnalyzeRequest) -> ProjectAnalyzeResponse:
+    return analyze_project(request)
+
+@app.post("/analyze/github", response_model=GithubAnalyzeResponse)
+def analyze_github_api(request: GithubAnalyzeRequest) -> GithubAnalyzeResponse:
+    return analyze_github(request)
 
 @app.get("/collections/status", response_model=CollectionsResponse)
 def collection_status() -> CollectionsResponse:

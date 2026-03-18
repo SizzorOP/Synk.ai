@@ -11,6 +11,18 @@ import {
   type MatchResponse,
 } from "../lib/api";
 
+type CandidateResult = {
+  freelancerId: string;
+  creatorName: string;
+  title: string;
+  score: number;
+  explanation?: string;
+  matchedSkills?: string[];
+  skills: string[];
+  llmPercentage?: number;
+  llmExplanation?: string;
+};
+
 type FormState = {
   title: string;
   description: string;
@@ -64,7 +76,7 @@ export function MatchingStudio({
 }) {
   const [selectedJobId, setSelectedJobId] = useState(jobs[0]?.id ?? fallbackJobs[0].id);
   const [form, setForm] = useState<FormState>(toFormState(jobs[0] ?? fallbackJobs[0]));
-  const [results, setResults] = useState<MatchResponse>(initialMatches);
+  const [results, setResults] = useState<MatchResponse & { candidates: CandidateResult[] }>(initialMatches as any);
   const [status, setStatus] = useState<"idle" | "running">("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -284,16 +296,18 @@ export function MatchingStudio({
                 </div>
                 <div className="rounded-2xl bg-white/10 px-4 py-3 text-right">
                   <div className="text-xs uppercase tracking-[0.18em] text-white/60">
-                    Score
+                    {candidate.llmPercentage !== undefined ? "LLM Match" : "Score"}
                   </div>
-                  <div className="mt-1 text-3xl font-bold">
-                    {candidate.score.toFixed(2)}
+                  <div className="mt-1 text-3xl font-bold text-amber-500">
+                    {candidate.llmPercentage !== undefined
+                      ? `${candidate.llmPercentage}%`
+                      : candidate.score.toFixed(2)}
                   </div>
                 </div>
               </div>
 
               <p className="mt-4 text-sm leading-6 text-white/80">
-                {candidate.explanation ?? "Heuristic preview without model explanation."}
+                {candidate.llmExplanation ?? candidate.explanation ?? "Heuristic preview without model explanation."}
               </p>
 
               <div className="mt-4 flex flex-wrap gap-2">

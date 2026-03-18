@@ -40,6 +40,7 @@ type CreateProposalInput = {
   quoteAmountMin: number;
   quoteAmountMax: number;
   estimatedDurationDays: number;
+  answers?: Record<string, string>;
   freelancerUserId?: string;
 };
 
@@ -342,6 +343,7 @@ export class EngagementsService {
             quote_amount_max_minor,
             estimated_duration_days,
             match_score,
+            answers_json,
             submitted_at
           )
           VALUES (
@@ -355,6 +357,7 @@ export class EngagementsService {
             $6,
             $7,
             $8,
+            $9::jsonb,
             NOW()
           )
         `,
@@ -367,6 +370,7 @@ export class EngagementsService {
           input.quoteAmountMax * 100,
           input.estimatedDurationDays,
           matchScore,
+          JSON.stringify(input.answers ?? {}),
         ],
       );
 

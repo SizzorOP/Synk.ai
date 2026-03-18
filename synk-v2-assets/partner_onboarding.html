@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Partner Onboarding V2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FA520F",
+                        "background-light": "#FFFAEB",
+                        "background-dark": "#1a1608",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FFFAEB;
+            background-image: 
+                linear-gradient(#f0ede0 1px, transparent 1px),
+                linear-gradient(90deg, #f0ede0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .mistral-gradient {
+            background: linear-gradient(90deg, #FA520F 0%, #FF8A00 50%, #FFC700 100%);
+        }
+        .brutalist-border {
+            border: 2px solid #000000;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-slate-900 bg-background-light">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden max-w-md mx-auto brutalist-border bg-background-light shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] my-4">
+<!-- Top App Bar -->
+<div class="flex items-center border-b-2 border-black bg-background-light p-4 justify-between">
+<div class="text-slate-900 flex size-12 shrink-0 items-center justify-center brutalist-border hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 text-xl font-black leading-tight tracking-tighter flex-1 text-center uppercase">Partner Onboarding V2</h2>
+<div class="size-12"></div>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col gap-3 p-6 border-b-2 border-black bg-white">
+<div class="flex justify-between items-end">
+<p class="text-slate-900 text-sm font-black uppercase tracking-widest">Protocol Step 01 / 02</p>
+<p class="text-primary text-xs font-black">50% LOADED</p>
+</div>
+<div class="brutalist-border h-6 bg-slate-100 relative overflow-hidden">
+<div class="h-full bg-primary" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Hero Title -->
+<div class="p-6 bg-black">
+<h1 class="text-white tracking-tighter text-4xl font-black leading-none uppercase">
+                Initialize<br/>Partner Node
+            </h1>
+</div>
+<!-- Step 1: Company Profile -->
+<div class="p-6 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<div class="size-3 bg-primary"></div>
+<h3 class="text-slate-900 text-xl font-black uppercase tracking-tight">01. Company Profile</h3>
+</div>
+<div class="flex flex-col gap-5">
+<label class="flex flex-col gap-2">
+<p class="text-slate-900 text-xs font-black uppercase">Entity Name</p>
+<input class="w-full brutalist-border bg-white p-4 text-slate-900 focus:ring-0 focus:border-primary placeholder:text-slate-400 font-bold" placeholder="e.g. SYNK_PROTO_LABS" type="text"/>
+</label>
+<label class="flex flex-col gap-2">
+<p class="text-slate-900 text-xs font-black uppercase">Terminal URL</p>
+<input class="w-full brutalist-border bg-white p-4 text-slate-900 focus:ring-0 focus:border-primary placeholder:text-slate-400 font-bold" placeholder="https://synk.ai/node-01" type="url"/>
+</label>
+<label class="flex flex-col gap-2">
+<p class="text-slate-900 text-xs font-black uppercase">Industry Bio / Mission Manifest</p>
+<textarea class="w-full brutalist-border bg-white p-4 text-slate-900 focus:ring-0 focus:border-primary placeholder:text-slate-400 font-bold min-h-[120px]" placeholder="Define industrial parameters..."></textarea>
+</label>
+</div>
+</div>
+<!-- Step 2: Search Protocol -->
+<div class="p-6 border-t-2 border-black flex flex-col gap-6 bg-slate-50">
+<div class="flex items-center gap-2">
+<div class="size-3 bg-primary"></div>
+<h3 class="text-slate-900 text-xl font-black uppercase tracking-tight">02. Search Protocol</h3>
+</div>
+<div class="flex flex-col gap-5">
+<label class="flex flex-col gap-2">
+<p class="text-slate-900 text-xs font-black uppercase">Industry Vertical</p>
+<div class="relative">
+<select class="w-full brutalist-border bg-white p-4 text-slate-900 focus:ring-0 focus:border-primary font-bold appearance-none">
+<option>QUANTUM ARCHITECTURE</option>
+<option>NEURAL LOGISTICS</option>
+<option>KINETIC INFRASTRUCTURE</option>
+</select>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+<div class="flex flex-col gap-4">
+<p class="text-slate-900 text-xs font-black uppercase">Node Density (Team Size)</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="brutalist-border p-3 font-black text-sm bg-primary text-white">0-50</button>
+<button class="brutalist-border p-3 font-black text-sm bg-white hover:bg-primary/10">50-200</button>
+<button class="brutalist-border p-3 font-black text-sm bg-white hover:bg-primary/10">200+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Architectural Element -->
+<div class="px-6 py-4 flex justify-between border-t-2 border-black opacity-20">
+<span class="text-[10px] font-black uppercase">SYNK.V2 // ARCH_BRL_01</span>
+<span class="text-[10px] font-black uppercase">LAT: 52.5200 N / LON: 13.4050 E</span>
+</div>
+<!-- Action Area -->
+<div class="p-6 bg-white border-t-2 border-black sticky bottom-0">
+<button class="w-full mistral-gradient brutalist-border p-5 text-white font-black text-lg uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all">
+                Deploy Search Protocol
+            </button>
+</div>
+<div class="h-8 bg-black"></div>
+</div>
+</body></html>

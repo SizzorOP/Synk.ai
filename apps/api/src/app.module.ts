@@ -7,6 +7,7 @@ import { DatabaseModule } from "./modules/database/database.module";
 import { EngagementsModule } from "./modules/engagements/engagements.module";
 import { HealthModule } from "./modules/health/health.module";
 import { JobsModule } from "./modules/jobs/jobs.module";
+import { CompetitionsModule } from "./modules/competitions/competitions.module";
 import { MarketplaceDataModule } from "./modules/marketplace-data/marketplace-data.module";
 import { MatchingModule } from "./modules/matching/matching.module";
 import { PlatformModule } from "./modules/platform/platform.module";
@@ -21,6 +22,7 @@ import { PortfoliosModule } from "./modules/portfolios/portfolios.module";
     ChatModule,
     DatabaseModule,
     EngagementsModule,
+    CompetitionsModule,
     HealthModule,
     JobsModule,
     MarketplaceDataModule,

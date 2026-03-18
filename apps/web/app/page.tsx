@@ -1,196 +1,134 @@
 import Link from 'next/link';
-export default function Page() {
+
+export const metadata = {
+  title: "synk.ai - Frontier Talent. In your hands.",
+  description: "The next-generation autonomous AI software development marketplace.",
+};
+
+export default function LandingPage() {
   return (
-    <div className="bg-background-dark font-display text-slate-100 selection:bg-primary/30 selection:text-primary min-h-screen">
+    <div className="bg-[#FFFAEB] font-display text-[#1F1F1F] antialiased min-h-screen">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between p-4 border-b border-[#1F1F1F]/10 sticky top-0 bg-[#FFFAEB]/80 backdrop-blur-md z-50">
+        <div className="flex items-center gap-2">
+          <span className="material-symbols-outlined text-[#F04E30] text-3xl">hub</span>
+          <span className="text-xl font-black tracking-tighter">synk.ai</span>
+        </div>
+        <Link href="/login" className="text-sm font-bold tracking-tight px-4 py-2 border border-[#1F1F1F] hover:bg-[#1F1F1F] hover:text-[#FFFAEB] transition-all">
+          Log in
+        </Link>
+      </nav>
 
-<div className="relative min-h-screen w-full flex flex-col overflow-x-hidden">
-{/* Navigation */}
-<nav className="fixed top-0 z-50 w-full glass border-b border-white/5">
-<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<div className="flex items-center gap-3">
-<div className="size-8 bg-primary rounded flex items-center justify-center text-white">
-<span className="material-symbols-outlined">api</span>
-</div>
-<span className="text-xl font-black tracking-tighter uppercase">Synk.ai</span>
-</div>
-<div className="hidden md:flex items-center gap-10">
-<Link href="/"className="text-sm font-medium text-slate-400 hover:text-primary transition-colors" >Platform</Link>
-<Link href="/browse-jobs"className="text-sm font-medium text-slate-400 hover:text-primary transition-colors" >Talent</Link>
-<Link href="/"className="text-sm font-medium text-slate-400 hover:text-primary transition-colors" >Solutions</Link>
-<Link href="/"className="text-sm font-medium text-slate-400 hover:text-primary transition-colors" >Pricing</Link>
-</div>
-<div className="flex items-center gap-4">
-<Link href="/login" className="hidden sm:block text-sm font-bold px-4 py-2 text-slate-300 hover:text-white transition-colors">Login</Link>
-<Link href="/role-selection" className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-6 py-2.5 rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center">
-                        Get Started
-                    </Link>
-</div>
-</div>
-</nav>
-{/* Hero Section */}
-<main className="pt-32 pb-20 px-6">
-<div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-<div className="flex flex-col gap-8">
-<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase w-fit">
-<span className="relative flex h-2 w-2">
-<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-<span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-</span>
-                        Next-Gen Staffing
-                    </div>
-<h1 className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-slate-500">Global Talent in <span className="text-primary">Minutes</span>
-</h1>
-<p className="text-lg text-slate-400 max-w-xl leading-relaxed">
-                        AI-powered matching with a portfolio-first philosophy. Eliminate the friction of global hiring through deep-code verification and cultural alignment algorithms.
-                    </p>
-<div className="flex flex-col sm:flex-row gap-4 pt-4">
-<Link href="/role-selection" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 rounded-xl transition-all flex items-center justify-center gap-2 group">
-                            Start Hiring 
-                            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</Link>
-<Link href="/browse-jobs" className="glass hover:bg-white/5 text-white font-bold h-14 px-8 rounded-xl transition-all flex items-center justify-center">
-                            View Talent Pool
-                        </Link>
-</div>
-<div className="flex items-center gap-6 pt-6 border-t border-white/5">
-<div className="flex -space-x-3">
-<div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-800" data-alt="User avatar 1"></div>
-<div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-700" data-alt="User avatar 2"></div>
-<div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-600" data-alt="User avatar 3"></div>
-</div>
-<p className="text-sm text-slate-500 font-medium">Trusted by 500+ tech leaders globally</p>
-</div>
-</div>
-{/* Visual Asset */}
-<div className="relative group">
-<div className="absolute -inset-4 bg-primary/20 blur-3xl opacity-20 rounded-full group-hover:opacity-30 transition-opacity"></div>
-<div className="relative glass rounded-2xl p-4 tech-glow">
-<div className="bg-background-dark/80 rounded-xl overflow-hidden border border-white/10 aspect-square flex items-center justify-center relative">
-<div className="absolute inset-0 opacity-20" data-alt="Abstract neural network representation of AI matching" style={{ backgroundImage: `url(${'https://lh3.googleusercontent.com/aida-public/AB6AXuDYpPovif2S6M1mBmrFFNvUlw7uodBX4RGnLnKrfxYCPYTTVVBVQD3KMTmx1zqZpZYzLDvHKALApmC5_Rn5AVOyTP3rvFaJKhntJBfxZJu29OO3HEguuD_qrlwxsoRRZIt_C036rLMqyVS3BQx4XO_vsHCDjzOL_7UdKciWokEpsl3tDnssAE6kj9-iLvzT6lK_qxUKipAussuPVqu4AwUr11-gifG-U2LHUYR2sFawN7T_NX6Zlyo5VHoqJOqNd3dbuZWbWaAgKQ'.replace(/^'|'$/g, "")})` }}></div>
-{/* Mock UI Interface */}
-<div className="z-10 w-full max-w-sm flex flex-col gap-4 p-6">
-<div className="glass p-4 rounded-xl flex items-center gap-4 animate-pulse">
-<div className="size-12 rounded-lg bg-primary/20 border border-primary/30 flex items-center justify-center">
-<span className="material-symbols-outlined text-primary">person_search</span>
-</div>
-<div className="flex-1 space-y-2">
-<div className="h-2 w-24 bg-primary/30 rounded"></div>
-<div className="h-2 w-32 bg-slate-700 rounded"></div>
-</div>
-</div>
-<div className="glass p-4 rounded-xl flex items-center gap-4 translate-x-8">
-<div className="size-12 rounded-lg bg-green-500/20 border border-green-500/30 flex items-center justify-center">
-<span className="material-symbols-outlined text-green-500">check_circle</span>
-</div>
-<div className="flex-1 space-y-2">
-<div className="h-2 w-28 bg-green-500/30 rounded"></div>
-<div className="h-2 w-20 bg-slate-700 rounded"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-{/* Features Section */}
-<section className="py-24 px-6 relative overflow-hidden">
-<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-<div className="max-w-7xl mx-auto">
-<div className="text-center mb-16 space-y-4">
-<h2 className="text-3xl md:text-4xl font-black">Engineered for Precision</h2>
-<p className="text-slate-400 max-w-2xl mx-auto">We've replaced the traditional resume with objective technical truth.</p>
-</div>
-<div className="grid md:grid-cols-3 gap-8">
-<div className="glass p-8 rounded-2xl hover:bg-white/5 transition-colors group">
-<div className="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-<span className="material-symbols-outlined text-3xl">psychology</span>
-</div>
-<h3 className="text-xl font-bold mb-3">AI Deep-Matching</h3>
-<p className="text-slate-400 text-sm leading-relaxed">Our proprietary LLM analyzes source code, architectural patterns, and commit history to find the perfect technical match.</p>
-</div>
-<div className="glass p-8 rounded-2xl hover:bg-white/5 transition-colors group">
-<div className="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-<span className="material-symbols-outlined text-3xl">terminal</span>
-</div>
-<h3 className="text-xl font-bold mb-3">Portfolio-First</h3>
-<p className="text-slate-400 text-sm leading-relaxed">Stop reading buzzwords. Browse sandbox environments and actual project outputs from pre-vetted senior engineering talent.</p>
-</div>
-<div className="glass p-8 rounded-2xl hover:bg-white/5 transition-colors group">
-<div className="size-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
-<span className="material-symbols-outlined text-3xl">gavel</span>
-</div>
-<h3 className="text-xl font-bold mb-3">Instant Compliance</h3>
-<p className="text-slate-400 text-sm leading-relaxed">One contract, local tax compliance in 150+ countries, and automated payroll. Scale globally without the legal overhead.</p>
-</div>
-</div>
-</div>
-</section>
-{/* Social Proof / Testimonial Carousel */}
-<section className="py-24 px-6 bg-slate-900/30">
-<div className="max-w-5xl mx-auto">
-<div className="glass p-12 rounded-3xl relative overflow-hidden">
-<div className="absolute top-0 right-0 p-8 opacity-10">
-<span className="material-symbols-outlined text-9xl">format_quote</span>
-</div>
-<div className="relative z-10 flex flex-col items-center text-center gap-8">
-<div className="flex items-center gap-1 text-yellow-500">
-<span className="material-symbols-outlined fill-1">star</span>
-<span className="material-symbols-outlined fill-1">star</span>
-<span className="material-symbols-outlined fill-1">star</span>
-<span className="material-symbols-outlined fill-1">star</span>
-<span className="material-symbols-outlined fill-1">star</span>
-</div>
-<blockquote className="text-2xl md:text-3xl font-medium leading-tight">
-                            "Synk.ai cut our engineering recruitment cycle from 45 days to just 36 hours. The talent quality is consistently in the top 1%."
-                        </blockquote>
-<div className="flex flex-col items-center gap-2">
-<div className="size-16 rounded-full bg-slate-800 border-2 border-primary" data-alt="Portrait of CTO Sarah Jenkins"></div>
-<cite className="not-italic">
-<span className="block font-bold text-lg">Sarah Jenkins</span>
-<span className="block text-slate-500 text-sm uppercase tracking-widest">CTO, Nexus Dynamics</span>
-</cite>
-</div>
-<div className="flex gap-4 mt-4">
-<button className="size-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors">
-<span className="material-symbols-outlined">chevron_left</span>
-</button>
-<button className="size-10 rounded-full glass flex items-center justify-center text-slate-400 hover:text-white transition-colors border-primary/50">
-<span className="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* Footer */}
-<footer className="py-12 border-t border-white/5 px-6">
-<div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div className="flex items-center gap-3">
-<div className="size-6 bg-primary rounded flex items-center justify-center text-white">
-<span className="material-symbols-outlined text-xs">api</span>
-</div>
-<span className="text-lg font-black tracking-tighter uppercase">Synk.ai</span>
-</div>
-<div className="flex gap-8 text-sm text-slate-500">
-<Link href="/"className="hover:text-primary transition-colors" >Privacy Policy</Link>
-<Link href="/"className="hover:text-primary transition-colors" >Terms of Service</Link>
-<Link href="/"className="hover:text-primary transition-colors" >Contact</Link>
-</div>
-<div className="text-sm text-slate-600">
-                    © 2024 Synk.ai Inc. All rights reserved.
-                </div>
-</div>
-</footer>
-{/* Sticky CTA Button */}
-<div className="fixed bottom-8 right-8 z-[60]">
-<Link href="/signup" className="flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-black px-6 py-4 rounded-full shadow-2xl shadow-primary/40 transition-all hover:-translate-y-1">
-<span className="material-symbols-outlined">rocket_launch</span>
-                Hire Now
+      <main>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 z-0 bg-gradient-to-br from-orange-500 via-red-500 to-rose-700 opacity-90"></div>
+          <div className="relative z-10 px-6 py-24 md:py-32 flex flex-col items-center text-center gap-8">
+            <h1 className="text-white text-5xl md:text-7xl font-black leading-none tracking-tight uppercase">
+              Frontier Talent.<br/>In your hands.
+            </h1>
+            <p className="text-white/90 text-lg md:text-xl max-w-xl font-medium">
+              Revolutionizing how creators and partners connect through AI. 
+              The world's first architectural marketplace for elite proof-of-work.
+            </p>
+            <Link href="/role-selection" className="bg-gradient-to-r from-[#F04E30] via-[#F97316] to-[#EAB308] text-white px-10 py-5 font-bold tracking-widest uppercase text-sm border-2 border-white/20 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+              Get Started →
             </Link>
-</div>
-</div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FFFAEB] to-transparent"></div>
+        </section>
 
+        {/* Role Selection Section */}
+        <section className="px-6 py-20 bg-[radial-gradient(#1F1F1F15_1px,transparent_1px)] bg-[length:24px_24px]">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black mb-12 text-center uppercase tracking-tighter">Choose Your Path</h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              {/* Card 1: Creator */}
+              <div className="bg-white border-2 border-[#1F1F1F] p-8 flex flex-col gap-6 shadow-[12px_12px_0px_0px_rgba(31,31,31,1)] group hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(31,31,31,1)] transition-all">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-[#F04E30]/10 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[#F04E30] text-4xl">code_blocks</span>
+                  </div>
+                  <h3 className="text-2xl font-black uppercase">I want to build</h3>
+                </div>
+                <p className="text-[#1F1F1F]/70 text-lg leading-snug">
+                  For Creators: Seamlessly integrate your GitHub workflow and showcase your frontier engineering skills to the world. Get verified by AI.
+                </p>
+                <div className="mt-auto">
+                  <Link href="/onboarding/creator" className="block w-full py-4 bg-[#1F1F1F] text-white font-bold text-sm uppercase tracking-wider text-center group-hover:bg-[#F04E30] transition-colors">
+                    Join as Creator
+                  </Link>
+                </div>
+              </div>
+
+              {/* Card 2: Partner */}
+              <div className="bg-white border-2 border-[#1F1F1F] p-8 flex flex-col gap-6 shadow-[12px_12px_0px_0px_rgba(31,31,31,1)] group hover:translate-x-1 hover:translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(31,31,31,1)] transition-all">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-[#F04E30]/10 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-[#F04E30] text-4xl">speed</span>
+                  </div>
+                  <h3 className="text-2xl font-black uppercase">I want to hire</h3>
+                </div>
+                <p className="text-[#1F1F1F]/70 text-lg leading-snug">
+                  For Partners: Rapid matching with elite talent. Access a curated pool of developers vetted by frontier AI standards in under 2 minutes.
+                </p>
+                <div className="mt-auto">
+                  <Link href="/onboarding/partner" className="block w-full py-4 border-2 border-[#1F1F1F] text-[#1F1F1F] font-bold text-sm uppercase tracking-wider text-center group-hover:bg-[#1F1F1F] group-hover:text-white transition-all">
+                    Join as Partner
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Social Sign Up / Modal Intro Section */}
+        <section className="px-6 py-24 bg-[#1F1F1F] text-[#FFFAEB]">
+          <div className="max-w-xl mx-auto flex flex-col gap-10 text-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">Join the Network</h2>
+              <p className="text-[#FFFAEB]/60 text-lg">Start your journey with synk.ai today. Authenticate to sync your frontier DNA.</p>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              <button className="flex items-center justify-center gap-4 w-full py-5 border-2 border-[#FFFAEB] bg-transparent font-bold uppercase text-sm tracking-widest hover:bg-[#FFFAEB] hover:text-[#1F1F1F] transition-all">
+                <span className="material-symbols-outlined">brand_family</span>
+                Continue with Google
+              </button>
+              <button className="flex items-center justify-center gap-4 w-full py-5 border-2 border-[#FFFAEB] bg-transparent font-bold uppercase text-sm tracking-widest hover:bg-[#FFFAEB] hover:text-[#1F1F1F] transition-all">
+                <span className="material-symbols-outlined">terminal</span>
+                Continue with GitHub
+              </button>
+            </div>
+            
+            <p className="text-[10px] uppercase tracking-[0.3em] opacity-40">
+              By signing up, you agree to our <span className="underline cursor-pointer">Terms of Service</span>.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-[#1F1F1F]/10 bg-[#FFFAEB] py-12 px-6">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#F04E30] text-2xl">hub</span>
+            <span className="text-lg font-black tracking-tighter uppercase">synk.ai</span>
+          </div>
+          
+          <div className="flex gap-10 text-[10px] font-black uppercase tracking-widest text-[#1F1F1F]/60">
+            <Link href="/" className="hover:text-[#F04E30] transition-colors">Home</Link>
+            <Link href="/community" className="hover:text-[#F04E30] transition-colors">Explore</Link>
+            <Link href="/portfolio" className="hover:text-[#F04E30] transition-colors">Profile</Link>
+            <Link href="/terms" className="hover:text-[#F04E30] transition-colors">Legal</Link>
+          </div>
+          
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-30 text-center md:text-right">
+            © 2024 SYNK.AI GLOBAL FRONTIER — SHARP UNTIL THE END.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #3c83f6;
-  --color-background-light: #f5f7f8;
-  --color-background-dark: #0A0A0A;
+  --color-primary: #FA520F; /* Mistral Orange */
+  --color-early-dawn: #FFFAEB;
+  --color-mine-shaft: #1F1F1F;
+  --color-background-light: #FFFAEB;
+  --color-background-dark: #1F1F1F;
   --font-display: "Inter", var(--font-sans);
 }
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
-  .tech-glow {
-    box-shadow: 0 0 20px rgba(60, 131, 246, 0.15);
+  .mistral-gradient {
+    background: linear-gradient(135deg, #FF4B2B 0%, #FFB119 100%);
   }
 }
 
 body {
-  background-color: var(--color-background-dark);
+  background-color: var(--color-early-dawn);
+  color: var(--color-mine-shaft);
 }

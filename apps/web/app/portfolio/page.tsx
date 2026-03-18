@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { ProjectAnalyzer } from '../../components/project-analyzer';
+
 export default function Page() {
   return (
     <div className="bg-background-dark font-display text-slate-100 selection:bg-primary/30 selection:text-primary min-h-screen">
@@ -111,7 +113,8 @@ export default function Page() {
 </div>
 </div>
 </section>
-<section>
+<ProjectAnalyzer portfolioSlug="alex-synk" />
+<section className="mt-8">
 <div className="flex items-center justify-between mb-8">
 <div>
 <h2 className="text-2xl font-black tracking-tight dark:text-white">Proof of Work</h2>

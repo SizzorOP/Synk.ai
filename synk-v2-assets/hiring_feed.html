@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hiring Feed V3 Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#F04E30",
+                        "mistral-orange": "#FA520F",
+                        "background-light": "#FFFAEB",
+                        "background-dark": "#1a1a1a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Arial", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .brutal-border {
+            border: 2px solid #000000;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(#000000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-color: #FFFAEB;
+            opacity: 0.05;
+        }
+        .mistral-gradient {
+            background: linear-gradient(90deg, #FA520F 0%, #FACC15 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light font-display text-black antialiased">
+<div class="relative min-h-screen flex flex-col max-w-md mx-auto brutal-border bg-background-light overflow-x-hidden">
+<!-- Subtle Grid Background Overlay -->
+<div class="fixed inset-0 grid-pattern pointer-events-none"></div>
+<!-- Top Bar -->
+<header class="sticky top-0 z-50 bg-background-light brutal-border border-t-0 border-l-0 border-r-0 flex items-center justify-between px-4 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-black font-bold">menu</span>
+<h1 class="text-lg font-extrabold tracking-tighter">SYNK.AI / JOBS</h1>
+</div>
+<button class="brutal-border p-1 bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-black">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 relative z-10 p-4 space-y-6">
+<div class="space-y-1">
+<h2 class="text-3xl font-black uppercase italic tracking-tighter leading-none">Hiring Feed V3</h2>
+<p class="text-xs font-bold uppercase tracking-widest text-mistral-orange">Protocol Active // 2024</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-0 brutal-border bg-black">
+<button class="flex-1 py-2 bg-mistral-orange text-white text-xs font-black uppercase tracking-widest border-r-2 border-black">All Jobs</button>
+<button class="flex-1 py-2 bg-white text-black text-xs font-black uppercase tracking-widest border-r-2 border-black">Remote</button>
+<button class="flex-1 py-2 bg-white text-black text-xs font-black uppercase tracking-widest">Contract</button>
+</div>
+<!-- Job Feed -->
+<div class="space-y-6">
+<!-- Card 1 -->
+<div class="brutal-border bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-black uppercase leading-tight max-w-[70%]">Senior Frontend Engineer</h3>
+<span class="text-[10px] font-bold brutal-border px-2 py-1 bg-background-light">NEW</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase bg-black text-white">Next.js</span>
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase">TypeScript</span>
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase">Tailwind</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t-2 border-black pt-4">
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Budget</p>
+<p class="font-black text-sm">$140k - $180k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Experience</p>
+<p class="font-black text-sm">5+ Years</p>
+</div>
+</div>
+<button class="w-full py-3 mistral-gradient brutal-border text-black font-black uppercase tracking-widest text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[1px] active:translate-y-[1px]">
+                        Apply Protocol
+                    </button>
+</div>
+<!-- Card 2 -->
+<div class="brutal-border bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-black uppercase leading-tight max-w-[70%]">Lead Product Designer</h3>
+<span class="text-[10px] font-bold brutal-border px-2 py-1 bg-background-light">HOT</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase bg-black text-white">Figma</span>
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase">Prototyping</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t-2 border-black pt-4">
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Budget</p>
+<p class="font-black text-sm">$160k - $210k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Experience</p>
+<p class="font-black text-sm">7+ Years</p>
+</div>
+</div>
+<button class="w-full py-3 mistral-gradient brutal-border text-black font-black uppercase tracking-widest text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        Apply Protocol
+                    </button>
+</div>
+<!-- Card 3 -->
+<div class="brutal-border bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-xl font-black uppercase leading-tight max-w-[70%]">Backend Systems Architect</h3>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase bg-black text-white">Go</span>
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase">Kubernetes</span>
+<span class="brutal-border px-2 py-1 text-[10px] font-bold uppercase">Rust</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t-2 border-black pt-4">
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Budget</p>
+<p class="font-black text-sm">$190k - $240k</p>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-gray-500">Experience</p>
+<p class="font-black text-sm">10+ Years</p>
+</div>
+</div>
+<button class="w-full py-3 mistral-gradient brutal-border text-black font-black uppercase tracking-widest text-sm shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        Apply Protocol
+                    </button>
+</div>
+</div>
+<!-- Spacer for bottom nav -->
+<div class="h-20"></div>
+</main>
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md brutal-border border-l-0 border-r-0 border-b-0 bg-background-light z-50">
+<div class="flex items-stretch h-16">
+<a class="flex-1 flex flex-col items-center justify-center border-r-2 border-black group" href="#">
+<span class="material-symbols-outlined text-black group-hover:scale-110">home</span>
+<span class="text-[10px] font-black uppercase">Home</span>
+</a>
+<a class="flex-1 flex flex-col items-center justify-center border-r-2 border-black group" href="#">
+<span class="material-symbols-outlined text-black group-hover:scale-110">search</span>
+<span class="text-[10px] font-black uppercase">Explore</span>
+</a>
+<a class="flex-1 flex flex-col items-center justify-center border-r-2 border-black bg-black text-white" href="#">
+<span class="material-symbols-outlined fill-1">work</span>
+<span class="text-[10px] font-black uppercase">Jobs</span>
+</a>
+<a class="flex-1 flex flex-col items-center justify-center group" href="#">
+<span class="material-symbols-outlined text-black group-hover:scale-110">person</span>
+<span class="text-[10px] font-black uppercase">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

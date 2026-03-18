@@ -115,13 +115,30 @@ export class MatchingService {
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null)
         .slice(0, input.limit);
 
+      // Fetch dynamic percentage for the filtered top matches
+      const enrichedWithPercentage = await Promise.all(
+        merged.map(async (candidate) => {
+          const profileDisplay = `${candidate.title} ${candidate.proof.join(" ")}`;
+          const res = await this.fetchMatchPercentage(
+            input.description,
+            profileDisplay,
+            candidate.skills
+          );
+          return {
+            ...candidate,
+            llmPercentage: res?.percentage ?? Math.round(candidate.score * 100),
+            llmExplanation: res?.explanation ?? candidate.explanation,
+          };
+        }),
+      );
+
       return {
         summary: {
           title: input.title,
-          shortlisted: merged.length,
+          shortlisted: enrichedWithPercentage.length,
           model: "ai_rerank_v1",
         },
-        candidates: merged,
+        candidates: enrichedWithPercentage,
       };
     }
 
@@ -183,6 +200,32 @@ export class MatchingService {
       };
 
       return payload.results ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  private async fetchMatchPercentage(
+    jobDescription: string,
+    freelancerProfile: string,
+    skills: string[]
+  ) {
+    const serviceUrl = process.env.AI_SERVICE_URL;
+    if (!serviceUrl) return null;
+
+    try {
+      const response = await fetch(`${serviceUrl}/match/percentage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          job_description: jobDescription,
+          freelancer_profile: freelancerProfile,
+          skills: skills,
+        }),
+      });
+
+      if (!response.ok) return null;
+      return (await response.json()) as { percentage: number; explanation: string };
     } catch {
       return null;
     }

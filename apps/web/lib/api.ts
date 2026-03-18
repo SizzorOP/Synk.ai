@@ -55,6 +55,8 @@ export type MatchResponse = {
     score: number;
     explanation?: string;
     matchedSkills?: string[];
+    llmPercentage?: number;
+    llmExplanation?: string;
     breakdown?: {
       skillOverlap: number;
       budgetScore: number;
@@ -520,7 +522,7 @@ export async function previewMatches(input: MatchPreviewInput) {
 }
 
 export async function createJob(
-  input: Omit<MatchPreviewInput, "limit"> & { brand: string },
+  input: Omit<MatchPreviewInput, "limit"> & { brand: string; customQuestions?: { question: string; required: boolean }[] },
   accessToken?: string,
 ) {
   return requestJson<Job>("/jobs", {

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FA520F",
+                        "background-light": "#FFFAEB",
+                        "background-dark": "#1a1608",
+                        "mistral-orange": "#FA520F",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .mistral-rainbow {
+            background: linear-gradient(90deg, #FA520F 0%, #FFD700 50%, #4facfe 100%);
+        }
+        .brutal-border {
+            border: 3px solid #1a1608;
+        }
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px #1a1608;
+        }
+        .brutal-shadow-sm {
+            box-shadow: 3px 3px 0px 0px #1a1608;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-[#1a1608] font-display selection:bg-mistral-orange selection:text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light overflow-x-hidden border-x-[8px] border-[#1a1608]">
+<!-- Navigation -->
+<div class="flex items-center p-6 justify-between border-b-[4px] border-[#1a1608]">
+<div class="text-[#1a1608] flex size-10 shrink-0 items-center justify-center brutal-border bg-white" data-icon="ArrowLeft">
+<span class="material-symbols-outlined font-bold">arrow_back</span>
+</div>
+<h2 class="text-[#1a1608] text-xl font-black uppercase tracking-tighter flex-1 text-center">SYNK.AI / V2</h2>
+<div class="size-10"></div>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col gap-4 p-6 bg-mistral-orange/10 border-b-[4px] border-[#1a1608]">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<p class="text-[#1a1608] text-xs font-black uppercase tracking-widest">Step 01 / 02</p>
+<p class="text-[#1a1608] text-2xl font-black leading-none uppercase">Identity</p>
+</div>
+<p class="text-[#1a1608] text-4xl font-black italic opacity-20">50%</p>
+</div>
+<div class="brutal-border bg-white h-6 w-full relative overflow-hidden">
+<div class="h-full bg-mistral-orange border-r-[3px] border-[#1a1608]" style="width: 50%;"></div>
+</div>
+</div>
+<main class="flex-1">
+<!-- Step 1 Content -->
+<div class="p-6 space-y-8">
+<h1 class="text-6xl font-black leading-[0.9] tracking-tighter uppercase mb-8">
+                    Define <br/> Your <br/> <span class="text-mistral-orange">Protocol</span>
+</h1>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-[#1a1608] text-sm font-black uppercase tracking-widest">Full Name</label>
+<input class="brutal-border brutal-shadow-sm w-full bg-white p-4 text-xl font-bold focus:ring-0 focus:outline-none placeholder:text-[#1a1608]/30" placeholder="COMMANDER NAME" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#1a1608] text-sm font-black uppercase tracking-widest">Bio / Transmission</label>
+<textarea class="brutal-border brutal-shadow-sm w-full bg-white p-4 text-xl font-bold focus:ring-0 focus:outline-none min-h-40 placeholder:text-[#1a1608]/30" placeholder="DESCRIBE YOUR ARCHITECTURE..."></textarea>
+</div>
+</div>
+</div>
+<!-- Visual Divider -->
+<div class="h-4 bg-[#1a1608] w-full my-4"></div>
+<!-- Step 2 Content -->
+<div class="p-6 bg-white border-y-[4px] border-[#1a1608] space-y-8">
+<div class="flex flex-col">
+<p class="text-[#1a1608] text-xs font-black uppercase tracking-widest mb-1">Step 02 / 02</p>
+<h2 class="text-4xl font-black leading-none uppercase tracking-tight">Sync <br/> Data Source</h2>
+</div>
+<p class="text-lg font-bold leading-tight max-w-xs">Connect your development history to the synk.ai neural engine.</p>
+<button class="w-full mistral-rainbow brutal-border brutal-shadow p-6 group transition-all active:translate-x-1 active:translate-y-1 active:shadow-none">
+<div class="flex items-center justify-between">
+<span class="text-white text-2xl font-black uppercase italic tracking-tighter">Sync GitHub Profile</span>
+<span class="material-symbols-outlined text-white text-4xl font-bold">sync_alt</span>
+</div>
+</button>
+</div>
+<!-- Final CTA Section -->
+<div class="p-6 pb-12 space-y-6">
+<div class="flex items-start gap-4 p-4 border-2 border-dashed border-[#1a1608]">
+<span class="material-symbols-outlined text-mistral-orange font-bold">info</span>
+<p class="text-sm font-bold uppercase leading-tight">By entering, you agree to the synk.ai v2 neural protocols and ecosystem standards.</p>
+</div>
+<a class="block w-full bg-mistral-orange text-white brutal-border brutal-shadow p-6 text-center group transition-all hover:bg-[#1a1608]" href="/community">
+<div class="flex items-center justify-center gap-3">
+<span class="text-3xl font-black uppercase tracking-tighter italic">Enter Ecosystem</span>
+<span class="material-symbols-outlined text-3xl font-bold">arrow_forward</span>
+</div>
+</a>
+</div>
+</main>
+<!-- Footer / Decorative -->
+<footer class="p-6 border-t-[8px] border-[#1a1608] bg-[#1a1608] text-background-light flex justify-between items-center">
+<div class="flex flex-col">
+<span class="text-[10px] font-black tracking-[0.3em] uppercase opacity-50">System Status</span>
+<span class="text-xs font-bold uppercase tracking-widest text-mistral-orange">All Nodes Operational</span>
+</div>
+<div class="text-[10px] font-black tracking-widest uppercase opacity-50">
+                © 2024 SYNK.AI
+            </div>
+</footer>
+</div>
+</body></html>

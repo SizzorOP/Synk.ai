@@ -1,4 +1,4 @@
-import { IsInt, IsOptional, IsString, Min } from "class-validator";
+import { IsInt, IsOptional, IsString, Min, IsObject } from "class-validator";
 
 export class CreateProposalDto {
   @IsString()
@@ -22,4 +22,8 @@ export class CreateProposalDto {
   @IsString()
   @IsOptional()
   freelancerUserId?: string;
+
+  @IsObject()
+  @IsOptional()
+  answers?: Record<string, string>;
 }

@@ -28,6 +28,7 @@ type CreateJobInput = {
   requiredSkills: string[];
   proofSignals: string[];
   requiresVerifiedBadge: boolean;
+  customQuestions?: { question: string; required: boolean }[];
 };
 
 type CreatePortfolioInput = {
@@ -291,6 +292,7 @@ export class MarketplaceDataService {
             budget_max_minor,
             requires_verified_badge,
             status,
+            custom_questions,
             requirements_json
           )
           VALUES (
@@ -311,7 +313,8 @@ export class MarketplaceDataService {
             $12,
             $13,
             'OPEN',
-            $14::jsonb
+            $14::jsonb,
+            $15::jsonb
           )
         `,
         [
@@ -328,6 +331,7 @@ export class MarketplaceDataService {
           input.budgetMin * 100,
           input.budgetMax * 100,
           input.requiresVerifiedBadge,
+          JSON.stringify(input.customQuestions ?? []),
           JSON.stringify({ proofSignals: input.proofSignals }),
         ],
       );

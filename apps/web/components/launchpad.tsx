@@ -16,6 +16,7 @@ type JobFormState = {
   requiredSkills: string;
   proofSignals: string;
   requiresVerifiedBadge: boolean;
+  customQuestions: string;
 };
 
 type PortfolioFormState = {
@@ -43,6 +44,7 @@ const initialJobForm: JobFormState = {
   requiredSkills: "branding, reels, analytics",
   proofSignals: "brand launches, campaign performance, creator portfolio",
   requiresVerifiedBadge: false,
+  customQuestions: "What is your biggest win?, Do you have timezone overlap with PST?",
 };
 
 const initialPortfolioForm: PortfolioFormState = {
@@ -139,6 +141,7 @@ export function Launchpad() {
             requiredSkills: splitCsv(jobForm.requiredSkills),
             proofSignals: splitCsv(jobForm.proofSignals),
             requiresVerifiedBadge: jobForm.requiresVerifiedBadge,
+            customQuestions: splitCsv(jobForm.customQuestions).map(q => ({ question: q, required: true })),
           }, session?.accessToken);
           setJobMessage(`Created job ${created.slug}. Refresh the dashboard to see it.`);
           setJobStatus("success");

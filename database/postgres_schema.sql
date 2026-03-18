@@ -298,6 +298,7 @@ CREATE TABLE jobs (
     requires_verified_badge BOOLEAN NOT NULL DEFAULT FALSE,
     status job_status NOT NULL DEFAULT 'DRAFT',
     ai_summary TEXT,
+    custom_questions JSONB NOT NULL DEFAULT '[]'::JSONB,
     requirements_json JSONB NOT NULL DEFAULT '{}'::JSONB,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -339,8 +340,10 @@ CREATE TABLE proposals (
     match_score NUMERIC(8,5),
     rerank_score NUMERIC(8,5),
     hard_constraint_score NUMERIC(8,5),
+    llm_match_percentage NUMERIC(5,2),
     visibility_multiplier NUMERIC(6,2) NOT NULL DEFAULT 1.00,
     subscription_plan_code TEXT REFERENCES subscription_plans(code),
+    answers JSONB NOT NULL DEFAULT '{}'::JSONB,
     metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
     submitted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     withdrawn_at TIMESTAMPTZ,
@@ -607,6 +610,38 @@ CREATE TABLE audit_logs (
     user_agent TEXT,
     metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE competitions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    title TEXT NOT NULL,
+    description TEXT,
+    organization_id UUID REFERENCES organizations(id) ON DELETE CASCADE,
+    starts_at TIMESTAMPTZ,
+    ends_at TIMESTAMPTZ,
+    status TEXT NOT NULL DEFAULT 'DRAFT',
+    prize_pool_currency CHAR(3) DEFAULT 'USD',
+    prize_pool_amount BIGINT,
+    metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE competition_submissions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    competition_id UUID NOT NULL REFERENCES competitions(id) ON DELETE CASCADE,
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    github_url TEXT,
+    figma_url TEXT,
+    live_url TEXT,
+    ai_score NUMERIC(5,2),
+    ai_feedback JSONB NOT NULL DEFAULT '{}'::JSONB,
+    status TEXT NOT NULL DEFAULT 'SUBMITTED',
+    metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
+    submitted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    UNIQUE(competition_id, user_id)
 );
 
 CREATE INDEX idx_users_status ON users (status);

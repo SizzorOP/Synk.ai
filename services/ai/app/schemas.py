@@ -37,6 +37,33 @@ class MatchResponse(BaseModel):
     results: List[MatchExplanation]
 
 
+class MatchPercentageRequest(BaseModel):
+    job_description: str
+    freelancer_profile: str
+    skills: List[str]
+
+class MatchPercentageResponse(BaseModel):
+    percentage: int
+    explanation: str
+
+class ProjectAnalyzeRequest(BaseModel):
+    project_title: str
+    project_description: str
+    project_url: str
+
+class ProjectAnalyzeResponse(BaseModel):
+    score: int
+    feedback: str
+    improvements: List[str]
+
+class GithubAnalyzeRequest(BaseModel):
+    github_url: str
+
+class GithubAnalyzeResponse(BaseModel):
+    score: float
+    analysis_report: str
+    metrics: dict[str, str]
+
 class IndexedJob(BaseModel):
     id: str
     slug: str

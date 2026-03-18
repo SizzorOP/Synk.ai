@@ -31,4 +31,10 @@ export class PortfoliosController {
   findOne(@Param("slug") slug: string) {
     return this.portfoliosService.findBySlug(slug);
   }
+
+  @Public()
+  @Post(":slug/analyze")
+  analyze(@Param("slug") slug: string) {
+    return this.portfoliosService.analyze(slug);
+  }
 }

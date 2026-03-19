@@ -1,58 +1,106 @@
+'use client';
+
 import Link from 'next/link';
+
+const JOBS = [
+  { 
+    title: "Senior Frontend Engineer", 
+    status: "NEW", 
+    stacks: ["Next.js", "TypeScript", "Tailwind"], 
+    budget: "$140k - $180k", 
+    exp: "5+ Years",
+    company: "NeuralLabs"
+  },
+  { 
+    title: "Lead Product Designer", 
+    status: "HOT", 
+    stacks: ["Figma", "Prototyping"], 
+    budget: "$160k - $210k", 
+    exp: "7+ Years",
+    company: "Mistral Digital"
+  },
+  { 
+    title: "Backend Systems Architect", 
+    status: "", 
+    stacks: ["Go", "Kubernetes", "Rust"], 
+    budget: "$190k - $240k", 
+    exp: "10+ Years",
+    company: "CoreData"
+  }
+];
 
 export default function JobsFeed() {
   return (
-    <main className="pb-32 px-5 pt-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="space-y-1 mb-8">
-        <h2 className="text-4xl font-black uppercase italic tracking-tighter leading-none border-l-[6px] border-[#FA520F] pl-4">Hiring Feed V3</h2>
-        <p className="text-xs font-bold uppercase tracking-widest text-[#FA520F] mt-2">Protocol Active // 2024</p>
-      </div>
+    <div className="max-w-5xl mx-auto space-y-12">
+      <section>
+        <div className="mb-10">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Protocol Active // 2024</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase italic leading-none">Hiring Feed</h2>
+        </div>
 
-      {/* Filter Tabs */}
-      <div className="flex border-[3px] border-slate-900 bg-slate-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] mb-8">
-        <button className="flex-1 py-4 bg-[#FA520F] text-white text-[10px] sm:text-xs font-black uppercase tracking-widest border-r-[3px] border-slate-900">All Jobs</button>
-        <button className="flex-1 py-4 bg-white text-slate-900 text-[10px] sm:text-xs font-black uppercase tracking-widest border-r-[3px] border-slate-900 hover:bg-slate-100 transition-colors">Remote</button>
-        <button className="flex-1 py-4 bg-white text-slate-900 text-[10px] sm:text-xs font-black uppercase tracking-widest hover:bg-slate-100 transition-colors">Contract</button>
-      </div>
+        {/* Filter Bar */}
+        <div className="flex border border-outline-variant bg-surface-container-low mb-12">
+          <button className="flex-1 py-4 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest border-r border-outline-variant">All Jobs</button>
+          <button className="flex-1 py-4 text-on-surface-variant text-[10px] font-black uppercase tracking-widest border-r border-outline-variant hover:bg-surface-container transition-all">Remote</button>
+          <button className="flex-1 py-4 text-on-surface-variant text-[10px] font-black uppercase tracking-widest hover:bg-surface-container transition-all">Contract</button>
+        </div>
 
-      {/* Job Feed */}
-      <div className="space-y-8">
-        {[
-          { title: "Senior Frontend Engineer", status: "NEW", stacks: ["Next.js", "TypeScript", "Tailwind"], budget: "$140k - $180k", exp: "5+ Years" },
-          { title: "Lead Product Designer", status: "HOT", stacks: ["Figma", "Prototyping"], budget: "$160k - $210k", exp: "7+ Years" },
-          { title: "Backend Systems Architect", status: "", stacks: ["Go", "Kubernetes", "Rust"], budget: "$190k - $240k", exp: "10+ Years" }
-        ].map((job, i) => (
-          <article key={i} className="border-[4px] border-slate-900 bg-white p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 hover:translate-x-1">
-            <div className="flex justify-between items-start mb-6">
-              <h3 className="text-2xl font-black uppercase leading-tight max-w-[80%]">{job.title}</h3>
-              {job.status && <span className="text-[10px] font-black border-[3px] border-slate-900 px-3 py-1.5 bg-[#FFFAEB] uppercase shadow-[3px_3px_0px_0px_#000]">{job.status}</span>}
-            </div>
-            
-            <div className="flex flex-wrap gap-2 mb-8">
-              {job.stacks.map((stack, j) => (
-                <span key={j} className={`border-[3px] border-slate-900 px-3 py-1.5 text-[10px] font-black uppercase ${j === 0 ? 'bg-slate-900 text-white' : 'bg-white text-slate-900'} shadow-[3px_3px_0px_0px_#000]`}>
-                  {stack}
-                </span>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-8 border-t-[3px] border-slate-900 pt-6">
-              <div>
-                <p className="text-[10px] uppercase font-black text-slate-500 tracking-widest">Budget</p>
-                <p className="font-black text-lg mt-1">{job.budget}</p>
+        {/* Job List */}
+        <div className="space-y-6">
+          {JOBS.map((job, i) => (
+            <article key={i} className="bg-surface-container-lowest border border-outline-variant p-8 group hover:border-primary transition-all duration-300 relative overflow-hidden">
+              {job.status && (
+                <div className="absolute top-0 right-0 py-1 px-4 bg-secondary text-on-secondary text-[8px] font-black uppercase tracking-widest">
+                  {job.status}
+                </div>
+              )}
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">{job.company}</span>
+                  </div>
+                  <h3 className="text-2xl font-black uppercase tracking-tight leading-none group-hover:text-primary transition-colors">{job.title}</h3>
+                </div>
+                
+                <div className="flex gap-2">
+                  {job.stacks.map((stack, j) => (
+                    <span key={j} className="text-[9px] font-black uppercase tracking-widest py-1 px-3 border border-outline-variant bg-surface-container">
+                      {stack}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div>
-                <p className="text-[10px] uppercase font-black text-slate-500 tracking-widest">Experience</p>
-                <p className="font-black text-lg mt-1">{job.exp}</p>
-              </div>
-            </div>
 
-            <Link href="/chat" className="block w-full py-5 bg-gradient-to-r from-[#FA520F] via-[#FF8A00] to-[#FFC700] border-[3px] border-slate-900 text-white font-black uppercase tracking-widest text-sm text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-1.5 active:translate-y-1.5 transition-all">
-              Apply Protocol
-            </Link>
-          </article>
-        ))}
-      </div>
-    </main>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-6 border-y border-outline-variant/30 mb-8">
+                <div>
+                  <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest mb-1">Budget</p>
+                  <p className="text-lg font-black tracking-tight leading-none">{job.budget}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest mb-1">XP Required</p>
+                  <p className="text-lg font-black tracking-tight leading-none">{job.exp}</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest mb-1">Location</p>
+                  <p className="text-lg font-black tracking-tight leading-none uppercase">Remote</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest mb-1">Posted</p>
+                  <p className="text-lg font-black tracking-tight leading-none">2H AGO</p>
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <Link href="/chat" className="text-[11px] font-black uppercase tracking-[0.2em] flex items-center gap-2 group/btn">
+                  Apply Protocol
+                  <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 
 export default function CompetitionDetailsPage() {
@@ -23,12 +23,11 @@ export default function CompetitionDetailsPage() {
     setError(null);
 
     try {
-      // In a real scenario, accessToken would come from auth context
       const res = await fetch(`http://localhost:4000/api/v1/competitions/${competitionId}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer placeholder-token' // Assuming mock session
+          'Authorization': 'Bearer placeholder-token'
         },
         body: JSON.stringify({
           repoUrl,
@@ -51,90 +50,95 @@ export default function CompetitionDetailsPage() {
   };
 
   return (
-    <div className="bg-background-dark font-display text-slate-100 min-h-screen">
-      <header className="sticky top-0 z-50 glassmorphism border-b border-white/10 px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-10">
-            <Link href="/competitions" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
-              <span className="material-symbols-outlined">arrow_back</span>
-              <span className="text-sm font-bold uppercase tracking-widest">Back to Competitions</span>
-            </Link>
-          </div>
-        </div>
-      </header>
+    <div className="max-w-3xl mx-auto space-y-12 pb-20">
+      <Link href="/competitions" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-primary transition-colors">
+        <span className="material-symbols-outlined text-sm">arrow_back</span>
+        Back to Protocols
+      </Link>
 
-      <main className="max-w-3xl mx-auto px-6 py-10">
-        <div className="mb-10 text-center">
-          <h2 className="text-4xl font-black mb-4 bg-gradient-to-r from-primary to-accent-purple bg-clip-text text-transparent">Submit Your Entry</h2>
-          <p className="text-slate-400 text-lg">Provide your GitHub repository and Figma designs for the AI agent to evaluate.</p>
+      <section>
+        <div className="mb-10">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Entry Submission</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase italic leading-none">Apply Protocol</h2>
+          <p className="text-stone-500 text-sm font-bold uppercase tracking-widest mt-4">Hardware ID: {competitionId?.slice(0, 8)}...</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glassmorphism p-8 rounded-3xl border border-white/10 space-y-6">
-          <div>
-             <label className="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">
-               GitHub Repository URL <span className="text-red-500">*</span>
+        <form onSubmit={handleSubmit} className="space-y-8 bg-surface-container-low border border-outline-variant p-10 architect-grid">
+          <div className="space-y-2">
+             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-stone-500">
+               Source Code // Github <span className="text-primary">*</span>
              </label>
              <input
                type="url"
                required
                value={repoUrl}
                onChange={(e) => setRepoUrl(e.target.value)}
-               placeholder="https://github.com/username/repo"
-               className="w-full h-14 bg-slate-900/50 border border-slate-700 rounded-xl px-4 text-white focus:border-primary outline-none transition-colors"
+               placeholder="https://github.com/..."
+               className="w-full bg-surface-container-highest border border-outline-variant px-6 py-4 text-sm font-bold placeholder:text-stone-600 focus:border-primary outline-none transition-all"
              />
-             <p className="text-xs text-slate-500 mt-2">Required for the AI code and test coverage analyzer.</p>
           </div>
 
-          <div>
-             <label className="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">
-               Figma Design URL
+          <div className="space-y-2">
+             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-stone-500">
+               Design specs // Figma
              </label>
              <input
                type="url"
                value={figmaUrl}
                onChange={(e) => setFigmaUrl(e.target.value)}
-               placeholder="https://www.figma.com/file/..."
-               className="w-full h-14 bg-slate-900/50 border border-slate-700 rounded-xl px-4 text-white focus:border-primary outline-none transition-colors"
+               placeholder="https://figma.com/..."
+               className="w-full bg-surface-container-highest border border-outline-variant px-6 py-4 text-sm font-bold placeholder:text-stone-600 focus:border-primary outline-none transition-all"
              />
-             <p className="text-xs text-slate-500 mt-2">Optional. Used for design criteria analysis.</p>
           </div>
 
-          <div>
-             <label className="block text-sm font-bold text-slate-300 mb-2 uppercase tracking-wide">
-               Live URL
+          <div className="space-y-2">
+             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-stone-500">
+               Live Deployment // URL
              </label>
              <input
                type="url"
                value={liveUrl}
                onChange={(e) => setLiveUrl(e.target.value)}
-               placeholder="https://myapp.vercel.app"
-               className="w-full h-14 bg-slate-900/50 border border-slate-700 rounded-xl px-4 text-white focus:border-primary outline-none transition-colors"
+               placeholder="https://..."
+               className="w-full bg-surface-container-highest border border-outline-variant px-6 py-4 text-sm font-bold placeholder:text-stone-600 focus:border-primary outline-none transition-all"
              />
           </div>
 
-          {error && <div className="text-red-500 text-sm font-bold bg-red-900/20 p-4 rounded-xl border border-red-500/30">{error}</div>}
+          {error && (
+            <div className="border border-error bg-error-container text-on-error-container p-4 text-[10px] font-black uppercase tracking-widest">
+              Error // {error}
+            </div>
+          )}
 
           <div className="pt-6">
              <button
                type="submit"
                disabled={loading}
-               className="w-full h-14 tech-gradient rounded-xl text-white font-bold text-lg hover:opacity-90 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+               className="w-full py-6 bg-primary text-on-primary font-black uppercase tracking-[0.3em] italic text-sm hover:translate-x-1 hover:-translate-y-1 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0 active:translate-y-0 disabled:opacity-50 disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-none"
              >
-               {loading ? (
-                 <>
-                   <span className="material-symbols-outlined animate-spin">refresh</span>
-                   Submitting to AI Agent...
-                 </>
-               ) : (
-                 <>
-                   <span className="material-symbols-outlined">rocket_launch</span>
-                   Submit Entry
-                 </>
-               )}
+               {loading ? "Initializing Sync..." : "Execute Submission"}
              </button>
           </div>
         </form>
-      </main>
+      </section>
+
+      <section className="bg-support-surface p-8 border border-outline-variant/30">
+         <h3 className="text-[10px] font-black uppercase tracking-widest mb-4">Verification Steps</h3>
+         <ol className="space-y-4">
+            <li className="flex gap-4 items-start">
+               <span className="text-primary font-black">01</span>
+               <p className="text-[10px] font-bold uppercase tracking-widest leading-loose">AI Agents will scan for architectural elegance and test coverage.</p>
+            </li>
+            <li className="flex gap-4 items-start">
+               <span className="text-primary font-black">02</span>
+               <p className="text-[10px] font-bold uppercase tracking-widest leading-loose">Git history analyzed for contribution authenticity.</p>
+            </li>
+            <li className="flex gap-4 items-start">
+               <span className="text-primary font-black">03</span>
+               <p className="text-[10px] font-bold uppercase tracking-widest leading-loose">Scores cached and broadcast to global leaderboard within 12H.</p>
+            </li>
+         </ol>
+      </section>
     </div>
   );
 }

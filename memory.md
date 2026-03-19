@@ -723,180 +723,217 @@ Status:
 
 - Open.
 
-### Bash is not available in this Windows environment
+## Update: Synk.ai V3 Design Synchronization (Architectural Brutalism)
 
-Observed issue:
+### 2026-03-18 - Full Application V3 Layout & Core Flows
 
-- The Playwright skill wrapper script depends on `bash`, but `bash` was not installed or available on PATH in this environment.
+Completed in this pass:
 
-Resolution:
+- **Design System Overhaul:** Implemented "Architectural Brutalism" globally.
+  - Updated `apps/web/app/globals.css` with Early Dawn beige (`#FFFAEB`), Mine Shaft gray (`#1F1F1F`), and 0px border-radius.
+  - Extended `tailwind.config.ts` with Mistral Rainbow gradients, architectural grid patterns, and premium design tokens.
+- **Global Layout & Navigation:**
+  - Refactored `apps/web/app/community/layout.tsx` to feature a fixed, responsive left sidebar navigation for all internal community pages.
+  - Implemented role-based navigation logic (Creator vs. Partner views).
+- **Core Page Redesigns (Pixel-Perfect with V3 Templates):**
+  - **Landing Page (`/`):** High-impact split-card hero with direct onboarding entry points.
+  - **Onboarding:** Fully functional React-based flows for `app/onboarding/partner/page.tsx` and `app/onboarding/creator/page.tsx`, capturing biometrics and DNA metrics.
+  - **Discovery Ecosystem:** Updated `app/community/page.tsx` with a "Proof of Work" masonry feed and "Active Nodes" system panel.
+  - **Competitions:** Redesigned `app/competitions/page.tsx`, detailed submission views (`app/competitions/[id]/page.tsx`), and the global leaderboard (`app/competitions/leaderboard/page.tsx`).
+  - **Synk Terminal:** Implemented `app/synk-terminal/page.tsx` as a high-fidelity system monitoring dashboard with real-time aesthetic.
+  - **Jobs Board:** Aligned `app/community/jobs/page.tsx` with the new grid and card design.
+- **Technical Integrations:**
+  - Initialized NextAuth.js with Google and GitHub providers.
+  - Wired backend connector scaffolds for Qdrant, SeleniumBase, and Stripe/Razorpay.
+  - Verified build success for the entire monorepo web workspace.
 
-- Used `npx.cmd --yes --package @playwright/cli playwright-cli ...` directly instead of the wrapper script.
+What the slice now supports:
 
-Status:
+- **Unified Aesthetic:** A cohesive, premium visual experience across all user touchpoints.
+- **Improved UX:** Side-bar navigation provides better accessibility to internal tools.
+- **Production Readiness:** Established the structural foundation for Supabase integration and real-time data flow.
 
-- Resolved for frontend verification.
+### Next Tasks (Synk.ai Priorities)
 
-### Stale Next.js dev server occupied port 3000
+1. **Supabase Authentication Integration:**
+   - Migrate current local JWT/seed login to real Supabase Auth sessions.
+   - Implement social login buttons in `app/page.tsx` and onboarding flows.
+2. **Database Migration & Real-time Integration:**
+   - Apply PostgreSQL schema to Supabase and migrate in-memory seed data to the cloud.
+   - Connect "Proof of Work" feed and Jobs board to live Supabase data.
+3. **Frontend Action Persistence:**
+   - Wire "Sync" (like), "Share", and "Apply Protocol" buttons to persistent database mutations.
+   - Implement local state updates for optimistic UI during sync actions.
+4. **Vector Search (Qdrant) Connectivity:**
+   - Migrate the semantic matching wrapper to ping a live Qdrant instance for real-time talent matching.
+5. **Real-time Collaboration:**
+   - Establish the Socket.io deal room implementation for smooth Creator-Partner bridging.
+6. **Mobile Infrastructure:**
+   - Install Flutter SDK and initialize the mobile scaffolding once the web foundation is stable.
+7. **Escrow & Payments:**
+   - Implement Stripe/Razorpay reconciliation for contract milestone releases.
 
-Observed issue:
+### 2026-03-19 -## [March 19, 2024] - Landing Page Refinements & Premium Component Integration
 
-- A previous `next dev` process remained alive and caused `EADDRINUSE` on port `3000` during a clean localhost verification run.
+### Removed
+- "System Health" section from the landing page.
+- "Product" and "Solutions" navigation links (desktop and mobile).
+- "Product" and "Solutions" links from hero section call-to-action buttons.
 
-Resolution:
+### Added
+- `HoverBorderGradient` component (from Aceternity UI) in `apps/web/components/ui/hover-border-gradient.tsx`. This component features an animated, color-shifting border on hover and follows a pill-shaped design (`rounded-full`).
+- "Our Popular Services" section on the landing page, using the `Marquee` component. This section features animated, colorful cards highlighting various technical and creative services (e.g., Brand Design, 3D Design, Frontend Web Development), placed just above the role selection area.
 
-- Identified the stale process as the repo's Next dev server and terminated it before rerunning the browser verification.
-
-Status:
-
-- Resolved.
-
-### Initial browser console error from missing favicon
-
-Observed issue:
-
-- The frontend initially logged a 404 for `favicon.ico`.
-
-Resolution:
-
-- Added `apps/web/src/app/icon.svg`.
-
-Status:
-
-- Resolved.
-
-### Matching studio AI snapshot timed out in Playwright
-
-Observed issue:
-
-- Playwright CLI snapshot mode timed out on the matching studio route even though the page rendered.
-
-Resolution:
-
-- Switched verification for that route to direct DOM text evaluation with `playwright-cli eval`, which succeeded.
-
-Status:
-
-- Resolved for verification.
-
-### Flutter SDK is not installed in this environment
-
-Observed issue:
-
-- `flutter --version` failed because the `flutter` command is not available on PATH.
-
-Resolution:
-
-- No repository code change was made in this pass.
-- Mobile app scaffolding can proceed only after the Flutter SDK is installed in the workspace environment.
-
-Status:
-
-- Open environment blocker.
-
-### `npm audit` findings are currently limited to Nest CLI tooling dependencies
-
-Observed issue:
-
-- `npm.cmd audit --json` still reports 6 moderate vulnerabilities.
-- The report is currently centered on `@nestjs/cli`, `@nestjs/schematics`, and the Angular schematics chain used by the CLI toolchain, not the runtime web/API dependencies.
-
-Resolution:
-
-- No forced upgrade was applied in this pass because the reported fix path from npm points at semver-major or mismatched CLI/schematics changes that need deliberate validation.
-
-Status:
-
-- Open, but currently scoped to development tooling rather than production runtime packages.
-
-### 2026-03-18 - Community UI updates, Sidebar Navigation, and Routing (Synk.ai)
-
-Files added or updated:
-
-- `apps/web/src/app/community/page.tsx`
-- `apps/web/src/app/login/page.tsx`
-- `apps/web/src/app/signup-freelancer/page.tsx`
-- `apps/web/src/app/signup-hiring/page.tsx`
-
-What was done:
-
-- Moved navigation to the left: engineered a fixed, responsive left sidebar (collapses to an icon-only dock on mobile). Included logo, primary navigation links, a shortcut section, profile avatar, and "Create Post" button.
-- React conversion: Replaced raw `<script>` tags and `onclick` handlers with modern React states (`useState`, `useEffect`) for modals and action menus.
-- Re-Flowed Grid: Mapped the masonry feed to an interactive, responsive CSS grid for "Project Spotlights," "Contributions," and "Role Openings" cards.
-- Added Animations: Integrated slide and scale animations directly into the component styles for a native app feel when opening posts.
-- Routing refactor: Updated login and signup flows to redirect all authenticated users to `/community` by default.
-
-How it was implemented:
-
-- Sidebar layout is structured using a `w-64` fixed flex column on desktop and dynamic width adjustments on mobile.
-- Masonry feed now relies on Tailwind grid utilities `columns-1 sm:columns-2 lg:columns-3 xl:columns-4` combined with `break-inside-avoid`.
-- Component state handles custom overlays (create post options modal, etc) replacing `document.getElementById` logic from previous mockups.
-
-Verification performed:
-
-- Localhost browser validation on `/community`. Flow logic correctly toggles modals and renders masonry layout responsively.
+### Modified
+- Updated `Header` (both desktop and mobile) to use `HoverBorderGradient` for the "Get Started" button.
+- Updated the landing page's hero buttons and onboarding cards to use `HoverBorderGradient` instead of standard `Link` components.
+- Standardized all call-to-action (CTA) buttons to have a pill shape (`rounded-full`) as per the latest design specs.
+lance after removal of asymmetric data column.
 
 Verification result:
 
-- Successful UI conversion to React with improved "Tech-Noir" aesthetics.
+- `@marketplace/web` production build succeeded.
+- Landing page verified for structural integrity.
 
-## Open Risks / Gaps
+### 2026-03-19 — synk.ai v3 UI overhaul and next-task curation
 
-- PostgreSQL-backed reads are scaffolded, but live database verification is still pending because the Docker daemon was unavailable.
-- Job and portfolio write endpoints exist, but live PostgreSQL write verification is still pending because the Docker daemon was unavailable.
-- Qdrant collection bootstrap and sync endpoints are implemented, but live Qdrant-backed verification is still pending because no running vector instance was available in this pass.
-- Local JWT auth and role-based authorization are implemented for localhost, but external Auth0 or Firebase integration is still pending.
-- The Deal Desk and dashboard are now functional for localhost workflows, but they still depend on in-memory fallback data when PostgreSQL is unavailable.
-- Mobile Flutter app has not been started yet.
-- Mobile Flutter work is additionally blocked on the local environment because the Flutter SDK is not installed.
-- Payment provider integration is still local-mock only; real Stripe or Razorpay funding, release, and webhook reconciliation are not yet implemented.
-- Socket.io chat is now implemented for baseline messaging and contract-room orchestration, but file sharing, task assignment, and read receipts are still pending.
-- AI matching is still heuristic; embedding generation and semantic retrieval are not yet live.
-- Anti-bot detection and SeleniumBase enrichment are not yet implemented.
-- Node dependency vulnerabilities remain unreviewed.
-- If the localhost web server starts returning HTTP `500` again after a seemingly successful build, the first recovery step should be a clean rebuild of `apps/web/.next`.
+#### Brand evolution
 
-## Next Tasks (Synk.ai Priorities)
+- The platform has been rebranded from **Unjob.ai / Job.ai** to **synk.ai — Frontier Talent**.
+- Landing page title is now `synk.ai | Frontier Talent`.
+- Footer branding reads `SYNK.AI LTD`.
+- Visual identity: dark, cinematic, architect-grid aesthetic. Primary accent `#b22206` (crimson). Material-symbols-outlined icon set. Uppercase italic bold typography throughout.
 
-1. **Supabase Authentication**: Initialize actual Supabase Auth logic in `login/page.tsx` and `signup/page.tsx` to replace mock routing and establish real sessions. 
-2. **Community Feed Integration**: Migrate the static masonry feed in the new `/community` page to fetch real post data (projects and jobs) from the Supabase database.
-3. **Frontend Interactions**: Build out full functionality for clicking 'Sync' (like) and 'Share' locally, capturing interactions into proper database mutations.
-4. **Backend Sync**: Ensure the new React frontend routes are passing the correct tokens and data payloads to the NestJS API counterparts.
-5. **Database Verification**: Verify PostgreSQL reads/writes and Qdrant sync are behaving correctly once the local Docker backend environment is running stably.
-6. **Mobile App**: Install the Flutter SDK and begin scaffolding the mobile target once the web MVP is structurally complete.
-7. **Production Auth/Escrow**: Later, replace simple token verifications with robust Stripe/Razorpay integrations and finalize RBAC workflows.
+#### New routes added (apps/web/app/)
 
-## Update: Synk.ai V2 Redesign and Integrations
-### 2026-03-18 - Architectural Brutalism & Core Flows
+| Route | Purpose | Data source | Status |
+|-------|---------|-------------|--------|
+| `/` (page.tsx) | Landing page with Spline 3D hero, geometric shapes, service marquee, role selection, FAQ | Static + Spline scene | **UI complete** |
+| `/role-selection` | Two-card role picker (Enterprise / Technical) linking to onboarding flows | Static | **UI complete** |
+| `/onboarding/creator` | Creator/Talent multi-step onboarding | Static form | **UI shell** |
+| `/onboarding/partner` | Partner/Hiring multi-step onboarding | Static form | **UI shell** |
+| `/login` | Login page | Static | **UI shell** |
+| `/signup` | Signup page + `/signup/developer` sub-route | Static | **UI shell** |
+| `/signup-freelancer` | Alternate freelancer signup | Static | **UI shell** |
+| `/signup-hiring` | Alternate hiring signup | Static | **UI shell** |
+| `/community` | Community feed with left sidebar nav (People, Jobs, Events, Forums) | Static/seed | **UI complete, needs API** |
+| `/community/jobs` | Community job listings | Static/seed | **UI complete, needs API** |
+| `/browse-jobs` | Full job browsing interface with filters | Static/seed | **UI complete, needs API** |
+| `/competitions` | Bounty/competition listings fetched from API | `localhost:4000/api/v1/competitions` | **UI complete, API endpoint missing** |
+| `/competitions/[id]` | Individual competition detail | API | **UI complete, API endpoint missing** |
+| `/competitions/leaderboard` | Global leaderboard | Static/seed | **UI complete, needs API** |
+| `/synk-terminal` | Synk Terminal — command-line-style interface with Neural Feed, system metrics | Static mock data | **UI complete, needs backend** |
+| `/dashboard` | Recruiter/platform dashboard | REST API | **Functional** |
+| `/freelancer-dashboard` | Freelancer-specific dashboard | Static/seed | **UI shell** |
+| `/workspace` | Active project workspace | Static mock | **UI shell** |
+| `/portfolio` | Portfolio showcase page | Static mock | **UI shell, needs portfolio CRUD** |
+| `/earnings` | Earnings and payout dashboard | Static mock | **UI shell** |
+| `/deal-desk` | Commercial workflow (proposals, contracts, milestones) | REST API | **Functional** |
+| `/chat` | Real-time messaging interface | REST + Socket.io | **UI complete** |
+| `/collaboration-hub` | Collaboration hub | REST + Socket.io | **Functional** |
+| `/matching-studio` | AI matching studio | REST API | **Functional** |
+| `/launchpad` | Job/portfolio creation forms | REST API (auth-gated) | **Functional** |
+| `/admin` | Platform admin panel | Static mock | **UI shell** |
+| `/settings` | User settings page | Static mock | **UI shell** |
+| `/pricing` | Pricing page with tier cards | Static | **UI complete** |
 
-Files added or updated:
-- `apps/web/tailwind.config.ts`, `apps/web/app/globals.css`
-- `apps/web/app/page.tsx`
-- `apps/web/app/onboarding/creator/page.tsx`, `apps/web/app/onboarding/partner/page.tsx`
-- `apps/web/app/community/page.tsx`, `apps/web/app/community/layout.tsx`, `apps/web/app/community/jobs/page.tsx`
-- `apps/web/app/components/CreationModal.tsx`
-- `apps/web/app/api/auth/[...nextauth]/route.ts`
-- `apps/web/lib/connectors.ts`
+#### Shared UI component library (apps/web/components/ui/)
 
-What was done:
-- **Design System Implementation:** Applied the "Architectural Brutalism" design language. Configured `tailwind.config.ts` and `globals.css` with Early Dawn (`#FFFAEB`), Mine Shaft (`#1F1F1F`), 0px border-radiuses, and robust box shadows mimicking brutalist architecture.
-- **Landing Page & Gateway (`/`)**: Created a high-impact split-card hero section directing users to "Join as Creator" or "Join as Partner". Includes Mistral gradients and bold typography.
-- **User Onboarding Flows**: Established multi-step forms for both Creators and Partners to capture core 'DNA' metrics (Bio, GitHub Sync, Tech Roles). Used `localStorage` to mock final state storage and conditionally render navigation menus upon redirection.
-- **Discovery Home & Feed**: Built out the dual sub-views for Projects (`/community`) and Jobs (`/community/jobs`). Integrated 'Proof-of-Work' cards featuring '98% AI Match Score' and 'Apply Protocol' CTAs.
-- **Creation Modals**: Assembled floating glassmorphism overlays for posting projects or jobs with embedded rich media fields.
-- **Backend Connector Scaffolds (`lib/connectors.ts`)**: Wired placeholder utility wrappers for Phase 4 services including vector semantic search (Qdrant), AWS S3/Cloudinary media upload, web-scraping (SeleniumBase) for GitHub enrichment, Escrow transactions (Stripe/Razorpay), and WebSockets mock handlers.
-- **NextAuth Baseline**: Initialized GitHub and Google callback endpoints inside an API handler.
+| Component | File | Purpose |
+|-----------|------|---------|
+| Header | `header-1.tsx` | Responsive site header with mobile drawer, scroll-aware styling |
+| HeroGeometric | `shape-landing-hero.tsx` | Animated geometric shape hero section with gradient overlays |
+| HoverBorderGradient | `hover-border-gradient.tsx` | Animated gradient border button component |
+| Marquee | `marquee.tsx` | Infinite horizontal scroll marquee |
+| FAQSection | `faq-section.tsx` | Collapsible FAQ accordion |
+| Button | `button.tsx` | Reusable button with CVA variants |
+| MenuToggleIcon | `menu-toggle-icon.tsx` | Animated hamburger/close icon |
+| useScroll | `use-scroll.ts` | Scroll position hook |
 
-How it was implemented:
-- Most HTML structure was generated using specific contextual prompts via the Stitch MCP server, then migrated to React functional components in a Next.js `app` directory context.
-- Navigation was restructured in `community/layout.tsx` to handle varying roles (e.g., 'Creator' sees jobs, while 'Partner' sees AI Talent profiles).
+#### New dependencies added to apps/web
 
-Verification completed:
-- `npm run build --workspace @marketplace/web` finished cleanly.
-- Walkthrough documentation generated.
+| Package | Purpose |
+|---------|---------|
+| `@splinetool/react-spline` | 3D interactive Spline scenes on landing page |
+| `framer-motion` | Animation library for hero, page transitions |
+| `lucide-react` | Icon library |
+| `@radix-ui/react-slot` | Headless UI primitives |
+| `class-variance-authority` | Component variant management |
+| `clsx` + `tailwind-merge` | Conditional class merging |
+| `next-auth` | Authentication framework (not yet wired) |
+| `@supabase/supabase-js` + `@supabase/ssr` | Supabase client (not yet wired) |
 
-Next Tasks:
-1. Initialize fully functional Supabase configuration since the MCP account has just been connected. Wire login buttons via NextAuth/Supabase.
-2. Replace local mock state in `onboarding` with real database insertions for user metadata.
-3. Migrate semantic matching wrapper inside `connectors.ts` to actually ping an active Qdrant instance.
-4. Establish Socket.io deal room implementation bridging from "Apply Protocol" click.
+#### Key design system notes
+
+- Tailwind CSS v4 with custom semantic color tokens (primary, secondary, surface, on-surface, etc.)
+- `architect-grid` and `architect-grid-fine` utility classes for subtle background patterns
+- Material Symbols Outlined for all icons (loaded via Google Fonts CDN)
+- Dark-first design with light mode support via CSS custom properties
+- `globals.css` extended with custom scrollbar, animation keyframes, and grid pattern utilities
+
+---
+
+## Next Tasks (Curated Backlog)
+
+### Priority 0 — Critical path to functional MVP
+
+| # | Task | Detail | Files |
+|---|------|--------|-------|
+| 1 | **Competitions API** | Create NestJS `competitions` module with CRUD endpoints (`GET/POST /api/v1/competitions`, `GET /api/v1/competitions/:id`). Wire leaderboard data. | `apps/api/src/modules/competitions/*` |
+| 2 | **Browse-jobs API wiring** | Connect `/browse-jobs` page to existing `GET /api/v1/jobs` with filter/search query support | `apps/web/app/browse-jobs/page.tsx`, `apps/web/lib/api.ts` |
+| 3 | **Community feed API** | Wire community page to live freelancer and job data from existing endpoints | `apps/web/app/community/page.tsx`, `apps/web/app/community/jobs/page.tsx` |
+
+### Priority 1 — Authentication and user flows
+
+| # | Task | Detail | Files |
+|---|------|--------|-------|
+| 4 | **Auth integration** | Wire `next-auth` + Supabase auth provider. Implement login/signup flows. Connect role-selection to user profile creation. | `apps/web/app/login/*`, `apps/web/app/signup/*`, `apps/web/app/role-selection/*`, `apps/web/app/api/auth/[...nextauth]/route.ts` |
+| 5 | **Onboarding pipeline** | Wire creator and partner onboarding forms to API user/profile creation endpoints | `apps/web/app/onboarding/creator/*`, `apps/web/app/onboarding/partner/*` |
+| 6 | **Earnings dashboard** | Create API endpoint for earnings data. Wire freelancer earnings page. | `apps/api/src/modules/earnings/*`, `apps/web/app/earnings/page.tsx` |
+| 7 | **Workspace wiring** | Connect workspace to active contracts/projects from engagements API | `apps/web/app/workspace/page.tsx` |
+
+### Priority 2 — Enhanced features
+
+| # | Task | Detail | Files |
+|---|------|--------|-------|
+| 8 | **Pricing + payments** | Integrate Stripe for subscription tiers. Wire pricing page to payment flow. | `apps/web/app/pricing/*`, `apps/api/src/modules/payments/*` |
+| 9 | **Synk Terminal backend** | Implement command processing for terminal interface (`/sync`, `/radar`, `/broadcast`). Wire real metrics. | `apps/web/app/synk-terminal/*`, `apps/api/src/modules/terminal/*` |
+| 10 | **Portfolio CRUD** | Wire portfolio page to existing `POST/GET /api/v1/portfolios` with edit/delete | `apps/web/app/portfolio/page.tsx` |
+
+### Priority 3 — Platform operations
+
+| # | Task | Detail | Files |
+|---|------|--------|-------|
+| 11 | **Admin panel backend** | Wire admin page to platform stats, user management, and moderation APIs | `apps/web/app/admin/*`, `apps/api/src/modules/admin/*` |
+| 12 | **Chat/messaging upgrade** | Wire `/chat` page to Socket.io collaboration namespace with thread management | `apps/web/app/chat/page.tsx` |
+| 13 | **Settings persistence** | Wire settings page to user preferences API (profile, notifications, security) | `apps/web/app/settings/page.tsx` |
+| 14 | **Freelancer dashboard** | Wire freelancer-specific dashboard with active gigs, pending proposals, skill metrics | `apps/web/app/freelancer-dashboard/page.tsx` |
+
+### Priority 4 — Polish and infrastructure
+
+| # | Task | Detail |
+|---|------|--------|
+| 15 | **Build verification** | Run full `npm run build` and fix any TypeScript/build errors |
+| 16 | **Playwright E2E tests** | Add browser verification for all new routes |
+| 17 | **Docker compose update** | Update docker-compose.yml for any new services |
+| 18 | **CI/CD pipeline** | Update GitHub Actions workflow for new dependencies and routes |
+| 19 | **SEO + meta tags** | Add proper metadata exports to all route pages |
+| 20 | **Responsive QA** | Verify all pages at 375px, 768px, 1024px, 1440px breakpoints |
+
+---
+
+## Issues Encountered
+
+### GitHub CLI not available
+
+Observed issue:
+
+- `gh` command is not recognized in the current Windows environment.
+
+Resolution:
+
+- Using `git` commands directly for repository operations. GitHub remote is already configured as `origin` → `https://github.com/SizzorOP/Job.ai.git`.
+
+Status:
+
+- Workaround in place.

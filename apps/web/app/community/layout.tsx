@@ -3,12 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import CreationModal from '../components/CreationModal';
 
 export default function CommunityLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [role, setRole] = useState<'creator' | 'partner'>('creator');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const savedRole = localStorage.getItem('synkai_role') as 'creator' | 'partner';
@@ -16,53 +14,100 @@ export default function CommunityLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <div className="bg-[#FFFAEB] text-slate-900 font-display min-h-screen bg-[radial-gradient(circle,#00000015_1px,transparent_1px)] bg-[length:20px_20px]">
-      {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-50 bg-[#FFFAEB] border-b-[3px] border-slate-900 px-4 py-4 flex items-center justify-between shadow-[0_4px_0px_0px_#000]">
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-slate-900 font-black">menu</span>
-          <h1 className="text-xl font-black tracking-tighter uppercase leading-none">SYNK.AI // V2</h1>
+    <div className="bg-background text-on-surface font-body min-h-screen flex architect-grid">
+      {/* Sidebar Navigation */}
+      <aside className="w-20 md:w-64 border-r border-outline-variant bg-surface-container-low flex flex-col fixed h-full z-40 overflow-y-auto no-scrollbar">
+        <div className="p-6">
+          <div className="text-xl font-black tracking-tighter text-[#b22206] hidden md:block">synk.ai</div>
+          <div className="text-xl font-black tracking-tighter text-[#b22206] md:hidden">s.</div>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="flex items-center justify-center p-1 border-[3px] border-slate-900 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all hover:bg-[#FA520F] group text-slate-900 hover:text-white">
-            <span className="material-symbols-outlined font-black">notifications</span>
-          </button>
+
+        <nav className="flex-1 px-3 py-4 space-y-2 font-display">
+          <Link
+            href="/community"
+            className={`flex items-center gap-4 px-3 py-3 rounded-none transition-all group ${
+              pathname === '/community' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'
+            }`}
+          >
+            <span className="material-symbols-outlined">home</span>
+            <span className="font-bold text-xs uppercase tracking-widest hidden md:block">Home</span>
+          </Link>
+          <Link
+            href="/community/explore"
+            className={`flex items-center gap-4 px-3 py-3 rounded-none transition-all group ${
+              pathname === '/community/explore' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'
+            }`}
+          >
+            <span className="material-symbols-outlined">explore</span>
+            <span className="font-bold text-xs uppercase tracking-widest hidden md:block">Discover</span>
+          </Link>
+          <Link
+            href="/community/rankings"
+            className={`flex items-center gap-4 px-3 py-3 rounded-none transition-all group ${
+              pathname === '/community/rankings' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'
+            }`}
+          >
+            <span className="material-symbols-outlined">leaderboard</span>
+            <span className="font-bold text-xs uppercase tracking-widest hidden md:block">Rankings</span>
+          </Link>
+          <Link
+            href="/community/labs"
+            className={`flex items-center gap-4 px-3 py-3 rounded-none transition-all group ${
+              pathname === '/community/labs' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'
+            }`}
+          >
+            <span className="material-symbols-outlined">science</span>
+            <span className="font-bold text-xs uppercase tracking-widest hidden md:block">Labs</span>
+          </Link>
+          {role === 'partner' && (
+             <Link
+             href="/community/jobs"
+             className={`flex items-center gap-4 px-3 py-3 rounded-none transition-all group ${
+               pathname === '/community/jobs' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container'
+             }`}
+           >
+             <span className="material-symbols-outlined">assignment</span>
+             <span className="font-bold text-xs uppercase tracking-widest hidden md:block">My Posts</span>
+           </Link>
+          )}
+        </nav>
+
+        <div className="p-4 border-t border-outline-variant mt-auto space-y-4">
+          <div className="flex items-center gap-3 md:px-2">
+            <div className="w-10 h-10 bg-surface-container-highest border border-outline-variant flex items-center justify-center">
+              <span className="material-symbols-outlined text-primary">person</span>
+            </div>
+            <div className="hidden md:block">
+              <p className="text-[10px] font-black uppercase tracking-tighter leading-none">Commander</p>
+              <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">v3.0 Verified</p>
+            </div>
+          </div>
+          <Link href="/settings" className="flex items-center gap-4 px-3 py-3 text-on-surface-variant hover:bg-surface-container transition-all group">
+            <span className="material-symbols-outlined">settings</span>
+            <span className="font-bold text-xs uppercase tracking-widest hidden md:block">Settings</span>
+          </Link>
         </div>
-      </header>
+      </aside>
 
-      {children}
-
-      {/* Floating Action Button */}
-      <button 
-        onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-24 right-6 w-16 h-16 bg-slate-900 text-white flex items-center justify-center border-4 border-slate-900 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FA520F] transition-all hover:-translate-y-1 active:shadow-none active:translate-x-1 active:translate-y-1 z-40 group"
-      >
-        <span className="material-symbols-outlined text-3xl font-black group-hover:rotate-90 transition-transform">add</span>
-      </button>
-
-      <CreationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Bottom Navigation Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 border-t-[4px] border-slate-900 bg-[#FFFAEB] z-40">
-        <div className="flex h-20 items-stretch">
-          <Link href="/community" className={`flex-1 flex flex-col items-center justify-center gap-1 border-r-[3px] border-slate-900 transition-colors ${pathname === '/community' ? 'bg-[#FA520F] text-white' : 'text-slate-900 hover:bg-slate-100'}`}>
-            <span className="material-symbols-outlined font-black">home</span>
-            <span className="text-[10px] font-black uppercase">Home</span>
-          </Link>
-          <Link href="/community/explore" className={`flex-1 flex flex-col items-center justify-center gap-1 border-r-[3px] border-slate-900 transition-colors ${pathname === '/community/explore' ? 'bg-[#FA520F] text-white' : 'text-slate-900 hover:bg-slate-100'}`}>
-            <span className="material-symbols-outlined font-black">explore</span>
-            <span className="text-[10px] font-black uppercase">Explore</span>
-          </Link>
-          <Link href="/community/jobs" className={`flex-1 flex flex-col items-center justify-center gap-1 border-r-[3px] border-slate-900 transition-colors ${pathname === '/community/jobs' ? 'bg-[#FA520F] text-white' : 'text-slate-900 hover:bg-slate-100'}`}>
-            <span className="material-symbols-outlined font-black">{role === 'creator' ? 'work' : 'assignment'}</span>
-            <span className="text-[10px] font-black uppercase">{role === 'creator' ? 'Jobs' : 'My Posts'}</span>
-          </Link>
-          <Link href="/profile" className={`flex-1 flex flex-col items-center justify-center gap-1 transition-colors ${pathname === '/profile' ? 'bg-[#FA520F] text-white' : 'text-slate-900 hover:bg-slate-100'}`}>
-            <span className="material-symbols-outlined font-black">person</span>
-            <span className="text-[10px] font-black uppercase">Profile</span>
-          </Link>
+      {/* Main Content Area */}
+      <div className="flex-1 ml-20 md:ml-64 min-h-screen">
+        <header className="h-16 border-b border-outline-variant bg-[#fcf9f8]/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-8">
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-stone-400">Network Status: <span className="text-secondary">Optimal</span></span>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="material-symbols-outlined text-stone-400 hover:text-on-surface transition-colors">search</button>
+            <button className="material-symbols-outlined text-stone-400 hover:text-on-surface transition-colors relative">
+               notifications
+               <span className="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border border-surface"></span>
+            </button>
+          </div>
+        </header>
+        
+        <div className="p-8">
+          {children}
         </div>
-      </nav>
+      </div>
     </div>
   );
 }

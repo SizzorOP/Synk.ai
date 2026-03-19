@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -30,83 +30,97 @@ export default function CompetitionsPage() {
   }, []);
 
   return (
-    <div className="bg-background-dark font-display text-slate-100 selection:bg-primary/30 selection:text-primary min-h-screen">
-      <header className="sticky top-0 z-50 glassmorphism border-b border-white/10 px-6 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-10">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 tech-gradient rounded-lg flex items-center justify-center">
-                <span className="material-symbols-outlined text-white">emoji_events</span>
-              </div>
-              <div className="flex flex-col">
-                <h1 className="text-xl font-bold tracking-tight text-white leading-none">Synk.ai</h1>
-                <span className="text-[10px] text-primary font-bold uppercase tracking-widest mt-1">Competitions</span>
-              </div>
+    <div className="grid grid-cols-1 xl:grid-cols-12 gap-12">
+      {/* Main Feed: 8 Columns */}
+      <div className="xl:col-span-8 space-y-12">
+        <section>
+          <div className="flex justify-between items-end mb-8">
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-2 block">Global Protocol</span>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase italic leading-none">Active Bounties</h2>
             </div>
-            <nav className="hidden md:flex items-center gap-8">
-              <Link href="/browse-jobs" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Browse Jobs</Link>
-              <Link href="/competitions" className="text-sm font-medium text-primary">Competitions</Link>
-              <Link href="/competitions/leaderboard" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">Leaderboard</Link>
-            </nav>
+            <Link href="/competitions/leaderboard" className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 hover:text-primary transition-colors">
+              <span className="material-symbols-outlined text-sm">leaderboard</span>
+              Leaderboard
+            </Link>
           </div>
-        </div>
-      </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-10">
-        <div className="mb-12 flex justify-between items-end">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-white to-slate-500 bg-clip-text text-transparent">Active Competitions</h2>
-            <p className="text-slate-400">Participate in cutting-edge AI bounties, submit your GitHub repositories, and let our AI agents score your implementation to win rewards.</p>
-          </div>
-          <Link href="/competitions/leaderboard" className="px-6 py-3 rounded-xl glassmorphism text-white text-sm font-bold border-primary/20 hover:bg-white/10 transition-colors flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary">leaderboard</span>
-            View Global Leaderboard
-          </Link>
-        </div>
-
-        {loading ? (
-          <div className="text-center py-20">
-            <span className="material-symbols-outlined animate-spin text-4xl text-primary">update</span>
-            <p className="text-slate-500 mt-4">Loading competitions...</p>
-          </div>
-        ) : competitions.length === 0 ? (
-          <div className="text-center py-20 bg-white/5 rounded-2xl border border-white/10">
-            <span className="material-symbols-outlined text-6xl text-slate-600 mb-4">event_busy</span>
-            <p className="text-slate-400">No active competitions right now. Check back later!</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {competitions.map((comp) => (
-              <div key={comp.id} className="glassmorphism p-6 rounded-2xl hover:border-primary/40 transition-all group relative overflow-hidden flex flex-col">
-                {comp.status === 'OPEN' && (
-                   <div className="absolute top-0 right-0 bg-green-500/20 text-green-400 text-[10px] font-black px-3 py-1 rounded-bl-lg uppercase tracking-widest">Active</div>
-                )}
-                <div className="mb-4">
-                  <h3 className="font-bold text-lg text-white group-hover:text-primary transition-colors">{comp.title}</h3>
-                  <p className="text-sm text-slate-400 mt-2 line-clamp-3">{comp.description}</p>
-                </div>
-                
-                <div className="flex items-center gap-4 mb-6 pt-4 border-t border-white/5">
-                  <div>
-                    <span className="block text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Reward Pool</span>
-                    <span className="text-lg font-bold text-accent-green">${comp.rewardPool.toLocaleString()}</span>
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Status</span>
-                    <span className="text-sm font-bold text-white">{comp.status}</span>
-                  </div>
-                </div>
-
-                <div className="mt-auto">
-                  <Link href={`/competitions/${comp.id}`} className="block text-center w-full px-6 py-3 rounded-xl tech-gradient text-white text-sm font-bold hover:opacity-90 transition-opacity">
-                    View Details & Submit
-                  </Link>
-                </div>
+          <div className="space-y-8">
+            {loading ? (
+              <div className="text-center py-20 border border-outline-variant bg-surface-container-low">
+                <span className="material-symbols-outlined animate-spin text-2xl text-primary">update</span>
+                <p className="text-[10px] font-black uppercase tracking-widest mt-4">Syncing Bounties...</p>
               </div>
-            ))}
+            ) : competitions.length === 0 ? (
+              <div className="text-center py-20 border border-outline-variant bg-surface-container-low">
+                <p className="text-[10px] font-black uppercase tracking-widest">No active protocols detected.</p>
+              </div>
+            ) : (
+              competitions.map((comp) => (
+                <article key={comp.id} className="bg-surface-container-lowest border border-outline-variant group hover:shadow-xl transition-all duration-500 overflow-hidden p-8">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-surface-container flex items-center justify-center border border-outline-variant">
+                         <span className="material-symbols-outlined text-primary">emoji_events</span>
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-black tracking-tight uppercase leading-none group-hover:text-primary transition-colors">{comp.title}</h3>
+                        <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mt-1">Status: {comp.status}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                       <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Reward Pool</p>
+                       <p className="text-2xl font-black tracking-tighter text-secondary italic">${comp.rewardPool.toLocaleString()}</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-stone-500 text-sm font-medium mb-8 leading-relaxed max-w-2xl">{comp.description}</p>
+                  
+                  <div className="flex items-center justify-between pt-6 border-t border-outline-variant/30">
+                    <div className="flex gap-4">
+                       <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-surface-container">GitHub Verified</span>
+                       <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 bg-surface-container">AI Scoring</span>
+                    </div>
+                    <Link href={`/competitions/${comp.id}`} className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2 group/btn">
+                      View Protocol
+                      <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                    </Link>
+                  </div>
+                </article>
+              ))
+            )}
           </div>
-        )}
-      </main>
+        </section>
+      </div>
+
+      {/* Sidebar: 4 Columns */}
+      <div className="xl:col-span-4 space-y-8">
+        <section className="bg-support-surface p-8 border border-outline-variant/30 architect-grid">
+           <h3 className="text-xs font-black uppercase tracking-[0.2em] italic mb-6">Network Stats</h3>
+           <div className="space-y-6">
+              <div className="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+                 <span className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Total Rewarded</span>
+                 <span className="text-xl font-black tracking-tighter">$2.4M</span>
+              </div>
+              <div className="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+                 <span className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Active Hunters</span>
+                 <span className="text-xl font-black tracking-tighter">1,204</span>
+              </div>
+              <div className="flex justify-between items-end pb-2">
+                 <span className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Global Rank</span>
+                 <span className="text-xl font-black tracking-tighter">#412</span>
+              </div>
+           </div>
+        </section>
+
+        <section className="bg-on-surface text-surface p-8 relative overflow-hidden">
+           <div className="relative z-10">
+              <h3 className="text-xs font-black uppercase tracking-[0.2em] italic mb-4 text-surface/50">Pro Tip</h3>
+              <p className="text-lg font-bold leading-tight uppercase tracking-tight italic text-surface/90">AI Agents scan repositories for architectural elegance.</p>
+           </div>
+           <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-2xl"></div>
+        </section>
+      </div>
     </div>
   );
 }
